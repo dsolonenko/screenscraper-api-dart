@@ -19,8 +19,7 @@ class FileHash {
   });
 }
 
-Future<FileHash?> getFileHash(String filePath) async {
-  final file = File(filePath);
+Future<FileHash?> calculateFileHash(File file) async {
   if (!file.existsSync()) return null;
   try {
     final stream = file.openRead();

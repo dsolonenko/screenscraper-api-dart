@@ -15,7 +15,7 @@ class ScreenScraperAPIV2 {
   final HttpClientWithMiddleware _http = HttpClientWithMiddleware.build(
     requestTimeout: Duration(seconds: 30),
     middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
+      HttpLogger(logLevel: LogLevel.NONE), // BASIC leaks passwords into logs
     ],
   );
 
@@ -59,8 +59,8 @@ class ScreenScraperAPIV2 {
       'devid': devId,
       'devpassword': devPassword,
       'softname': softwareName,
-      'username': userName,
-      'password': userPassword,
+      'ssid': userName,
+      'sspassword': userPassword,
       'output': 'json',
     };
     return Uri.https('www.screenscraper.fr', "api2/$path", {...required, ...params ?? {}});

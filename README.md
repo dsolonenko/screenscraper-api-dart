@@ -1,13 +1,10 @@
-Dart wrapper for ScreenScraper API V2.
+ROM scraper that uses ScreenScraper API V2.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Calculates required hashes for the ROM file
+- Calls ScreenScraper API V2 to get the matching game information
+- Provides game details based on the language/region priority
 
 ## Usage
 
@@ -15,14 +12,14 @@ start using the package.
 import 'package:screenscraper/screenscraper.dart';
 
 void main() async {
-  final api = ScreenScraperAPIV2.asTestUser();
-  final stats = await api.infraInfo();
-  print('Stats: ${stats.toJson()}');
+  final scraper = RomScraper(
+    devId: "xxx",
+    devPassword: "yyy",
+    softwareName: "xxx",
+    userName: "test",
+    userPassword: "test",
+  );
+  final game = await scraper.scrapeRom("12", "WarioWare, Inc. - Mega Microgame\$! (USA).zip");
+  print('Game ${game.name} released on ${game.systemName} in ${game.releaseDate}');
 }
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.

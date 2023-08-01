@@ -23,10 +23,10 @@ class GameInfo {
   final List<LangText> synopsis;
   final List<TypeText> classifications;
   final List<RegionText> dates;
-  final List<Data> genres;
-  final List<Data> modes;
-  final List<Data> familles;
-  final List<GameAction> actions;
+  final List<Data>? genres;
+  final List<Data>? modes;
+  final List<Data>? familles;
+  final List<GameAction>? actions;
   final List<GameMedia> medias;
   final List<GameRom> roms;
   final GameRom? rom;

@@ -18,7 +18,7 @@ void main() {
 
     test('Infra Info', () async {
       final servers = await api.infraInfo();
-      expect(servers.isClosedForNonMember, isFalse);
+      expect(servers.isClosedForLeecher, isFalse);
     });
 
     test('Game Info', () async {
@@ -32,7 +32,7 @@ void main() {
     });
 
     test('File hash', () async {
-      final hash = await getFileHash("WarioWare, Inc. - Mega Microgame\$! (USA).gba");
+      final hash = await calculateFileHash(File("WarioWare, Inc. - Mega Microgame\$! (USA).gba"));
       expect(hash!.crc, equals("785D8B8C"));
       expect(hash.md5, equals("A2D26DC774CEC9A0B47388A5DD727B03"));
       expect(hash.sha1, equals("3F556448D290FA5406D6ED367FEE16CC02387AD3"));

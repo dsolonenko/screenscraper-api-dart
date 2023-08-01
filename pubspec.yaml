@@ -1,7 +1,7 @@
 name: screenscraper
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: ROM scraper that uses ScreenScraper API V2.
+version: 0.0.1
+repository: https://github.com/dsolonenko/screenscraper-api-dart
 
 environment:
   sdk: ^3.0.0
