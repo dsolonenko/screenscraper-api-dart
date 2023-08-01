@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:screenscraper/src/apiv2.dart';
 import 'package:screenscraper/src/common.dart';
 import 'package:screenscraper/src/file_hash.dart';
+import 'package:screenscraper/src/game_info.dart';
+import 'package:collection/collection.dart';
 
 abstract class ScraperOverrides {
   static List<String> languagePriority = ["en"];
@@ -21,6 +23,7 @@ class Game {
   final String players;
   final List<Genre>? genres;
   final String releaseDate;
+  final Media media;
 
   Game({
     required this.gameId,
@@ -34,6 +37,37 @@ class Game {
     required this.players,
     required this.genres,
     required this.releaseDate,
+    required this.media,
+  });
+}
+
+class Media {
+  final MediaLink? screenshot;
+  final MediaLink? titleScreenshot;
+  final MediaLink? fanArt;
+  final MediaLink? box2d;
+  final MediaLink? wheel;
+  final MediaLink? video;
+
+  Media({
+    required this.screenshot,
+    required this.titleScreenshot,
+    required this.fanArt,
+    required this.box2d,
+    required this.wheel,
+    required this.video,
+  });
+}
+
+class MediaLink {
+  final String url;
+  final String format;
+  final int? size;
+
+  MediaLink({
+    required this.url,
+    required this.format,
+    required this.size,
   });
 }
 
@@ -86,8 +120,26 @@ class RomScraper {
       players: game.joueurs.text,
       genres: game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList(),
       releaseDate: _findRegionText(game.dates),
+      media: Media(
+        screenshot: _findMediaLink(game.medias, "ss"),
+        titleScreenshot: _findMediaLink(game.medias, "sstitle"),
+        fanArt: _findMediaLink(game.medias, "fanart"),
+        box2d: _findMediaLink(game.medias, "box-2D"),
+        wheel: _findMediaLink(game.medias, "wheel"),
+        video: _findMediaLink(game.medias, "video"),
+      ),
     );
   }
+}
+
+MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
+  final media = medias.firstWhereOrNull((element) => element.type == type);
+  if (media == null) return null;
+  return MediaLink(
+    url: media.url,
+    format: media.format,
+    size: media.size,
+  );
 }
 
 String _findRegionText(List<RegionText> text) {

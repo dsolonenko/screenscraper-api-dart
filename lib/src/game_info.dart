@@ -83,7 +83,8 @@ class GameMedia {
   final String crc;
   final String md5;
   final String sha1;
-  final String? size;
+  @IntStringConverter()
+  final int? size;
   final String format;
 
   GameMedia({

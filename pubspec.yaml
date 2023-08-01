@@ -15,6 +15,7 @@ dependencies:
   chunked_stream: ^1.4.2
   convert: ^3.1.1
   crclib: ^3.0.0
+  collection: ^1.18.0
 
 dev_dependencies:
   lints: ^2.0.0
