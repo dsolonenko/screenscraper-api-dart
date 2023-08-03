@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:screenscraper/src/common.dart';
-import 'package:screenscraper/src/game_info.dart';
-import 'package:screenscraper/src/infra_info.dart';
+import 'package:screenscraper/src/screenscraper/common.dart';
+import 'package:screenscraper/src/screenscraper/game_info.dart';
+import 'package:screenscraper/src/screenscraper/infra_info.dart';
 import 'package:pretty_http_logger/pretty_http_logger.dart';
 
 class ScreenScraperAPIV2 {

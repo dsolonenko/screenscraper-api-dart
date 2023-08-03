@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:screenscraper/src/common.dart';
+import 'package:screenscraper/src/screenscraper/common.dart';
 
 part 'infra_info.g.dart';
 

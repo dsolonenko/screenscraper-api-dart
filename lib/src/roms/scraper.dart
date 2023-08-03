@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:screenscraper/src/apiv2.dart';
-import 'package:screenscraper/src/common.dart';
-import 'package:screenscraper/src/file_hash.dart';
-import 'package:screenscraper/src/game_info.dart';
+import 'package:screenscraper/src/screenscraper/apiv2.dart';
+import 'package:screenscraper/src/screenscraper/common.dart';
+import 'package:screenscraper/src/screenscraper/game_info.dart';
+import 'package:screenscraper/src/roms/file_hash.dart';
 import 'package:collection/collection.dart';
 
 abstract class ScraperOverrides {
@@ -46,16 +46,20 @@ class Media {
   final MediaLink? titleScreenshot;
   final MediaLink? fanArt;
   final MediaLink? box2d;
+  final MediaLink? box3d;
   final MediaLink? wheel;
   final MediaLink? video;
+  final MediaLink? videoNormalized;
 
   Media({
     required this.screenshot,
     required this.titleScreenshot,
     required this.fanArt,
     required this.box2d,
+    required this.box3d,
     required this.wheel,
     required this.video,
+    required this.videoNormalized,
   });
 }
 
@@ -95,7 +99,7 @@ class RomScraper {
           userPassword: userPassword,
         );
 
-  Future<Game> scrapeRom(String systemId, String romPath) async {
+  Future<Game> scrapeRom({required String systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
@@ -125,15 +129,17 @@ class RomScraper {
         titleScreenshot: _findMediaLink(game.medias, "sstitle"),
         fanArt: _findMediaLink(game.medias, "fanart"),
         box2d: _findMediaLink(game.medias, "box-2D"),
+        box3d: _findMediaLink(game.medias, "box-3D"),
         wheel: _findMediaLink(game.medias, "wheel"),
         video: _findMediaLink(game.medias, "video"),
+        videoNormalized: _findMediaLink(game.medias, "video-normalized"),
       ),
     );
   }
 }
 
 MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
-  final media = medias.firstWhereOrNull((element) => element.type == type);
+  final media = medias.firstWhereOrNull((element) => element.parent == "jeu" && element.type == type);
   if (media == null) return null;
   return MediaLink(
     url: media.url,

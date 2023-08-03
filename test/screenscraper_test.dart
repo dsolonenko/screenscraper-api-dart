@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:screenscraper/screenscraper.dart';
-import 'package:screenscraper/src/file_hash.dart';
+import 'package:screenscraper/src/roms/file_hash.dart';
+import 'package:screenscraper/src/screenscraper/apiv2.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -32,10 +32,10 @@ void main() {
     });
 
     test('File hash', () async {
-      final hash = await calculateFileHash(File("WarioWare, Inc. - Mega Microgame\$! (USA).gba"));
-      expect(hash!.crc, equals("785D8B8C"));
-      expect(hash.md5, equals("A2D26DC774CEC9A0B47388A5DD727B03"));
-      expect(hash.sha1, equals("3F556448D290FA5406D6ED367FEE16CC02387AD3"));
+      final hash = await calculateFileHash(File("LICENSE"));
+      expect(hash!.crc, equals("17573B7A"));
+      expect(hash.md5, equals("25D8CB5523ACE4C823E6E3F0728421B5"));
+      expect(hash.sha1, equals("1373452CAB7D3058C78038C03ABD54C32ACE5DFD"));
     });
   });
 }
