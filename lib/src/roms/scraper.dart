@@ -111,15 +111,16 @@ class RomScraper {
       throw Exception("Unable to calculate hash for $romPath");
     }
     _log.i(
-        "Scrapping systemId=$systemId rom=${file.uri.pathSegments.last} crc=${hash.crc} md5=${hash.md5} sha1=${hash.sha1}");
+        "Scrapping systemId=$systemId rom=${file.uri.pathSegments.last} crc=${hash.crc} md5=${hash.md5} sha1=${hash.sha1} size=${hash.sizeBytes}");
     final game = await _api.gameInfo(GameInfoRequest.romByHash(
       systemeid: systemId,
       romnom: file.uri.pathSegments.last,
       crc: hash.crc,
       md5: hash.md5,
       sha1: hash.sha1,
+      sizeBytes: hash.sizeBytes,
     ));
-    _log.i("Game for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    _log.i("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
     return Game(
       gameId: game.id,
       romId: game.romid,

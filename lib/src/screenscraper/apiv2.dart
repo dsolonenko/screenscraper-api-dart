@@ -104,6 +104,7 @@ class GameInfoRequest {
     String? crc,
     String? md5,
     String? sha1,
+    required int sizeBytes,
   }) {
     if (crc == null && md5 == null && sha1 == null) {
       throw ArgumentError("At least one of crc|md5|sha1 is required");
@@ -112,6 +113,7 @@ class GameInfoRequest {
       systemeid: systemeid,
       romtype: "rom",
       romnom: romnom,
+      romtaille: sizeBytes,
       crc: crc,
       md5: md5,
       sha1: sha1,
@@ -121,12 +123,12 @@ class GameInfoRequest {
   Map<String, dynamic> toQueryParameters() => {
         'systemeid': systemeid,
         'romtype': romtype,
-        'romnom': romnom,
+        'romnom': Uri.encodeQueryComponent(romnom, encoding: ascii),
         if (crc != null) 'crc': crc,
         if (md5 != null) 'md5': md5,
         if (sha1 != null) 'sha1': sha1,
-        if (romtaille != null) 'romtaille': romtaille,
-        if (serialnum != null) 'serialnum': serialnum,
+        if (romtaille != null) 'romtaille': romtaille.toString(),
+        if (serialnum != null) 'serialnum': serialnum.toString(),
         if (gameid != null) 'gameid': gameid,
       };
 }

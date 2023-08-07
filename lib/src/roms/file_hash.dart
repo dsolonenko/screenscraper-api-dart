@@ -11,11 +11,13 @@ class FileHash {
   final String crc;
   final String md5;
   final String sha1;
+  final int sizeBytes;
 
   FileHash({
     required this.crc,
     required this.md5,
     required this.sha1,
+    required this.sizeBytes,
   });
 }
 
@@ -55,6 +57,7 @@ Future<FileHash?> calculateFileHash(File file) async {
         crc: crc32hash,
         md5: md5hash,
         sha1: sha1hash,
+        sizeBytes: file.lengthSync(),
       );
     } finally {
       await iterator.cancel();
