@@ -5,6 +5,7 @@ import 'package:screenscraper/src/screenscraper/game_info.dart';
 import 'package:screenscraper/src/screenscraper/infra_info.dart';
 import 'package:pretty_http_logger/pretty_http_logger.dart';
 
+/// Dart wrapper for ScreenScraper API V2
 class ScreenScraperAPIV2 {
   final String devId;
   final String devPassword;
@@ -27,6 +28,7 @@ class ScreenScraperAPIV2 {
     required this.userPassword,
   });
 
+  /// Use leecher credentials, for testing purposes
   factory ScreenScraperAPIV2.asTestUser() => ScreenScraperAPIV2(
         devId: "xxx",
         devPassword: "yyy",
@@ -35,11 +37,13 @@ class ScreenScraperAPIV2 {
         userPassword: "test",
       );
 
+  /// ssinfraInfos.php: Information about the ScreenScraper framework
   Future<Servers> infraInfo() async {
     final apiResponse = await _getApiResponse("ssinfraInfos.php");
     return Servers.fromJson(apiResponse.response['serveurs']);
   }
 
+  /// jeuInfos.php: Information on a game / Media of a game
   Future<GameInfo> gameInfo(GameInfoRequest request) async {
     final apiResponse = await _getApiResponse("jeuInfos.php", params: request.toQueryParameters());
     return GameInfo.fromJson(apiResponse.response['jeu']);

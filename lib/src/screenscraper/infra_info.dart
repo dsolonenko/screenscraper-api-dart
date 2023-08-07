@@ -50,6 +50,7 @@ class Servers {
     required this.threadformember,
   });
 
-  factory Servers.fromJson(Map<String, dynamic> json) => _$ServersFromJson(json);
+  factory Servers.fromJson(Map<String, dynamic> json) =>
+      _$ServersFromJson(json);
   Map<String, dynamic> toJson() => _$ServersToJson(this);
 }

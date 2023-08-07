@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:logger/logger.dart';
 import 'package:screenscraper/src/screenscraper/apiv2.dart';
 import 'package:screenscraper/src/screenscraper/common.dart';
 import 'package:screenscraper/src/screenscraper/game_info.dart';
@@ -84,6 +85,7 @@ class Genre {
 
 class RomScraper {
   final ScreenScraperAPIV2 _api;
+  final Logger _log = Logger();
 
   RomScraper({
     required String devId,
@@ -99,12 +101,17 @@ class RomScraper {
           userPassword: userPassword,
         );
 
+  /// Scrape a rom file and return a [Game] object with the matching game details
+  /// [systemId] is the ScreenScraper's id of the system the rom belongs to
+  /// Use [ScraperOverrides] to override the default language and region priority
   Future<Game> scrapeRom({required String systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
       throw Exception("Unable to calculate hash for $romPath");
     }
+    _log.i(
+        "Scrapping systemId=$systemId rom=${file.uri.pathSegments.last} crc=${hash.crc} md5=${hash.md5} sha1=${hash.sha1}");
     final game = await _api.gameInfo(GameInfoRequest.romByHash(
       systemeid: systemId,
       romnom: file.uri.pathSegments.last,
@@ -112,6 +119,7 @@ class RomScraper {
       md5: hash.md5,
       sha1: hash.sha1,
     ));
+    _log.i("Game for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
     return Game(
       gameId: game.id,
       romId: game.romid,
@@ -135,6 +143,11 @@ class RomScraper {
         videoNormalized: _findMediaLink(game.medias, "video-normalized"),
       ),
     );
+  }
+
+  /// Close the scraper to dispose the connection
+  void close() {
+    _api.close();
   }
 }
 
