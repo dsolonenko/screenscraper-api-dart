@@ -30,7 +30,7 @@ class GameInfo {
   final List<Data>? familles;
   final List<GameAction>? actions;
   final List<GameMedia> medias;
-  final List<GameRom> roms;
+  final List<GameRom>? roms;
   final GameRom? rom;
 
   GameInfo({
@@ -58,8 +58,7 @@ class GameInfo {
     required this.rom,
   });
 
-  factory GameInfo.fromJson(Map<String, dynamic> json) =>
-      _$GameInfoFromJson(json);
+  factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoToJson(this);
 }
 
@@ -73,8 +72,7 @@ class GameAction {
     required this.controle,
   });
 
-  factory GameAction.fromJson(Map<String, dynamic> json) =>
-      _$GameActionFromJson(json);
+  factory GameAction.fromJson(Map<String, dynamic> json) => _$GameActionFromJson(json);
   Map<String, dynamic> toJson() => _$GameActionToJson(this);
 }
 
@@ -103,8 +101,7 @@ class GameMedia {
     required this.format,
   });
 
-  factory GameMedia.fromJson(Map<String, dynamic> json) =>
-      _$GameMediaFromJson(json);
+  factory GameMedia.fromJson(Map<String, dynamic> json) => _$GameMediaFromJson(json);
   Map<String, dynamic> toJson() => _$GameMediaToJson(this);
 }
 
@@ -114,12 +111,12 @@ class GameRom {
   @IntStringConverter()
   final int romsize;
   final String romfilename;
-  final String romnumsupport;
-  final String romtotalsupport;
-  final String romcloneof;
-  final String romcrc;
-  final String rommd5;
-  final String romsha1;
+  final String? romnumsupport;
+  final String? romtotalsupport;
+  final String? romcloneof;
+  final String? romcrc;
+  final String? rommd5;
+  final String? romsha1;
   @BoolStringConverter()
   final bool beta;
   @BoolStringConverter()
@@ -162,7 +159,6 @@ class GameRom {
     required this.regions,
   });
 
-  factory GameRom.fromJson(Map<String, dynamic> json) =>
-      _$GameRomFromJson(json);
+  factory GameRom.fromJson(Map<String, dynamic> json) => _$GameRomFromJson(json);
   Map<String, dynamic> toJson() => _$GameRomToJson(this);
 }

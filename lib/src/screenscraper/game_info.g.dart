@@ -45,8 +45,8 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       medias: (json['medias'] as List<dynamic>)
           .map((e) => GameMedia.fromJson(e as Map<String, dynamic>))
           .toList(),
-      roms: (json['roms'] as List<dynamic>)
-          .map((e) => GameRom.fromJson(e as Map<String, dynamic>))
+      roms: (json['roms'] as List<dynamic>?)
+          ?.map((e) => GameRom.fromJson(e as Map<String, dynamic>))
           .toList(),
       rom: json['rom'] == null
           ? null
@@ -133,12 +133,12 @@ GameRom _$GameRomFromJson(Map<String, dynamic> json) => GameRom(
       id: json['id'] as String,
       romsize: const IntStringConverter().fromJson(json['romsize'] as String),
       romfilename: json['romfilename'] as String,
-      romnumsupport: json['romnumsupport'] as String,
-      romtotalsupport: json['romtotalsupport'] as String,
-      romcloneof: json['romcloneof'] as String,
-      romcrc: json['romcrc'] as String,
-      rommd5: json['rommd5'] as String,
-      romsha1: json['romsha1'] as String,
+      romnumsupport: json['romnumsupport'] as String?,
+      romtotalsupport: json['romtotalsupport'] as String?,
+      romcloneof: json['romcloneof'] as String?,
+      romcrc: json['romcrc'] as String?,
+      rommd5: json['rommd5'] as String?,
+      romsha1: json['romsha1'] as String?,
       beta: const BoolStringConverter().fromJson(json['beta'] as String),
       demo: const BoolStringConverter().fromJson(json['demo'] as String),
       proto: const BoolStringConverter().fromJson(json['proto'] as String),
