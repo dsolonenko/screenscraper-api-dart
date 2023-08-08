@@ -45,14 +45,17 @@ class ScreenScraperAPIV2 {
 
   /// jeuInfos.php: Information on a game / Media of a game
   Future<GameInfo> gameInfo(GameInfoRequest request) async {
-    final apiResponse = await _getApiResponse("jeuInfos.php", params: request.toQueryParameters());
+    final apiResponse = await _getApiResponse("jeuInfos.php",
+        params: request.toQueryParameters());
     return GameInfo.fromJson(apiResponse.response['jeu']);
   }
 
-  Future<Response> _getApiResponse(String path, {Map<String, dynamic>? params}) async {
+  Future<Response> _getApiResponse(String path,
+      {Map<String, dynamic>? params}) async {
     final httpResponse = await _http.get(_buildUrl(path, params: params));
     if (httpResponse.statusCode != 200) {
-      throw Exception("Error ${httpResponse.statusCode}: ${httpResponse.body}}");
+      throw Exception(
+          "Error ${httpResponse.statusCode}: ${httpResponse.body}}");
     }
     final json = jsonDecode(httpResponse.body);
     return Response.fromJson(json);
@@ -67,7 +70,8 @@ class ScreenScraperAPIV2 {
       'sspassword': userPassword,
       'output': 'json',
     };
-    return Uri.https('www.screenscraper.fr', "api2/$path", {...required, ...params ?? {}});
+    return Uri.https(
+        'www.screenscraper.fr', "api2/$path", {...required, ...params ?? {}});
   }
 
   void close() {

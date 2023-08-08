@@ -13,5 +13,5 @@ void main() async {
     romPath: "WarioWare, Inc. - Mega Microgame\$! (USA).gba",
   );
   print(
-      'Game ${game.name} released on ${game.systemName} in ${game.releaseDate}');
+      'Game ${game.name} released on ${game.systemName} in ${game.releaseYear}');
 }

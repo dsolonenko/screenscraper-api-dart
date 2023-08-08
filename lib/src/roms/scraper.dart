@@ -12,18 +12,45 @@ abstract class ScraperOverrides {
   static List<String> regionPriority = ["wor", "us", "eu", "jp"];
 }
 
+/// Game details scraped from ScreenScraper
 class Game {
+  /// ScreenScraper's id for the game
   final String gameId;
+
+  /// ScreenScraper's id for the rom
   final String romId;
+
+  /// ScreenScraper's id for the system
   final String systemId;
+
+  /// ScreenScraper's name for the system
   final String systemName;
+
+  /// Game title
   final String name;
+
+  /// Game description
   final String description;
+
+  /// Game developer
   final String developer;
+
+  /// Game publisher
   final String publisher;
+
+  /// Number of players
   final String players;
+
+  /// Game rating 0.0 to 1.0
+  final double rating;
+
+  /// Game genres
   final List<Genre>? genres;
-  final String releaseDate;
+
+  /// Game release year
+  final String releaseYear;
+
+  /// Game media
   final Media media;
 
   Game({
@@ -36,8 +63,9 @@ class Game {
     required this.developer,
     required this.publisher,
     required this.players,
+    required this.rating,
     required this.genres,
-    required this.releaseDate,
+    required this.releaseYear,
     required this.media,
   });
 }
@@ -104,7 +132,8 @@ class RomScraper {
   /// Scrape a rom file and return a [Game] object with the matching game details
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
   /// Use [ScraperOverrides] to override the default language and region priority
-  Future<Game> scrapeRom({required String systemId, required String romPath}) async {
+  Future<Game> scrapeRom(
+      {required String systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
@@ -120,7 +149,11 @@ class RomScraper {
       sha1: hash.sha1,
       sizeBytes: hash.sizeBytes,
     ));
-    _log.i("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    _log.i(
+        "Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    final rating =
+        game.note.text.isEmpty ? null : double.tryParse(game.note.text);
+    final releaseDate = _findRegionText(game.dates);
     return Game(
       gameId: game.id,
       romId: game.romid,
@@ -131,8 +164,11 @@ class RomScraper {
       developer: game.developpeur.text,
       publisher: game.editeur.text,
       players: game.joueurs.text,
-      genres: game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList(),
-      releaseDate: _findRegionText(game.dates),
+      rating: (rating ?? 0.0) / 20.0,
+      genres: game.genres
+          ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
+          .toList(),
+      releaseYear: releaseDate.length >= 4 ? releaseDate.substring(0, 4) : "",
       media: Media(
         screenshot: _findMediaLink(game.medias, "ss"),
         titleScreenshot: _findMediaLink(game.medias, "sstitle"),
@@ -153,7 +189,8 @@ class RomScraper {
 }
 
 MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
-  final media = medias.firstWhereOrNull((element) => element.parent == "jeu" && element.type == type);
+  final media = medias.firstWhereOrNull(
+      (element) => element.parent == "jeu" && element.type == type);
   if (media == null) return null;
   return MediaLink(
     url: media.url,
