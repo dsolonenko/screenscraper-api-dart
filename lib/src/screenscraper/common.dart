@@ -4,7 +4,8 @@ part 'common.g.dart';
 
 @JsonSerializable()
 class IdText {
-  final String? id;
+  @IntStringConverter()
+  final int? id;
   final String text;
 
   IdText({required this.id, required this.text});

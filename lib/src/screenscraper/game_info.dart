@@ -7,8 +7,10 @@ part 'game_info.g.dart';
 
 @JsonSerializable()
 class GameInfo {
-  final String id;
-  final String romid;
+  @IntStringConverter()
+  final int id;
+  @IntStringConverter()
+  final int romid;
   @BoolStringConverter()
   final bool notgame;
   final List<RegionText> noms;

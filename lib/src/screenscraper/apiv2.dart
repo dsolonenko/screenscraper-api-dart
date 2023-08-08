@@ -83,12 +83,12 @@ class GameInfoRequest {
   final String? crc;
   final String? md5;
   final String? sha1;
-  final String systemeid;
+  final int systemeid;
   final String romtype;
   final String romnom;
   final int? romtaille;
   final int? serialnum;
-  final String? gameid;
+  final int? gameid;
 
   GameInfoRequest({
     required this.systemeid,
@@ -103,7 +103,7 @@ class GameInfoRequest {
   });
 
   factory GameInfoRequest.romByHash({
-    required String systemeid,
+    required int systemeid,
     required String romnom,
     String? crc,
     String? md5,
@@ -125,7 +125,7 @@ class GameInfoRequest {
   }
 
   Map<String, dynamic> toQueryParameters() => {
-        'systemeid': systemeid,
+        'systemeid': systemeid.toString(),
         'romtype': romtype,
         'romnom': Uri.encodeQueryComponent(romnom, encoding: ascii),
         if (crc != null) 'crc': crc,
@@ -133,6 +133,6 @@ class GameInfoRequest {
         if (sha1 != null) 'sha1': sha1,
         if (romtaille != null) 'romtaille': romtaille.toString(),
         if (serialnum != null) 'serialnum': serialnum.toString(),
-        if (gameid != null) 'gameid': gameid,
+        if (gameid != null) 'gameid': gameid.toString(),
       };
 }

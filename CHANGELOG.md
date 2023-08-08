@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Use integers for ids
+
 ## 0.0.5
 
 - Add game rating normalized to 0-1.

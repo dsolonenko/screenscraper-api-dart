@@ -23,13 +23,13 @@ void main() {
 
     test('Game Info', () async {
       final game = await api.gameInfo(GameInfoRequest.romByHash(
-        systemeid: "1",
+        systemeid: 1,
         romnom: "Sonic The Hedgehog 2 (World).zip",
         crc: "50ABC90A",
         sizeBytes: 0,
       ));
-      expect(game.id, equals("3"));
-      expect(game.romid, equals("12100"));
+      expect(game.id, equals(3));
+      expect(game.romid, equals(12100));
     });
 
     test('File hash', () async {

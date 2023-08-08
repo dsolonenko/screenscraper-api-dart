@@ -7,8 +7,8 @@ part of 'game_info.dart';
 // **************************************************************************
 
 GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
-      id: json['id'] as String,
-      romid: json['romid'] as String,
+      id: const IntStringConverter().fromJson(json['id'] as String),
+      romid: const IntStringConverter().fromJson(json['romid'] as String),
       notgame: const BoolStringConverter().fromJson(json['notgame'] as String),
       noms: (json['noms'] as List<dynamic>)
           .map((e) => RegionText.fromJson(e as Map<String, dynamic>))
@@ -54,8 +54,8 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
     );
 
 Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
-      'id': instance.id,
-      'romid': instance.romid,
+      'id': const IntStringConverter().toJson(instance.id),
+      'romid': const IntStringConverter().toJson(instance.romid),
       'notgame': const BoolStringConverter().toJson(instance.notgame),
       'noms': instance.noms,
       'cloneof': instance.cloneof,

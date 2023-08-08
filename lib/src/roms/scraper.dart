@@ -15,13 +15,13 @@ abstract class ScraperOverrides {
 /// Game details scraped from ScreenScraper
 class Game {
   /// ScreenScraper's id for the game
-  final String gameId;
+  final int gameId;
 
   /// ScreenScraper's id for the rom
-  final String romId;
+  final int romId;
 
   /// ScreenScraper's id for the system
-  final String systemId;
+  final int systemId;
 
   /// ScreenScraper's name for the system
   final String systemName;
@@ -133,7 +133,7 @@ class RomScraper {
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
   /// Use [ScraperOverrides] to override the default language and region priority
   Future<Game> scrapeRom(
-      {required String systemId, required String romPath}) async {
+      {required int systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {

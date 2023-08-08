@@ -7,14 +7,28 @@ part of 'common.dart';
 // **************************************************************************
 
 IdText _$IdTextFromJson(Map<String, dynamic> json) => IdText(
-      id: json['id'] as String?,
+      id: _$JsonConverterFromJson<String, int>(
+          json['id'], const IntStringConverter().fromJson),
       text: json['text'] as String,
     );
 
 Map<String, dynamic> _$IdTextToJson(IdText instance) => <String, dynamic>{
-      'id': instance.id,
+      'id': _$JsonConverterToJson<String, int>(
+          instance.id, const IntStringConverter().toJson),
       'text': instance.text,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
 
 RegionText _$RegionTextFromJson(Map<String, dynamic> json) => RegionText(
       region: json['region'] as String,
