@@ -20,10 +20,10 @@ class GameInfo {
   final IdText developpeur;
   final IdText joueurs;
   final IdText note;
-  final String topstaff;
-  final String rotation;
+  final String? topstaff;
+  final String? rotation;
   final List<LangText> synopsis;
-  final List<TypeText> classifications;
+  final List<TypeText>? classifications;
   final List<RegionText> dates;
   final List<Data>? genres;
   final List<Data>? modes;

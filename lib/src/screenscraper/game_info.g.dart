@@ -19,13 +19,13 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       developpeur: IdText.fromJson(json['developpeur'] as Map<String, dynamic>),
       joueurs: IdText.fromJson(json['joueurs'] as Map<String, dynamic>),
       note: IdText.fromJson(json['note'] as Map<String, dynamic>),
-      topstaff: json['topstaff'] as String,
-      rotation: json['rotation'] as String,
+      topstaff: json['topstaff'] as String?,
+      rotation: json['rotation'] as String?,
       synopsis: (json['synopsis'] as List<dynamic>)
           .map((e) => LangText.fromJson(e as Map<String, dynamic>))
           .toList(),
-      classifications: (json['classifications'] as List<dynamic>)
-          .map((e) => TypeText.fromJson(e as Map<String, dynamic>))
+      classifications: (json['classifications'] as List<dynamic>?)
+          ?.map((e) => TypeText.fromJson(e as Map<String, dynamic>))
           .toList(),
       dates: (json['dates'] as List<dynamic>)
           .map((e) => RegionText.fromJson(e as Map<String, dynamic>))
