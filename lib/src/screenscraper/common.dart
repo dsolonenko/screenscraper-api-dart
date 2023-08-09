@@ -64,7 +64,8 @@ class Response {
 
 @JsonSerializable()
 class Data {
-  final String id;
+  @IntStringConverter()
+  final int id;
   final String nomcourt;
   final String principale;
   final String parentid;

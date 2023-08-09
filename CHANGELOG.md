@@ -1,3 +1,7 @@
+# 0.0.9
+
+- Normalized genre
+
 ## 0.0.7 - 0.0.8
 
 - Bugfixes

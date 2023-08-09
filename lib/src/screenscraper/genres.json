@@ -1,0 +1,1890 @@
+{
+	"header" : {
+		"APIversion" : "2.0",
+		"dateTime" : "2023-08-09 05:00:16",
+		"commandRequested" : "https://neoclone.screenscraper.fr/api2/genresListe.php?devid=xxx&devpassword=yyy&softname=zzz&output=json&ssid=test&sspassword=test",
+		"success": "true",
+		"error": ""
+	},
+	"response" : {
+		"genres": {
+			"10" : {
+				"id" : 10,
+				"nom_fr" : "Action",
+				"nom_de" : "Action",
+				"nom_en" : "Action",
+				"nom_es" : "Acción",
+				"nom_it" : "Azione",
+				"nom_pt" : "Ação",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=10&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"3566" : {
+				"id" : 3566,
+				"nom_fr" : "Action / Aventure",
+				"nom_de" : "Action / Abenteuer",
+				"nom_en" : "Action / Adventure",
+				"nom_es" : "Acción / Aventura",
+				"nom_it" : "Azione / Avventura",
+				"nom_pt" : "Ação / Aventura",
+				"parent" : "10",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3566&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2917" : {
+				"id" : 2917,
+				"nom_fr" : "Action / Casse briques",
+				"nom_de" : "Action / Breakout Spiele",
+				"nom_en" : "Action / Breakout games",
+				"nom_es" : "Acción / Juegos de Breakout",
+				"nom_it" : "Azione / Rompi Mattoncini",
+				"nom_pt" : "Ação / Jogos de Breakout",
+				"parent" : "10",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2917&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2909" : {
+				"id" : 2909,
+				"nom_fr" : "Action / Escalade",
+				"nom_de" : "Action / Klettern",
+				"nom_en" : "Action / Climbing",
+				"nom_es" : "Acción / Escalada",
+				"nom_it" : "Azione / Scalata",
+				"nom_pt" : "Ação / Escalada",
+				"parent" : "10",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2909&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2937" : {
+				"id" : 2937,
+				"nom_fr" : "Action / Labyrinthe",
+				"nom_de" : "Action / Labyrinth",
+				"nom_en" : "Action / Labyrinth",
+				"nom_es" : "Acción / Laberinto",
+				"nom_it" : "Azione / Labirinto",
+				"nom_pt" : "Ação / Labirinto",
+				"parent" : "10",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2937&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20688" : {
+				"id" : 20688,
+				"nom_fr" : "Action RPG",
+				"nom_de" : "Action-RPG",
+				"nom_en" : "Action RPG",
+				"nom_es" : "Juego de Rol de Acción",
+				"nom_it" : "RPG di Azione",
+				"nom_pt" : "RPG de Ação",
+				"parent" : "8",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20688&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"413" : {
+				"id" : 413,
+				"nom_fr" : "Adulte",
+				"nom_de" : "Erwachsene",
+				"nom_en" : "Adult",
+				"nom_es" : "Adulto",
+				"nom_it" : "Adulti",
+				"nom_pt" : "Adulto",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=413&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"13" : {
+				"id" : 13,
+				"nom_fr" : "Aventure",
+				"nom_de" : "Abenteuer",
+				"nom_en" : "Adventure",
+				"nom_es" : "Aventura",
+				"nom_it" : "Avventura",
+				"nom_pt" : "Aventura",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=13&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20678" : {
+				"id" : 20678,
+				"nom_fr" : "Aventure / 3D Temps Réel",
+				"nom_de" : "Abenteuer / 3D-Echtzeit",
+				"nom_en" : "Adventure / RealTime 3D",
+				"nom_es" : "Aventura / 3D en Tiempo Real",
+				"nom_it" : "Avventura / 3d in Tempo Reale",
+				"nom_pt" : "Aventura / 3D em Tempo Real",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20678&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20676" : {
+				"id" : 20676,
+				"nom_fr" : "Aventure / Film Interactif",
+				"nom_de" : "Abenteuer / Interaktiver Film",
+				"nom_en" : "Adventure / Interactive Movie",
+				"nom_es" : "Aventura / Película Interactiva",
+				"nom_it" : "Avventura / Film Interattivo",
+				"nom_pt" : "Aventura / Filme Interativo",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20676&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20672" : {
+				"id" : 20672,
+				"nom_fr" : "Aventure / Graphique",
+				"nom_de" : "Abenteuer / Grafik",
+				"nom_en" : "Adventure / Graphics",
+				"nom_es" : "Aventura / Gráficos",
+				"nom_it" : "Avventura / Grafica",
+				"nom_pt" : "Aventura / Gráficos",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20672&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"3237" : {
+				"id" : 3237,
+				"nom_fr" : "Aventure / Point and Click",
+				"nom_de" : "Abenteuer / Point und Klick",
+				"nom_en" : "Adventure / Point and Click",
+				"nom_es" : "Aventura / Point and Click",
+				"nom_it" : "Avventura / Punta e Clicca",
+				"nom_pt" : "Aventura / Point and Click",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3237&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20674" : {
+				"id" : 20674,
+				"nom_fr" : "Aventure / Roman Visuel",
+				"nom_de" : "Abenteuer / Visuelle Novelle",
+				"nom_en" : "Adventure / Visual Novel",
+				"nom_es" : "Aventura / Novela Visual",
+				"nom_it" : "Avventura / Romanzo Visivo",
+				"nom_pt" : "Aventura / Novela Visual",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20674&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20680" : {
+				"id" : 20680,
+				"nom_fr" : "Aventure / Survival Horror",
+				"nom_de" : "Abenteuer / Survival-Horror",
+				"nom_en" : "Adventure / Survival Horror",
+				"nom_es" : "Aventura / Survival Horror",
+				"nom_it" : "Avventura / Survival Horror",
+				"nom_pt" : "Aventura / Survival Horror",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20680&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20670" : {
+				"id" : 20670,
+				"nom_fr" : "Aventure / Texte",
+				"nom_de" : "Abenteuer / Text",
+				"nom_en" : "Adventure / Text",
+				"nom_es" : "Aventura / Texto",
+				"nom_it" : "Avventura / Testuale",
+				"nom_pt" : "Aventura / Texto",
+				"parent" : "13",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20670&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"1" : {
+				"id" : 1,
+				"nom_fr" : "Beat'em All",
+				"nom_de" : "Beat'em Up",
+				"nom_en" : "Beat'em Up",
+				"nom_es" : "Beat'em Up",
+				"nom_it" : "Beat'em All",
+				"nom_pt" : "Briga de rua",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=1&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"320" : {
+				"id" : 320,
+				"nom_fr" : "Casino",
+				"nom_de" : "Casino",
+				"nom_en" : "Casino",
+				"nom_es" : "Casino",
+				"nom_it" : "Casinò",
+				"nom_pt" : "Cassino",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=320&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2872" : {
+				"id" : 2872,
+				"nom_fr" : "Casino / Cartes",
+				"nom_de" : "Casino / Karten",
+				"nom_en" : "Casino / Cards",
+				"nom_es" : "Casino / Cartas",
+				"nom_it" : "Casinò / Carte",
+				"nom_pt" : "Cassino / Cartas",
+				"parent" : "320",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2872&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2950" : {
+				"id" : 2950,
+				"nom_fr" : "Casino / Course",
+				"nom_de" : "Casino / Rennen",
+				"nom_en" : "Casino / Race",
+				"nom_es" : "Casino / Carreras",
+				"nom_it" : "Casinò / Corse",
+				"nom_pt" : "Cassino / Corrida",
+				"parent" : "320",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2950&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2932" : {
+				"id" : 2932,
+				"nom_fr" : "Casino / Loterie",
+				"nom_de" : "Casino / Lotterie",
+				"nom_en" : "Casino / Lottery",
+				"nom_es" : "Casino / Lotería",
+				"nom_it" : "Casinò / Lotteria",
+				"nom_pt" : "Cassino / Loteria",
+				"parent" : "320",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2932&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2860" : {
+				"id" : 2860,
+				"nom_fr" : "Casino / Machine a sous",
+				"nom_de" : "Casino / Slot Machine",
+				"nom_en" : "Casino / Slot machine",
+				"nom_es" : "Casino / Máquina tragaperras",
+				"nom_it" : "Casinò / Slot Machine",
+				"nom_pt" : "Cassino / Caça-níqueis",
+				"parent" : "320",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2860&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2944" : {
+				"id" : 2944,
+				"nom_fr" : "Casino / Roulette",
+				"nom_de" : "Casino / Roulette",
+				"nom_en" : "Casino / Roulette",
+				"nom_es" : "Casino / Ruleta",
+				"nom_it" : "Casinò / Roulette",
+				"nom_pt" : "Cassino / Roleta",
+				"parent" : "320",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2944&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"171" : {
+				"id" : 171,
+				"nom_fr" : "Casual Game",
+				"nom_de" : "Gelegenheitsspiel",
+				"nom_en" : "Casual Game",
+				"nom_es" : "Juego Casual",
+				"nom_it" : "Casual Game",
+				"nom_pt" : "Jogo casual",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=171&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"3192" : {
+				"id" : 3192,
+				"nom_fr" : "Chasse",
+				"nom_de" : "Jagen",
+				"nom_en" : "Hunting",
+				"nom_es" : "Caza",
+				"nom_it" : "Caccia",
+				"nom_pt" : "Caça",
+				"parent" : "2648",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3192&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2648" : {
+				"id" : 2648,
+				"nom_fr" : "Chasse et Peche",
+				"nom_de" : "Jagen und Angeln",
+				"nom_en" : "Hunting and Fishing",
+				"nom_es" : "Caza y Pesca",
+				"nom_it" : "Caccia e Pesca",
+				"nom_pt" : "Caça e Pesca",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2648&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"14" : {
+				"id" : 14,
+				"nom_fr" : "Combat",
+				"nom_de" : "Kampf",
+				"nom_en" : "Fight",
+				"nom_es" : "Lucha",
+				"nom_it" : "Combattimento",
+				"nom_pt" : "Luta",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=14&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2874" : {
+				"id" : 2874,
+				"nom_fr" : "Combat / 2.5D",
+				"nom_de" : "Kampf / 2.5D",
+				"nom_en" : "Fight / 2.5D",
+				"nom_es" : "Lucha / 2.5D",
+				"nom_it" : "Combattimento 2,5D",
+				"nom_pt" : "Luta / 2.5D",
+				"parent" : "14",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2874&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2914" : {
+				"id" : 2914,
+				"nom_fr" : "Combat / 2D",
+				"nom_de" : "Kampf / 2D",
+				"nom_en" : "Fight / 2D",
+				"nom_es" : "Lucha / 2D",
+				"nom_it" : "Combattimento / 2D",
+				"nom_pt" : "Luta / 2D",
+				"parent" : "14",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2914&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2920" : {
+				"id" : 2920,
+				"nom_fr" : "Combat / 3D",
+				"nom_de" : "Kampf / 3D",
+				"nom_en" : "Fight / 3D",
+				"nom_es" : "Lucha / 3D",
+				"nom_it" : "Combattimento / 3D",
+				"nom_pt" : "Luta / 3D",
+				"parent" : "14",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2920&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2885" : {
+				"id" : 2885,
+				"nom_fr" : "Combat / Versus",
+				"nom_de" : "Kampf / Versus",
+				"nom_en" : "Fight / Versus",
+				"nom_es" : "Lucha / Versus",
+				"nom_it" : "Combattimento / A scontro",
+				"nom_pt" : "Luta / Versus",
+				"parent" : "14",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2885&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2957" : {
+				"id" : 2957,
+				"nom_fr" : "Combat / Versus Co-op",
+				"nom_de" : "Kampf / Versus Ko-Op",
+				"nom_en" : "Fight /  Co-op",
+				"nom_es" : "Lucha / Versus Co-op",
+				"nom_it" : "Combattimento / A scontro in cooperativa",
+				"nom_pt" : "Luta / Versus Co-op",
+				"parent" : "14",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2957&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2922" : {
+				"id" : 2922,
+				"nom_fr" : "Combat / Vertical",
+				"nom_de" : "Kampf / Vertikal",
+				"nom_en" : "Fight / Vertical",
+				"nom_es" : "Combate / Vertical",
+				"nom_it" : "Combattimento / Verticale",
+				"nom_pt" : "Luta / Vertical",
+				"parent" : "14"
+			},
+			"34" : {
+				"id" : 34,
+				"nom_fr" : "Compilation",
+				"nom_de" : "Sammlung",
+				"nom_en" : "Compilation",
+				"nom_es" : "Compilación",
+				"nom_it" : "Compilation",
+				"nom_pt" : "Compilação",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=34&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20682" : {
+				"id" : 20682,
+				"nom_fr" : "Construction & Management",
+				"nom_de" : "Konstruktion & Management",
+				"nom_en" : "Build And Management",
+				"nom_es" : "Construcción y Gestión",
+				"nom_it" : "Costruzione & Gestione",
+				"nom_pt" : "Construção e Gestão",
+				"parent" : "40",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20682&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2918" : {
+				"id" : 2918,
+				"nom_fr" : "Course de chevaux",
+				"nom_de" : "Pferderennen",
+				"nom_en" : "Horses race",
+				"nom_es" : "Carreras de caballos",
+				"nom_it" : "Corsa dei cavalli",
+				"nom_pt" : "Corrida de cavalos",
+				"parent" : "2650",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2918&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2973" : {
+				"id" : 2973,
+				"nom_fr" : "Course de Moto vue 1er pers.",
+				"nom_de" : "Motorradrennen, 1st Pers.",
+				"nom_en" : "Motorcycle Race, 1st Pers.",
+				"nom_es" : "Carreras de moto, 1ª persona",
+				"nom_it" : "Corsa di Moto in 1a Persona",
+				"nom_pt" : "Corrida de moto em 1ª pessoa",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2973&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2871" : {
+				"id" : 2871,
+				"nom_fr" : "Course de Moto vue 3eme pers.",
+				"nom_de" : "Motorradrennen, 3rd Pers.",
+				"nom_en" : "Motorcycle Race, 3rd Pers.",
+				"nom_es" : "Carreras de moto, 3ª persona",
+				"nom_it" : "Corsa di Moto in 3a Persona",
+				"nom_pt" : "Corrida de moto em 3ª pessoa",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2871&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2884" : {
+				"id" : 2884,
+				"nom_fr" : "Course vue 1ere pers.",
+				"nom_de" : "Rennen 1st Pers.",
+				"nom_en" : "Race 1st Pers. view",
+				"nom_es" : "Carreras 1ª persona",
+				"nom_it" : "Corsa in 1a Persona",
+				"nom_pt" : "Corrida em 1ª pessoa",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2884&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2888" : {
+				"id" : 2888,
+				"nom_fr" : "Course vue 3eme pers.",
+				"nom_de" : "Rennen 3rd Pers.",
+				"nom_en" : "Race 3rd Pers. view",
+				"nom_es" : "Carreras 3ª persona",
+				"nom_it" : "Corsa in 3a Persona",
+				"nom_pt" : "Corrida em 3ª pessoa",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2888&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"28" : {
+				"id" : 28,
+				"nom_fr" : "Course, Conduite",
+				"nom_de" : "Rennen, Fahren",
+				"nom_en" : "Race, Driving",
+				"nom_es" : "Carreras, Conducción",
+				"nom_it" : "Corsa, Guida",
+				"nom_pt" : "Corrida, Pilotagem",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=28&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2893" : {
+				"id" : 2893,
+				"nom_fr" : "Course, Conduite / Avion",
+				"nom_de" : "Rennen, Fahren / Flugzeug",
+				"nom_en" : "Race, Driving / Plane",
+				"nom_es" : "Carreras, Conducción / Avión",
+				"nom_it" : "Corsa, Guida / Aereo",
+				"nom_pt" : "Corrida, Pilotagem / Avião",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2893&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2911" : {
+				"id" : 2911,
+				"nom_fr" : "Course, Conduite / Bateau",
+				"nom_de" : "Rennen, Fahren / Boot",
+				"nom_en" : "Race, Driving / Boat",
+				"nom_es" : "Carreras, Conducción / Bote",
+				"nom_it" : "Corsa, Guida / Barca",
+				"nom_pt" : "Corrida, Pilotagem / Bote",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2911&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2924" : {
+				"id" : 2924,
+				"nom_fr" : "Course, Conduite / Course",
+				"nom_de" : "Rennen, Fahren / Rennen",
+				"nom_en" : "Race, Driving / Race",
+				"nom_es" : "Carreras, Conducción / Carreras",
+				"nom_it" : "Corsa, Guida / Corsa",
+				"nom_pt" : "Corrida, Pilotagem / Corrida",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2924&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2953" : {
+				"id" : 2953,
+				"nom_fr" : "Course, Conduite / Deltaplane",
+				"nom_de" : "Rennen, Fahren / Hang Glider",
+				"nom_en" : "Race, Driving / Hang-glider",
+				"nom_es" : "Carreras, Conducción / Ala delta",
+				"nom_it" : "Corsa, Guida / Deltaplano",
+				"nom_pt" : "Corrida, Pilotagem / Asa-Delta",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2953&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2943" : {
+				"id" : 2943,
+				"nom_fr" : "Course, Conduite / Moto",
+				"nom_de" : "Rennen, Fahren / Motorrad",
+				"nom_en" : "Race, Driving / Motorcycle",
+				"nom_es" : "Carreras, Conducción / Motocicleta",
+				"nom_it" : "Corsa, Guida / Moto",
+				"nom_pt" : "Corrida, Pilotagem / Moto",
+				"parent" : "28",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2943&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2974" : {
+				"id" : 2974,
+				"nom_fr" : "Demo",
+				"nom_de" : "Demo",
+				"nom_en" : "Demo",
+				"nom_es" : "Demo",
+				"nom_it" : "Demo",
+				"nom_pt" : "Demo",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2974&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"39" : {
+				"id" : 39,
+				"nom_fr" : "Divers",
+				"nom_de" : "Verschiedene",
+				"nom_en" : "Various",
+				"nom_es" : "Varios",
+				"nom_it" : "Varie",
+				"nom_pt" : "Variados",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=39&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2890" : {
+				"id" : 2890,
+				"nom_fr" : "Divers / Electro-mecanique",
+				"nom_de" : "Verschiedene / Elektromechanisch",
+				"nom_en" : "Various / Electro- Mechanical",
+				"nom_es" : "Varios / Electromecánico",
+				"nom_it" : "Varie / Elettromeccanico",
+				"nom_pt" : "Variados / Eletromecânico",
+				"parent" : "39"
+			},
+			"2879" : {
+				"id" : 2879,
+				"nom_fr" : "Divers / Print Club",
+				"nom_de" : "Verschiedene / Print Club",
+				"nom_en" : "Various / Print Club",
+				"nom_es" : "Varios / Print Club",
+				"nom_it" : "Varie / Giochi di Stampa",
+				"nom_pt" : "Variados / Print Club",
+				"parent" : "39"
+			},
+			"2855" : {
+				"id" : 2855,
+				"nom_fr" : "Divers / Système",
+				"nom_de" : "Verschiedene / System",
+				"nom_en" : "Various / System",
+				"nom_es" : "Varios / Sistema",
+				"nom_it" : "Varie / Sistema",
+				"nom_pt" : "Variados / Sistema",
+				"parent" : "39"
+			},
+			"2904" : {
+				"id" : 2904,
+				"nom_fr" : "Divers / Utilitaires",
+				"nom_de" : "Verschiedene / Dienstprogramme",
+				"nom_en" : "Various / Utilities",
+				"nom_es" : "Varios / Utilidades",
+				"nom_it" : "Varie / Utilità",
+				"nom_pt" : "Variados / Utilitários",
+				"parent" : "39"
+			},
+			"20692" : {
+				"id" : 20692,
+				"nom_fr" : "Dungeon RPG",
+				"nom_de" : "Kerker-RPG",
+				"nom_en" : "Dungeon Crawler RPG",
+				"nom_es" : "Juego de Rol de Calabozo",
+				"nom_it" : "RPG di Dungeon",
+				"nom_pt" : "RPG Medieval",
+				"parent" : "8",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20692&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"31" : {
+				"id" : 31,
+				"nom_fr" : "Flipper",
+				"nom_de" : "Flipper",
+				"nom_en" : "Pinball",
+				"nom_es" : "Pinball",
+				"nom_it" : "Flipper",
+				"nom_pt" : "Pinball",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=31&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2958" : {
+				"id" : 2958,
+				"nom_fr" : "Go",
+				"nom_de" : "Go",
+				"nom_en" : "Go",
+				"nom_es" : "Go",
+				"nom_it" : "Go",
+				"nom_pt" : "Go",
+				"parent" : "2647"
+			},
+			"2882" : {
+				"id" : 2882,
+				"nom_fr" : "Hanafuda",
+				"nom_de" : "Hanafuda",
+				"nom_en" : "Hanafuda",
+				"nom_es" : "Hanafuda",
+				"nom_it" : "Hanafuda",
+				"nom_pt" : "Hanafuda",
+				"parent" : "2647"
+			},
+			"42" : {
+				"id" : 42,
+				"nom_fr" : "Jeu de cartes",
+				"nom_de" : "Kartenspiele",
+				"nom_en" : "Playing cards",
+				"nom_es" : "Juegos de cartas",
+				"nom_it" : "Gioco di carte",
+				"nom_pt" : "Jogo de cartas",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=42&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20696" : {
+				"id" : 20696,
+				"nom_fr" : "Jeu de Rôle Japonais",
+				"nom_de" : "Japanisches Rollenspiel",
+				"nom_en" : "Japanese RPG",
+				"nom_es" : "Juego de Rol Japonés",
+				"nom_it" : "Gioco di Ruolo Giapponese",
+				"nom_pt" : "RPG Japonês",
+				"parent" : "8",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20696&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20694" : {
+				"id" : 20694,
+				"nom_fr" : "Jeu de Rôle Tactique",
+				"nom_de" : "Taktisches Rollenspiel",
+				"nom_en" : "Tactical RPG",
+				"nom_es" : "Juego de Rol Táctico",
+				"nom_it" : "Gioco di Ruolo Tattico",
+				"nom_pt" : "RPG Táctico",
+				"parent" : "8",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20694&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"8" : {
+				"id" : 8,
+				"nom_fr" : "Jeu de rôles",
+				"nom_de" : "Rollenspiele",
+				"nom_en" : "Role playing games",
+				"nom_es" : "Juegos de rol",
+				"nom_it" : "Gioco di Ruolo",
+				"nom_pt" : "Jogos de RPG",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=8&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20698" : {
+				"id" : 20698,
+				"nom_fr" : "Jeu de rôles en équipe",
+				"nom_de" : "Team-Rollenspiele",
+				"nom_en" : "Team-as-one RPG",
+				"nom_es" : "Juego de Rol en Equipo",
+				"nom_it" : "Gioco di Ruolo in Squadra",
+				"nom_pt" : "RPG em Equipe",
+				"parent" : "8",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20698&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"33" : {
+				"id" : 33,
+				"nom_fr" : "Jeu de societe / plateau",
+				"nom_de" : "Brettspiele",
+				"nom_en" : "Board game",
+				"nom_es" : "Juegos de mesa",
+				"nom_it" : "Gioco di società / da tavolo",
+				"nom_pt" : "Jogo de tabuleiro",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=33&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2647" : {
+				"id" : 2647,
+				"nom_fr" : "Jeu de societe asiatique",
+				"nom_de" : "Asiatische Brettspiele",
+				"nom_en" : "Asiatic board game",
+				"nom_es" : "Juegos de mesa asiático",
+				"nom_it" : "Gioco di società asiatico",
+				"nom_pt" : "Jogo de tabuleiro Asiático",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2647&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"30" : {
+				"id" : 30,
+				"nom_fr" : "Ludo-Educatif",
+				"nom_de" : "Lernspiel",
+				"nom_en" : "Educational",
+				"nom_es" : "Educacional",
+				"nom_it" : "Educativo",
+				"nom_pt" : "Educacional",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=30&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2869" : {
+				"id" : 2869,
+				"nom_fr" : "Mahjong",
+				"nom_de" : "Mahjong",
+				"nom_en" : "Mahjong",
+				"nom_es" : "Mahjong",
+				"nom_it" : "Mahjong",
+				"nom_pt" : "Mahjong",
+				"parent" : "2647"
+			},
+			"20690" : {
+				"id" : 20690,
+				"nom_fr" : "MMORPG",
+				"nom_de" : "MMORPG",
+				"nom_en" : "Massive Multiplayer Online RPG",
+				"nom_es" : "MMORPG",
+				"nom_it" : "MMORPG",
+				"nom_pt" : "MMORPG",
+				"parent" : "8",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20690&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"425" : {
+				"id" : 425,
+				"nom_fr" : "Musique et Danse",
+				"nom_de" : "Musik und Tanz",
+				"nom_en" : "Music and Dance",
+				"nom_es" : "Música y Baile",
+				"nom_it" : "Musica e Danza",
+				"nom_pt" : "Música e dança",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=425&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"323" : {
+				"id" : 323,
+				"nom_fr" : "N/A",
+				"nom_de" : "N/A",
+				"nom_en" : "N/A",
+				"nom_es" : "N/A",
+				"nom_it" : "N/D",
+				"nom_pt" : "N/A",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=323&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2949" : {
+				"id" : 2949,
+				"nom_fr" : "Othello",
+				"nom_de" : "Othello",
+				"nom_en" : "Othello",
+				"nom_es" : "Reversi",
+				"nom_it" : "Othello",
+				"nom_pt" : "Othello",
+				"parent" : "2647"
+			},
+			"2965" : {
+				"id" : 2965,
+				"nom_fr" : "Pachinko",
+				"parent" : "2857"
+			},
+			"2895" : {
+				"id" : 2895,
+				"nom_fr" : "Peche",
+				"nom_de" : "Angeln",
+				"nom_en" : "Fishing",
+				"nom_es" : "Pesca",
+				"nom_it" : "Pesca",
+				"nom_pt" : "Pesca",
+				"parent" : "2648",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2895&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"7" : {
+				"id" : 7,
+				"nom_fr" : "Plateforme",
+				"nom_de" : "Plattform",
+				"nom_en" : "Platform",
+				"nom_es" : "Plataforma",
+				"nom_it" : "Piattaforma",
+				"nom_pt" : "Plataforma",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=7&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2896" : {
+				"id" : 2896,
+				"nom_fr" : "Plateforme / Fighter Scrolling",
+				"nom_de" : "Plattform / Kampf Scrolling",
+				"nom_en" : "Platform / Fighter Scrolling",
+				"nom_es" : "Plataforma / Combate con desplazamiento",
+				"nom_it" : "Piattaforma / Combattimento a Scorrimento",
+				"nom_pt" : "Plataforma / Combate com rolagem",
+				"parent" : "7"
+			},
+			"2915" : {
+				"id" : 2915,
+				"nom_fr" : "Plateforme / Run Jump",
+				"nom_de" : "Plattform / Jump'n'Run",
+				"nom_en" : "Platform / Run Jump",
+				"nom_es" : "Plataforma / Corre y Salta",
+				"nom_it" : "Piattaforma / Corri e Salta",
+				"nom_pt" : "Plataforma / Corre e Pula",
+				"parent" : "7",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2915&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2897" : {
+				"id" : 2897,
+				"nom_fr" : "Plateforme / Run Jump Scrolling",
+				"nom_de" : "Plattform / Jump'n'Run Scrolling",
+				"nom_en" : "Platform / Run Jump Scrolling",
+				"nom_es" : "Plataforma / Corre y Salta con deslizamiento",
+				"nom_it" : "Piattaforma / Corri e Salta a Scorrimento",
+				"nom_pt" : "Plataforma / Corre e Pula com rolagem",
+				"parent" : "7"
+			},
+			"2887" : {
+				"id" : 2887,
+				"nom_fr" : "Plateforme / Shooter Scrolling",
+				"nom_de" : "Plattform / Shooter Scrolling",
+				"nom_en" : "Platform / Shooter Scrolling",
+				"nom_es" : "Plataforma / Tirador con deslizamiento",
+				"nom_it" : "Piattaforma / Sparatutto a Scorrimento",
+				"nom_pt" : "Plataforma / Tiro com rolagem",
+				"parent" : "7"
+			},
+			"26" : {
+				"id" : 26,
+				"nom_fr" : "Puzzle-Game",
+				"nom_de" : "Puzzle",
+				"nom_en" : "Puzzle-Game",
+				"nom_es" : "Puzzle",
+				"nom_it" : "Puzzle",
+				"nom_pt" : "Quebra-cabeças",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=26&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2864" : {
+				"id" : 2864,
+				"nom_fr" : "Puzzle-Game / Egaler",
+				"nom_de" : "Puzzle / Partie",
+				"nom_en" : "Puzzle-Game / Equalize",
+				"nom_es" : "Puzzle / Igualar",
+				"nom_it" : "Puzzle / Match",
+				"nom_pt" : "Quebra-cabeças / Igualar",
+				"parent" : "26"
+			},
+			"2891" : {
+				"id" : 2891,
+				"nom_fr" : "Puzzle-Game / Glisser",
+				"nom_de" : "Puzzle / Gleiten",
+				"nom_en" : "Puzzle-Game / Glide",
+				"nom_es" : "Puzzle / Deslizar",
+				"nom_it" : "Puzzle / A diapositiva",
+				"nom_pt" : "Quebra-cabeças / Rolar",
+				"parent" : "26"
+			},
+			"2923" : {
+				"id" : 2923,
+				"nom_fr" : "Puzzle-Game / Lancer",
+				"nom_de" : "Puzzle / Werfen",
+				"nom_en" : "Puzzle-Game / Throw",
+				"nom_es" : "Puzzle / Lanzar",
+				"nom_it" : "Puzzle / A lancio",
+				"nom_pt" : "Quebra-cabeças / Lançar",
+				"parent" : "26"
+			},
+			"2912" : {
+				"id" : 2912,
+				"nom_fr" : "Puzzle-Game / Tomber",
+				"nom_de" : "Puzzle / Fallen",
+				"nom_en" : "Puzzle-Game / Fall",
+				"nom_es" : "Puzzle / Caída",
+				"nom_it" : "Puzzle / A caduta",
+				"nom_pt" : "Quebra-cabeças / Queda",
+				"parent" : "26"
+			},
+			"2649" : {
+				"id" : 2649,
+				"nom_fr" : "Quiz",
+				"nom_de" : "Quiz",
+				"nom_en" : "Quiz",
+				"nom_es" : "Quiz",
+				"nom_it" : "Quiz",
+				"nom_pt" : "Quiz",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2649&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2954" : {
+				"id" : 2954,
+				"nom_fr" : "Quiz / Allemand",
+				"nom_de" : "Quiz / Deutsch",
+				"nom_en" : "Quiz / German",
+				"nom_es" : "Quiz / Alemán",
+				"nom_it" : "Quiz / Tedesco",
+				"nom_pt" : "Quiz / Alemão",
+				"parent" : "2649"
+			},
+			"2931" : {
+				"id" : 2931,
+				"nom_fr" : "Quiz / Anglais",
+				"nom_de" : "Quiz / Englisch",
+				"nom_en" : "Quiz / English",
+				"nom_es" : "Quiz / Inglés",
+				"nom_it" : "Quiz / Inglese",
+				"nom_pt" : "Quiz / Inglês",
+				"parent" : "2649"
+			},
+			"2951" : {
+				"id" : 2951,
+				"nom_fr" : "Quiz / Coréen",
+				"nom_de" : "Quiz / Koreanisch",
+				"nom_en" : "Quiz / Korean",
+				"nom_es" : "Quiz / Coreano",
+				"nom_it" : "Quiz / Coreano",
+				"nom_pt" : "Quiz / Coreano",
+				"parent" : "2649"
+			},
+			"2962" : {
+				"id" : 2962,
+				"nom_fr" : "Quiz / Espagnol",
+				"nom_de" : "Quiz / Spanisch",
+				"nom_en" : "Quiz / Spanish",
+				"nom_es" : "Quiz / Español",
+				"nom_it" : "Quiz / Spagnolo",
+				"nom_pt" : "Quiz / Espanhol",
+				"parent" : "2649"
+			},
+			"2969" : {
+				"id" : 2969,
+				"nom_fr" : "Quiz / Français",
+				"nom_de" : "Quiz / Französisches",
+				"nom_en" : "Quiz / French",
+				"nom_es" : "Quiz / Francés",
+				"nom_it" : "Quiz / Francese",
+				"nom_pt" : "Quiz / Francês",
+				"parent" : "2649"
+			},
+			"2952" : {
+				"id" : 2952,
+				"nom_fr" : "Quiz / Italien",
+				"nom_de" : "Quiz / Italienisch",
+				"nom_en" : "Quiz / Italian",
+				"nom_es" : "Quiz / Italiano",
+				"nom_it" : "Quiz / Italiano",
+				"nom_pt" : "Quiz / Italiano",
+				"parent" : "2649"
+			},
+			"2894" : {
+				"id" : 2894,
+				"nom_fr" : "Quiz / Japonais",
+				"nom_de" : "Quiz / Japanisch",
+				"nom_en" : "Quiz / Japanese",
+				"nom_es" : "Quiz / Japonés",
+				"nom_it" : "Quiz / Giapponese",
+				"nom_pt" : "Quiz / Japonês",
+				"parent" : "2649"
+			},
+			"2964" : {
+				"id" : 2964,
+				"nom_fr" : "Quiz / Musical Anglais",
+				"nom_de" : "Quiz / Englische Musik",
+				"nom_en" : "Quiz / Music English",
+				"nom_es" : "Quiz / Música Inglés",
+				"nom_it" : "Quiz / Musicale Inglese",
+				"nom_pt" : "Quiz / Musical Inglês",
+				"parent" : "2649"
+			},
+			"2967" : {
+				"id" : 2967,
+				"nom_fr" : "Quiz / Musical Japonais",
+				"nom_de" : "Quiz / Japanische Musik",
+				"nom_en" : "Quiz / Music Japanese",
+				"nom_es" : "Quiz / Música Japonés",
+				"nom_it" : "Quiz / Musicale Giapponese",
+				"nom_pt" : "Quiz / Musical Japonês",
+				"parent" : "2649"
+			},
+			"3511" : {
+				"id" : 3511,
+				"nom_fr" : "Réflexion",
+				"nom_de" : "Überlegung",
+				"nom_en" : "Thinking",
+				"nom_es" : "Ingenio",
+				"nom_it" : "Riflessione",
+				"nom_pt" : "Reflexão",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3511&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2956" : {
+				"id" : 2956,
+				"nom_fr" : "Renju",
+				"nom_de" : "Renju",
+				"nom_en" : "Renju",
+				"nom_es" : "Renju",
+				"nom_it" : "Renju",
+				"nom_pt" : "Renju",
+				"parent" : "2647"
+			},
+			"2925" : {
+				"id" : 2925,
+				"nom_fr" : "Rythme",
+				"nom_de" : "Rythmus",
+				"nom_en" : "Rhythm",
+				"nom_es" : "Rítmico",
+				"nom_it" : "Ritmico",
+				"nom_pt" : "Rítmico",
+				"parent" : "425",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2925&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"79" : {
+				"id" : 79,
+				"nom_fr" : "Shoot'em Up",
+				"nom_de" : "Shoot'em Up",
+				"nom_en" : "Shoot'em Up",
+				"nom_es" : "Shoot'em Up",
+				"nom_it" : "Shoot'em Up",
+				"nom_pt" : "Shoot'em Up",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=79&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2955" : {
+				"id" : 2955,
+				"nom_fr" : "Shoot'em up / Diagonal",
+				"nom_de" : "Shoot'em Up / Diagonal",
+				"nom_en" : "Shoot'em up / Diagonal",
+				"nom_es" : "Shoot'em Up / Diagonal",
+				"nom_it" : "Shoot'em Up / Diagonale",
+				"nom_pt" : "Shoot'em Up / Diagonal",
+				"parent" : "79",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2955&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2870" : {
+				"id" : 2870,
+				"nom_fr" : "Shoot'em up / Horizontal",
+				"nom_de" : "Shoot'em Up / Horizontal",
+				"nom_en" : "Shoot'em up / Horizontal",
+				"nom_es" : "Shoot'em Up / Horizontal",
+				"nom_it" : "Shoot'em Up / Orizzontale",
+				"nom_pt" : "Shoot'em Up / Horizontal",
+				"parent" : "79",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2870&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2851" : {
+				"id" : 2851,
+				"nom_fr" : "Shoot'em up / Vertical",
+				"nom_de" : "Shoot'em Up / Vertikal",
+				"nom_en" : "Shoot'em up / Vertical",
+				"nom_es" : "Shoot'em Up / Vertical",
+				"nom_it" : "Shoot'em Up / Verticale",
+				"nom_pt" : "Shoot'em Up / Vertical",
+				"parent" : "79",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2851&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2844" : {
+				"id" : 2844,
+				"nom_fr" : "Shooter Small",
+				"parent" : "2843"
+			},
+			"2961" : {
+				"id" : 2961,
+				"nom_fr" : "Shougi",
+				"nom_de" : "Shougi",
+				"nom_en" : "Shougi",
+				"nom_es" : "Shougi",
+				"nom_it" : "Shougi",
+				"nom_pt" : "Shougi",
+				"parent" : "2647"
+			},
+			"40" : {
+				"id" : 40,
+				"nom_fr" : "Simulation",
+				"nom_de" : "Simulation",
+				"nom_en" : "Simulation",
+				"nom_es" : "Simulación",
+				"nom_it" : "Simulazione",
+				"nom_pt" : "Simulação",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=40&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"20702" : {
+				"id" : 20702,
+				"nom_fr" : "Simulation / Science Fiction",
+				"nom_de" : "Simulation / Science-Fiction",
+				"nom_en" : "Simulation / SciFi",
+				"nom_es" : "Simulación / Ciencia Ficción",
+				"nom_it" : "Simulazione / Fantascienza",
+				"nom_pt" : "Simulação / Ficção Científica",
+				"parent" : "40"
+			},
+			"20700" : {
+				"id" : 20700,
+				"nom_fr" : "Simulation / Véhicules",
+				"nom_de" : "Simulation / Fahrzeuge",
+				"nom_en" : "Simulation / Vehicle",
+				"nom_es" : "Simulación / Vehículos",
+				"nom_it" : "Simulazione / Veicoli",
+				"nom_pt" : "Simulação / Veículos",
+				"parent" : "40"
+			},
+			"20684" : {
+				"id" : 20684,
+				"nom_fr" : "Simulation / Vie",
+				"nom_de" : "Lebenssimulation",
+				"nom_en" : "Simulation / Life",
+				"nom_es" : "Simulación / Vida",
+				"nom_it" : "Simulazione / Vita",
+				"nom_pt" : "Simulação / Vida",
+				"parent" : "40",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=20684&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"685" : {
+				"id" : 685,
+				"nom_fr" : "Sport",
+				"nom_de" : "Sport",
+				"nom_en" : "Sports",
+				"nom_es" : "Deportes",
+				"nom_it" : "Sport",
+				"nom_pt" : "Esporte",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=685&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2853" : {
+				"id" : 2853,
+				"nom_fr" : "Sport / Baseball",
+				"nom_de" : "Sport / Baseball",
+				"nom_en" : "Sports / Baseball",
+				"nom_es" : "Deportes / Béisbol",
+				"nom_it" : "Sport / Baseball",
+				"nom_pt" : "Esporte / Baseball",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2853&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2852" : {
+				"id" : 2852,
+				"nom_fr" : "Sport / Basketball",
+				"nom_de" : "Sport / Basketball",
+				"nom_en" : "Sports / Basketball",
+				"nom_es" : "Deportes / Baloncesto",
+				"nom_it" : "Sport / Pallacanestro",
+				"nom_pt" : "Esporte / Basquete",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2852&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"3028" : {
+				"id" : 3028,
+				"nom_fr" : "Sport / Billard",
+				"nom_de" : "Sport / Billard",
+				"nom_en" : "Sports / Pool",
+				"nom_es" : "Deportes / Billar",
+				"nom_it" : "Sport / Biliardo",
+				"nom_pt" : "Esporte / Sinuca",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3028&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2901" : {
+				"id" : 2901,
+				"nom_fr" : "Sport / Bowling",
+				"nom_de" : "Sport / Bowling",
+				"nom_en" : "Sports / Bowling",
+				"nom_es" : "Deportes / Bowling",
+				"nom_it" : "Sport / Bowling",
+				"nom_pt" : "Esporte / Boliche",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2901&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2929" : {
+				"id" : 2929,
+				"nom_fr" : "Sport / Boxe",
+				"nom_de" : "Sport / Boxen",
+				"nom_en" : "Sports / Boxing",
+				"nom_es" : "Deportes / Boxeo",
+				"nom_it" : "Sport / Boxe",
+				"nom_pt" : "Esporte / Boxe",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2929&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2919" : {
+				"id" : 2919,
+				"nom_fr" : "Sport / Bras de fer",
+				"nom_de" : "Sport / Armdrücken",
+				"nom_en" : "Sports / Arm wrestling",
+				"nom_es" : "Deportes / Pulso",
+				"nom_it" : "Sport / Braccio di ferro",
+				"nom_pt" : "Esporte / Queda de Braço",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2919&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"3034" : {
+				"id" : 3034,
+				"nom_fr" : "Sport / Combat",
+				"nom_de" : "Sport / Kampfsport",
+				"nom_en" : "Sports / Fighting",
+				"nom_es" : "Deportes / Lucha",
+				"nom_it" : "Sport / Combattimento",
+				"nom_pt" : "Esporte / Combate",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3034&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2877" : {
+				"id" : 2877,
+				"nom_fr" : "Sport / Course a pied",
+				"nom_de" : "Sport / Traillauf",
+				"nom_en" : "Sports / Running trails",
+				"nom_es" : "Deportes / Carrera en pista",
+				"nom_it" : "Sport / Corsa a piedi",
+				"nom_pt" : "Esporte / Pista de Corrida",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2877&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"23258" : {
+				"id" : 23258,
+				"nom_fr" : "Sport / Cyclisme",
+				"nom_de" : "Sport / Radfahren",
+				"nom_en" : "Sports / Cycling",
+				"nom_es" : "Deportes / Ciclismo",
+				"nom_it" : "Sport / Ciclismo",
+				"nom_pt" : "Esporte / Ciclismo",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=23258&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2970" : {
+				"id" : 2970,
+				"nom_fr" : "Sport / Dodgeball",
+				"nom_de" : "Sport / Völkerball",
+				"nom_en" : "Sports / Dodgeball",
+				"nom_es" : "Deportes / Quemadas",
+				"nom_it" : "Sport / Dodgeball",
+				"nom_pt" : "Esporte / Queimado",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2970&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"23278" : {
+				"id" : 23278,
+				"nom_fr" : "Sport / Fitness",
+				"nom_de" : "Sports / Fitness",
+				"nom_en" : "Sports / Fitness",
+				"nom_es" : "Sports / Fitness",
+				"nom_it" : "Sports / Fitness",
+				"nom_pt" : "Sports / Fitness",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=23278&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2906" : {
+				"id" : 2906,
+				"nom_fr" : "Sport / Flechette",
+				"nom_de" : "Sport / Darts",
+				"nom_en" : "Sports / Darts",
+				"nom_es" : "Deportes / Dardos",
+				"nom_it" : "Sport / Freccette",
+				"nom_pt" : "Esporte / Dardos",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2906&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2847" : {
+				"id" : 2847,
+				"nom_fr" : "Sport / Football",
+				"nom_de" : "Sport / Fußball",
+				"nom_en" : "Sports / Soccer",
+				"nom_es" : "Deportes / Fútbol",
+				"nom_it" : "Sport / Calcio",
+				"nom_pt" : "Esporte / Futebol",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2847&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2846" : {
+				"id" : 2846,
+				"nom_fr" : "Sport / Football Américain",
+				"nom_de" : "Sport / American Football",
+				"nom_en" : "Sports / Football",
+				"nom_es" : "Deportes / Fútbol americano",
+				"nom_it" : "Sport / Football Americano",
+				"nom_pt" : "Esporte / Futebol americano",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2846&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2913" : {
+				"id" : 2913,
+				"nom_fr" : "Sport / Golf",
+				"nom_de" : "Sport / Golf",
+				"nom_en" : "Sports / Golf",
+				"nom_es" : "Deportes / Golf",
+				"nom_it" : "Sport / Golf",
+				"nom_pt" : "Esporte / Golfe",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2913&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2960" : {
+				"id" : 2960,
+				"nom_fr" : "Sport / Handball",
+				"nom_de" : "Sport / Handball",
+				"nom_en" : "Sports / Handball",
+				"nom_es" : "Deportes / Balonmano",
+				"nom_it" : "Sport / Pallamano",
+				"nom_pt" : "Esporte / Handball",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2960&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2933" : {
+				"id" : 2933,
+				"nom_fr" : "Sport / Hockey",
+				"nom_de" : "Sport / Eishockey",
+				"nom_en" : "Sports / Hockey",
+				"nom_es" : "Deportes / Hockey",
+				"nom_it" : "Sport / Hockey",
+				"nom_pt" : "Esporte / Hóquei",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2933&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2971" : {
+				"id" : 2971,
+				"nom_fr" : "Sport / Jeu de palet",
+				"nom_de" : "Sport / Shuffleboard",
+				"nom_en" : "Sports / Shuffleboard",
+				"nom_es" : "Deportes / Juego de Tejo",
+				"nom_it" : "Sport / Shuffleboard",
+				"nom_pt" : "Esporte / Futebol de botão",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2971&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2861" : {
+				"id" : 2861,
+				"nom_fr" : "Sport / Lutte",
+				"nom_de" : "Sport / Wrestling",
+				"nom_en" : "Sports / Wrestling",
+				"nom_es" : "Deportes / Lucha libre",
+				"nom_it" : "Sport / Lotta",
+				"nom_pt" : "Esporte / Luta Livre",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2861&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"25726" : {
+				"id" : 25726,
+				"nom_fr" : "Sport / Multisports",
+				"nom_de" : "Sport / Multisport",
+				"nom_en" : "Sports / Multisports",
+				"nom_es" : "Deportes / Multideporte",
+				"nom_it" : "Sport / Multisport",
+				"nom_pt" : "Esporte / Poliesportivo",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=25726&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2878" : {
+				"id" : 2878,
+				"nom_fr" : "Sport / Natation",
+				"nom_de" : "Sport / Schwimmen",
+				"nom_en" : "Sports / Swimming",
+				"nom_es" : "Deportes / Natación",
+				"nom_it" : "Sport / Nuoto",
+				"nom_pt" : "Esporte / Natação",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2878&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2968" : {
+				"id" : 2968,
+				"nom_fr" : "Sport / Parachutisme",
+				"nom_de" : "Sport / Fallschirmspringen",
+				"nom_en" : "Sports / Skydiving",
+				"nom_es" : "Deportes / Paracaidismo",
+				"nom_it" : "Sport / Paracadutismo",
+				"nom_pt" : "Esporte / Paraquedismo",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2968&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2966" : {
+				"id" : 2966,
+				"nom_fr" : "Sport / Ping pong",
+				"nom_de" : "Sport / Tischtennis",
+				"nom_en" : "Sports / Table tennis",
+				"nom_es" : "Deportes / Ping-pong",
+				"nom_it" : "Sport / Ping pong",
+				"nom_pt" : "Esporte / Ping-pong",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2966&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2948" : {
+				"id" : 2948,
+				"nom_fr" : "Sport / Rugby",
+				"nom_de" : "Sport / Rugby",
+				"nom_en" : "Sports / Rugby",
+				"nom_es" : "Deportes / Rugby",
+				"nom_it" : "Sport / Rugby",
+				"nom_pt" : "Esporte / Rugby",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2948&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2875" : {
+				"id" : 2875,
+				"nom_fr" : "Sport / Skateboard",
+				"nom_de" : "Sport / Skateboard",
+				"nom_en" : "Sports / Skateboard",
+				"nom_es" : "Deportes / Skate",
+				"nom_it" : "Sport / Skateboard",
+				"nom_pt" : "Esporte / Skate",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2875&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2902" : {
+				"id" : 2902,
+				"nom_fr" : "Sport / Ski",
+				"nom_de" : "Sport / Ski",
+				"nom_en" : "Sports / Skiing",
+				"nom_es" : "Deportes / Esquí",
+				"nom_it" : "Sport / Sci",
+				"nom_pt" : "Esporte / Esqui",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2902&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2947" : {
+				"id" : 2947,
+				"nom_fr" : "Sport / Sumo",
+				"nom_de" : "Sport / Sumo",
+				"nom_en" : "Sports / Sumo",
+				"nom_es" : "Deportes / Sumo",
+				"nom_it" : "Sport / Sumo",
+				"nom_pt" : "Esporte / Sumô",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2947&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2867" : {
+				"id" : 2867,
+				"nom_fr" : "Sport / Tennis",
+				"nom_de" : "Sport / Tennis",
+				"nom_en" : "Sports / Tennis",
+				"nom_es" : "Deportes / Tenis",
+				"nom_it" : "Sport / Tennis",
+				"nom_pt" : "Esporte / Tênis",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2867&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2883" : {
+				"id" : 2883,
+				"nom_fr" : "Sport / Volleyball",
+				"nom_de" : "Sport / Volleyball",
+				"nom_en" : "Sports / Volleyball",
+				"nom_es" : "Deportes / Voleibol",
+				"nom_it" : "Sport / Pallavolo",
+				"nom_pt" : "Esporte / Voleibol",
+				"parent" : "685",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2883&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2650" : {
+				"id" : 2650,
+				"nom_fr" : "Sport avec animaux",
+				"nom_de" : "Sport mit Tieren",
+				"nom_en" : "Sports with Animals",
+				"nom_es" : "Deportes con animales",
+				"nom_it" : "Sport con animali",
+				"nom_pt" : "Esporte com animais",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2650&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"27" : {
+				"id" : 27,
+				"nom_fr" : "Stratégie",
+				"nom_de" : "Strategie",
+				"nom_en" : "Strategy",
+				"nom_es" : "Estrategia",
+				"nom_it" : "Strategia",
+				"nom_pt" : "Estratégia",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=27&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2646" : {
+				"id" : 2646,
+				"nom_fr" : "Tir",
+				"nom_de" : "Shooter",
+				"nom_en" : "Shooter",
+				"nom_es" : "Shooter",
+				"nom_it" : "Sparo",
+				"nom_pt" : "Tiro",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2646&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"3024" : {
+				"id" : 3024,
+				"nom_fr" : "Tir / 1ere Personne",
+				"nom_de" : "Shooter / 1st Pers.",
+				"nom_en" : "Shooter / 1st person",
+				"nom_es" : "Shooter / 1ª persona",
+				"nom_it" : "Sparo / 1a Persona",
+				"nom_pt" : "Tiro / Tiro em 1ª pessoa",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=3024&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2899" : {
+				"id" : 2899,
+				"nom_fr" : "Tir / 3eme Personne",
+				"nom_de" : "Shooter / 3rd Pers.",
+				"nom_en" : "Shooter / 3rd person",
+				"nom_es" : "Shooter / 3ª persona",
+				"nom_it" : "Sparo / 3a Persona",
+				"nom_pt" : "Tiro / Tiro em 3ª pessoa",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2899&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2928" : {
+				"id" : 2928,
+				"nom_fr" : "Tir / Avion",
+				"nom_de" : "Shooter / Flugzeug",
+				"nom_en" : "Shooter / Plane",
+				"nom_es" : "Shooter / Avión",
+				"nom_it" : "Sparo / Aereo",
+				"nom_pt" : "Tiro / Avião",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2928&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2892" : {
+				"id" : 2892,
+				"nom_fr" : "Tir / Avion, 1ere personne",
+				"nom_de" : "Shooter / Flugzeug, 1st Pers.",
+				"nom_en" : "Shooter / Plane, 1st person",
+				"nom_es" : "Shooter / Avión, 1ª persona",
+				"nom_it" : "Sparo / Aereo, 1a Persona",
+				"nom_pt" : "Tiro / Avião em 1ª pessoa",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2892&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2881" : {
+				"id" : 2881,
+				"nom_fr" : "Tir / Avion, 3eme personne",
+				"nom_de" : "Shooter / Flugzeug, 3rd Pers.",
+				"nom_en" : "Shooter / Plane, 3rd person",
+				"nom_es" : "Shooter / Avión, 3ª persona",
+				"nom_it" : "Sparo / Aereo, 3a Persona",
+				"nom_pt" : "Tiro / Avião em 3ª pessoa",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2881&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2876" : {
+				"id" : 2876,
+				"nom_fr" : "Tir / Horizontal",
+				"nom_de" : "Shooter / Horizontal",
+				"nom_en" : "Shooter / Horizontal",
+				"nom_es" : "Shooter / Horizontal",
+				"nom_it" : "Sparo / Orizzontale",
+				"nom_pt" : "Tiro / Horizontal",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2876&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2945" : {
+				"id" : 2945,
+				"nom_fr" : "Tir / Missile Command Like",
+				"nom_de" : "Shooter / Wie Missile Command",
+				"nom_en" : "Shooter / Missile Command Like",
+				"nom_es" : "Shooter / Estilo Missile Command",
+				"nom_it" : "Sparo / Simile a Missile Command",
+				"nom_pt" : "Tiro / Estilo Missile Command",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2945&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2903" : {
+				"id" : 2903,
+				"nom_fr" : "Tir / Run and Gun",
+				"nom_de" : "Shooter / Run and Gun",
+				"nom_en" : "Shooter / Run and Gun",
+				"nom_es" : "Shooter / Run and Gun",
+				"nom_it" : "Sparo / Run and Gun",
+				"nom_pt" : "Tiro / Run and Gun",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2903&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2900" : {
+				"id" : 2900,
+				"nom_fr" : "Tir / Space Invaders Like",
+				"nom_de" : "Shooter / Wie Space Invaders",
+				"nom_en" : "Shooter / Space Invaders Like",
+				"nom_es" : "Shooter / Estilo Space Invaders",
+				"nom_it" : "Sparo / Simile a Space Invaders",
+				"nom_pt" : "Tiro / Estilo Space Invader",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2900&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2940" : {
+				"id" : 2940,
+				"nom_fr" : "Tir / Véhicule, 1ere personne",
+				"nom_de" : "Shooter / Fahrzeug, 1st Pers.",
+				"nom_en" : "Shooter / Vehicle, 1st person",
+				"nom_es" : "Shooter / Vehículo 1ª persona",
+				"nom_it" : "Sparo / Veicolo, 1a Persona",
+				"nom_pt" : "Tiro / Carro 1ª Pessoa",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2940&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2910" : {
+				"id" : 2910,
+				"nom_fr" : "Tir / Vehicule, 3eme personne",
+				"nom_de" : "Shooter / Fahrzeug, 3rd. Pers.",
+				"nom_en" : "Shooter / Vehicle, 3rd person",
+				"nom_es" : "Shooter / Vehículo, 3ª persona",
+				"nom_it" : "Sparo / Veicolo, 3a Persona",
+				"nom_pt" : "Tiro / Carro 3ª Pessoa",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2910&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2934" : {
+				"id" : 2934,
+				"nom_fr" : "Tir / Véhicule, Diagonal",
+				"nom_de" : "Shooter / Fahrzeug, Diagonal",
+				"nom_en" : "Shooter / Vehicle, Diagonal",
+				"nom_es" : "Shooter / Vehículo, Diagonal",
+				"nom_it" : "Sparo / Veicolo, Diagonale",
+				"nom_pt" : "Tiro / Carro, Diagonal",
+				"parent" : "2646"
+			},
+			"2938" : {
+				"id" : 2938,
+				"nom_fr" : "Tir / Véhicule, Horizontal",
+				"nom_de" : "Shooter / Fahrzeug, Horizontal",
+				"nom_en" : "Shooter / Vehicle, Horizontal",
+				"nom_es" : "Shooter / Vehículo, Horizontal",
+				"nom_it" : "Sparo / Veicolo, Orizzontale",
+				"nom_pt" : "Tiro / Carro, Horizontal",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2938&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"2921" : {
+				"id" : 2921,
+				"nom_fr" : "Tir / Véhicule, Vertical",
+				"nom_de" : "Shooter / Fahrzeug, Vertikal",
+				"nom_en" : "Shooter / Vehicle, Vertical",
+				"nom_es" : "Shooter / Vehículo, Vertical",
+				"nom_it" : "Sparo / Veicolo, Verticale",
+				"nom_pt" : "Tiro / Carro, Vertical",
+				"parent" : "2646"
+			},
+			"2889" : {
+				"id" : 2889,
+				"nom_fr" : "Tir / Vertical",
+				"nom_de" : "Shooter / Vertikal",
+				"nom_en" : "Shooter / Vertical",
+				"nom_es" : "Shooter / Vertical",
+				"nom_it" : "Sparo / Verticale",
+				"nom_pt" : "Tiro / Vertical",
+				"parent" : "2646",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=2889&media=logo-monochrome&mediaformat=png"
+				}
+			},
+			"26363" : {
+				"id" : 26363,
+				"nom_fr" : "Tir / Vue de dessus",
+				"nom_de" : "Shooter / Ansicht von oben",
+				"nom_en" : "Shooter / Top view",
+				"nom_es" : "Shooter / Vista superior",
+				"nom_it" : "Sparo / Vista dall'alto",
+				"nom_pt" : "Tiro / Vista do topo",
+				"parent" : "2646"
+			},
+			"32" : {
+				"id" : 32,
+				"nom_fr" : "Tir avec accessoire",
+				"nom_de" : "Lightgun Shooter",
+				"nom_en" : "Lightgun Shooter",
+				"nom_es" : "Lightgun Shooter",
+				"nom_it" : "Sparo con accessorio",
+				"nom_pt" : "Tiro com Lightgun",
+				"parent" : "0",
+				"medias" : {
+					"media_pictomonochrome" : "https://www.screenscraper.fr/api2/mediaGroup.php?devid=xxx&devpassword=yyy&softname=zzz&crc=&md5=&sha1=&groupid=32&media=logo-monochrome&mediaformat=png"
+				}
+			}
+		}
+	}
+}

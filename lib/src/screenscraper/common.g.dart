@@ -72,7 +72,7 @@ Map<String, dynamic> _$ResponseToJson(Response instance) => <String, dynamic>{
     };
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      id: json['id'] as String,
+      id: const IntStringConverter().fromJson(json['id'] as String),
       nomcourt: json['nomcourt'] as String,
       principale: json['principale'] as String,
       parentid: json['parentid'] as String,
@@ -82,7 +82,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
-      'id': instance.id,
+      'id': const IntStringConverter().toJson(instance.id),
       'nomcourt': instance.nomcourt,
       'principale': instance.principale,
       'parentid': instance.parentid,

@@ -19,8 +19,10 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       developpeur: IdText.fromJson(json['developpeur'] as Map<String, dynamic>),
       joueurs: IdText.fromJson(json['joueurs'] as Map<String, dynamic>),
       note: IdText.fromJson(json['note'] as Map<String, dynamic>),
-      topstaff: json['topstaff'] as String?,
-      rotation: json['rotation'] as String?,
+      topstaff: _$JsonConverterFromJson<String, bool>(
+          json['topstaff'], const BoolStringConverter().fromJson),
+      rotation: _$JsonConverterFromJson<String, bool>(
+          json['rotation'], const BoolStringConverter().fromJson),
       synopsis: (json['synopsis'] as List<dynamic>)
           .map((e) => LangText.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -64,8 +66,10 @@ Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
       'developpeur': instance.developpeur,
       'joueurs': instance.joueurs,
       'note': instance.note,
-      'topstaff': instance.topstaff,
-      'rotation': instance.rotation,
+      'topstaff': _$JsonConverterToJson<String, bool>(
+          instance.topstaff, const BoolStringConverter().toJson),
+      'rotation': _$JsonConverterToJson<String, bool>(
+          instance.rotation, const BoolStringConverter().toJson),
       'synopsis': instance.synopsis,
       'classifications': instance.classifications,
       'dates': instance.dates,
@@ -77,6 +81,18 @@ Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
       'roms': instance.roms,
       'rom': instance.rom,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
 
 GameAction _$GameActionFromJson(Map<String, dynamic> json) => GameAction(
       id: json['id'] as String,
@@ -116,18 +132,6 @@ Map<String, dynamic> _$GameMediaToJson(GameMedia instance) => <String, dynamic>{
           instance.size, const IntStringConverter().toJson),
       'format': instance.format,
     };
-
-Value? _$JsonConverterFromJson<Json, Value>(
-  Object? json,
-  Value? Function(Json json) fromJson,
-) =>
-    json == null ? null : fromJson(json as Json);
-
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);
 
 GameRom _$GameRomFromJson(Map<String, dynamic> json) => GameRom(
       id: json['id'] as String,

@@ -6,6 +6,7 @@ import 'package:screenscraper/src/screenscraper/common.dart';
 import 'package:screenscraper/src/screenscraper/game_info.dart';
 import 'package:screenscraper/src/roms/file_hash.dart';
 import 'package:collection/collection.dart';
+import 'package:screenscraper/src/screenscraper/genres.dart';
 
 abstract class ScraperOverrides {
   static List<String> languagePriority = ["en"];
@@ -47,11 +48,20 @@ class Game {
   /// Game genres
   final List<Genre>? genres;
 
+  /// Normalized game genre
+  final GameGenres? normalizedGenre;
+
   /// Game release year
   final String releaseYear;
 
   /// Game media
   final Media media;
+
+  /// Is the game a top staff pick
+  final bool isTopStaff;
+
+  /// Is an adult game
+  final bool isAdult;
 
   Game({
     required this.gameId,
@@ -65,8 +75,11 @@ class Game {
     required this.players,
     required this.rating,
     required this.genres,
+    required this.normalizedGenre,
     required this.releaseYear,
     required this.media,
+    required this.isTopStaff,
+    required this.isAdult,
   });
 }
 
@@ -105,7 +118,7 @@ class MediaLink {
 }
 
 class Genre {
-  final String id;
+  final int id;
   final String name;
 
   Genre({required this.id, required this.name});
@@ -154,6 +167,9 @@ class RomScraper {
     final rating =
         game.note.text.isEmpty ? null : double.tryParse(game.note.text);
     final releaseDate = _findRegionText(game.dates);
+    final genres = game.genres
+        ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
+        .toList();
     return Game(
       gameId: game.id,
       romId: game.romid,
@@ -165,9 +181,8 @@ class RomScraper {
       publisher: game.editeur.text,
       players: game.joueurs.text,
       rating: (rating ?? 0.0) / 20.0,
-      genres: game.genres
-          ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
-          .toList(),
+      genres: genres,
+      normalizedGenre: lookupNormalizedGenre(genres),
       releaseYear: releaseDate.length >= 4 ? releaseDate.substring(0, 4) : "",
       media: Media(
         screenshot: _findMediaLink(game.medias, "ss"),
@@ -179,6 +194,8 @@ class RomScraper {
         video: _findMediaLink(game.medias, "video"),
         videoNormalized: _findMediaLink(game.medias, "video-normalized"),
       ),
+      isAdult: isAdult(genres),
+      isTopStaff: game.topstaff ?? false,
     );
   }
 

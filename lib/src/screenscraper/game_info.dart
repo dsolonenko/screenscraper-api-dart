@@ -20,8 +20,10 @@ class GameInfo {
   final IdText developpeur;
   final IdText joueurs;
   final IdText note;
-  final String? topstaff;
-  final String? rotation;
+  @BoolStringConverter()
+  final bool? topstaff;
+  @BoolStringConverter()
+  final bool? rotation;
   final List<LangText> synopsis;
   final List<TypeText>? classifications;
   final List<RegionText> dates;
@@ -58,7 +60,8 @@ class GameInfo {
     required this.rom,
   });
 
-  factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
+  factory GameInfo.fromJson(Map<String, dynamic> json) =>
+      _$GameInfoFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoToJson(this);
 }
 
@@ -72,7 +75,8 @@ class GameAction {
     required this.controle,
   });
 
-  factory GameAction.fromJson(Map<String, dynamic> json) => _$GameActionFromJson(json);
+  factory GameAction.fromJson(Map<String, dynamic> json) =>
+      _$GameActionFromJson(json);
   Map<String, dynamic> toJson() => _$GameActionToJson(this);
 }
 
@@ -101,7 +105,8 @@ class GameMedia {
     required this.format,
   });
 
-  factory GameMedia.fromJson(Map<String, dynamic> json) => _$GameMediaFromJson(json);
+  factory GameMedia.fromJson(Map<String, dynamic> json) =>
+      _$GameMediaFromJson(json);
   Map<String, dynamic> toJson() => _$GameMediaToJson(this);
 }
 
@@ -159,6 +164,7 @@ class GameRom {
     required this.regions,
   });
 
-  factory GameRom.fromJson(Map<String, dynamic> json) => _$GameRomFromJson(json);
+  factory GameRom.fromJson(Map<String, dynamic> json) =>
+      _$GameRomFromJson(json);
   Map<String, dynamic> toJson() => _$GameRomToJson(this);
 }
