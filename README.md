@@ -20,7 +20,7 @@ void main() async {
     userPassword: "test",
   );
   final game = await scraper.scrapeRom(
-    systemId: "12",
+    systemId: 12,
     romPath: "WarioWare, Inc. - Mega Microgame\$! (USA).gba",
   );
   print('Game ${game.name} released on ${game.systemName} in ${game.releaseDate}');

@@ -8,8 +8,6 @@
 
 import 'dart:core';
 
-import 'package:screenscraper/screenscraper.dart';
-
 enum GameGenres {
   None, // No genre
   Action, // Generic Action games
@@ -155,10 +153,8 @@ class Genres {
       GameGenres.None: '',
       GameGenres.Action: 'assets/genre/action.svg',
       GameGenres.ActionPlatformer: 'assets/genre/actionplatformer.svg',
-      GameGenres.ActionPlatformShooter:
-          'assets/genre/actionplatformshooter.svg',
-      GameGenres.ActionFirstPersonShooter:
-          'assets/genre/actionfirstpersonshooter.svg',
+      GameGenres.ActionPlatformShooter: 'assets/genre/actionplatformshooter.svg',
+      GameGenres.ActionFirstPersonShooter: 'assets/genre/actionfirstpersonshooter.svg',
       GameGenres.ActionShootEmUp: 'assets/genre/actionshootemup.svg',
       GameGenres.ActionShootWithGun: 'assets/genre/actionshootwithgun.svg',
       GameGenres.ActionFighting: 'assets/genre/actionfighting.svg',
@@ -170,25 +166,20 @@ class Genres {
       GameGenres.AdventureText: 'assets/genre/adventuretext.svg',
       GameGenres.AdventureGraphics: 'assets/genre/adventuregraphical.svg',
       GameGenres.AdventureVisualNovels: 'assets/genre/adventurevisualnovel.svg',
-      GameGenres.AdventureInteractiveMovie:
-          'assets/genre/adventureinteractivemovie.svg',
+      GameGenres.AdventureInteractiveMovie: 'assets/genre/adventureinteractivemovie.svg',
       GameGenres.AdventureRealTime3D: 'assets/genre/adventurerealtime3d.svg',
-      GameGenres.AdventureSurvivalHorror:
-          'assets/genre/adventuresurvivalhorror.svg',
+      GameGenres.AdventureSurvivalHorror: 'assets/genre/adventuresurvivalhorror.svg',
       GameGenres.RPG: 'assets/genre/rpg.svg',
       GameGenres.RPGAction: 'assets/genre/rpgaction.svg',
       GameGenres.RPGMMO: 'assets/genre/rpgmmo.svg',
       GameGenres.RPGDungeonCrawler: 'assets/genre/rpgdungeoncrawler.svg',
       GameGenres.RPGTactical: 'assets/genre/rpgtactical.svg',
       GameGenres.RPGJapanese: 'assets/genre/rpgjapanese.svg',
-      GameGenres.RPGFirstPersonPartyBased:
-          'assets/genre/rpgfirstpersonpartybased.svg',
+      GameGenres.RPGFirstPersonPartyBased: 'assets/genre/rpgfirstpersonpartybased.svg',
       GameGenres.Simulation: 'assets/genre/simulation.svg',
-      GameGenres.SimulationBuildAndManagement:
-          'assets/genre/simulationbuildandmanagement.svg',
+      GameGenres.SimulationBuildAndManagement: 'assets/genre/simulationbuildandmanagement.svg',
       GameGenres.SimulationLife: 'assets/genre/simulationlife.svg',
-      GameGenres.SimulationFishAndHunt:
-          'assets/genre/simulationfishandhunt.svg',
+      GameGenres.SimulationFishAndHunt: 'assets/genre/simulationfishandhunt.svg',
       GameGenres.SimulationVehicle: 'assets/genre/simulationvehicle.svg',
       GameGenres.SimulationSciFi: 'assets/genre/simulationscifi.svg',
       GameGenres.Strategy: 'assets/genre/strategy.svg',
@@ -586,46 +577,3 @@ final sScreenScraperGenresToGameGenres = <int, GameGenres>{
   2974: GameGenres.DemoScene,
   30: GameGenres.Educative,
 };
-
-GameGenres lookupNormalizedGenre(List<Genre>? genres) {
-  if (genres == null) {
-    return GameGenres.None;
-  }
-
-  // Lookup Sub-genre first
-  for (final genre in genres) {
-    GameGenres? found = sScreenScraperSubGenresToGameGenres[genre.id];
-    if (found != null) {
-      return found;
-    }
-  }
-
-  // Lookup genre except "Action" & "Adult"
-  for (final genre in genres) {
-    if (genre.id != 10 && genre.id != 413) {
-      GameGenres? found = sScreenScraperGenresToGameGenres[genre.id];
-      if (found != null) {
-        return found;
-      }
-    }
-  }
-
-  // Lookup what's available
-  for (final genre in genres) {
-    if (genre.id != 413) {
-      GameGenres? found = sScreenScraperGenresToGameGenres[genre.id];
-      if (found != null) {
-        return found;
-      }
-    }
-  }
-
-  return GameGenres.None;
-}
-
-bool isAdult(List<Genre>? genres) {
-  if (genres == null) {
-    return false;
-  }
-  return genres.any((element) => element.id == 413);
-}

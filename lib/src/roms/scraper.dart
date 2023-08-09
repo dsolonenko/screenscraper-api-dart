@@ -6,7 +6,7 @@ import 'package:screenscraper/src/screenscraper/common.dart';
 import 'package:screenscraper/src/screenscraper/game_info.dart';
 import 'package:screenscraper/src/roms/file_hash.dart';
 import 'package:collection/collection.dart';
-import 'package:screenscraper/src/screenscraper/genres.dart';
+import 'package:screenscraper/src/roms/genres.dart';
 
 abstract class ScraperOverrides {
   static List<String> languagePriority = ["en"];
@@ -145,8 +145,7 @@ class RomScraper {
   /// Scrape a rom file and return a [Game] object with the matching game details
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
   /// Use [ScraperOverrides] to override the default language and region priority
-  Future<Game> scrapeRom(
-      {required int systemId, required String romPath}) async {
+  Future<Game> scrapeRom({required int systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
@@ -162,14 +161,10 @@ class RomScraper {
       sha1: hash.sha1,
       sizeBytes: hash.sizeBytes,
     ));
-    _log.i(
-        "Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
-    final rating =
-        game.note.text.isEmpty ? null : double.tryParse(game.note.text);
+    _log.i("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    final rating = game.note.text.isEmpty ? null : double.tryParse(game.note.text);
     final releaseDate = _findRegionText(game.dates);
-    final genres = game.genres
-        ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
-        .toList();
+    final genres = game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList();
     return Game(
       gameId: game.id,
       romId: game.romid,
@@ -182,7 +177,7 @@ class RomScraper {
       players: game.joueurs.text,
       rating: (rating ?? 0.0) / 20.0,
       genres: genres,
-      normalizedGenre: lookupNormalizedGenre(genres),
+      normalizedGenre: _lookupNormalizedGenre(genres),
       releaseYear: releaseDate.length >= 4 ? releaseDate.substring(0, 4) : "",
       media: Media(
         screenshot: _findMediaLink(game.medias, "ss"),
@@ -194,7 +189,7 @@ class RomScraper {
         video: _findMediaLink(game.medias, "video"),
         videoNormalized: _findMediaLink(game.medias, "video-normalized"),
       ),
-      isAdult: isAdult(genres),
+      isAdult: _isAdult(genres),
       isTopStaff: game.topstaff ?? false,
     );
   }
@@ -206,8 +201,7 @@ class RomScraper {
 }
 
 MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
-  final media = medias.firstWhereOrNull(
-      (element) => element.parent == "jeu" && element.type == type);
+  final media = medias.firstWhereOrNull((element) => element.parent == "jeu" && element.type == type);
   if (media == null) return null;
   return MediaLink(
     url: media.url,
@@ -234,4 +228,47 @@ String _findLanguageText(List<LangText> text) {
         orElse: () => text.first,
       )
       .text;
+}
+
+GameGenres _lookupNormalizedGenre(List<Genre>? genres) {
+  if (genres == null) {
+    return GameGenres.None;
+  }
+
+  // Lookup Sub-genre first
+  for (final genre in genres) {
+    GameGenres? found = sScreenScraperSubGenresToGameGenres[genre.id];
+    if (found != null) {
+      return found;
+    }
+  }
+
+  // Lookup genre except "Action" & "Adult"
+  for (final genre in genres) {
+    if (genre.id != 10 && genre.id != 413) {
+      GameGenres? found = sScreenScraperGenresToGameGenres[genre.id];
+      if (found != null) {
+        return found;
+      }
+    }
+  }
+
+  // Lookup what's available
+  for (final genre in genres) {
+    if (genre.id != 413) {
+      GameGenres? found = sScreenScraperGenresToGameGenres[genre.id];
+      if (found != null) {
+        return found;
+      }
+    }
+  }
+
+  return GameGenres.None;
+}
+
+bool _isAdult(List<Genre>? genres) {
+  if (genres == null) {
+    return false;
+  }
+  return genres.any((element) => element.id == 413);
 }
