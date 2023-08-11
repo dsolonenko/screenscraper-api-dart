@@ -49,7 +49,7 @@ class Game {
   final List<Genre>? genres;
 
   /// Normalized game genre
-  final GameGenres? normalizedGenre;
+  final GameGenre? normalizedGenre;
 
   /// Game release year
   final String releaseYear;
@@ -145,7 +145,8 @@ class RomScraper {
   /// Scrape a rom file and return a [Game] object with the matching game details
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
   /// Use [ScraperOverrides] to override the default language and region priority
-  Future<Game> scrapeRom({required int systemId, required String romPath}) async {
+  Future<Game> scrapeRom(
+      {required int systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
@@ -161,10 +162,14 @@ class RomScraper {
       sha1: hash.sha1,
       sizeBytes: hash.sizeBytes,
     ));
-    _log.i("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
-    final rating = game.note.text.isEmpty ? null : double.tryParse(game.note.text);
+    _log.i(
+        "Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    final rating =
+        game.note.text.isEmpty ? null : double.tryParse(game.note.text);
     final releaseDate = _findRegionText(game.dates);
-    final genres = game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList();
+    final genres = game.genres
+        ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
+        .toList();
     return Game(
       gameId: game.id,
       romId: game.romid,
@@ -201,7 +206,8 @@ class RomScraper {
 }
 
 MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
-  final media = medias.firstWhereOrNull((element) => element.parent == "jeu" && element.type == type);
+  final media = medias.firstWhereOrNull(
+      (element) => element.parent == "jeu" && element.type == type);
   if (media == null) return null;
   return MediaLink(
     url: media.url,
@@ -230,14 +236,14 @@ String _findLanguageText(List<LangText> text) {
       .text;
 }
 
-GameGenres _lookupNormalizedGenre(List<Genre>? genres) {
+GameGenre _lookupNormalizedGenre(List<Genre>? genres) {
   if (genres == null) {
-    return GameGenres.None;
+    return GameGenre.None;
   }
 
   // Lookup Sub-genre first
   for (final genre in genres) {
-    GameGenres? found = sScreenScraperSubGenresToGameGenres[genre.id];
+    GameGenre? found = sScreenScraperSubGenresToGameGenres[genre.id];
     if (found != null) {
       return found;
     }
@@ -246,7 +252,7 @@ GameGenres _lookupNormalizedGenre(List<Genre>? genres) {
   // Lookup genre except "Action" & "Adult"
   for (final genre in genres) {
     if (genre.id != 10 && genre.id != 413) {
-      GameGenres? found = sScreenScraperGenresToGameGenres[genre.id];
+      GameGenre? found = sScreenScraperGenresToGameGenres[genre.id];
       if (found != null) {
         return found;
       }
@@ -256,14 +262,14 @@ GameGenres _lookupNormalizedGenre(List<Genre>? genres) {
   // Lookup what's available
   for (final genre in genres) {
     if (genre.id != 413) {
-      GameGenres? found = sScreenScraperGenresToGameGenres[genre.id];
+      GameGenre? found = sScreenScraperGenresToGameGenres[genre.id];
       if (found != null) {
         return found;
       }
     }
   }
 
-  return GameGenres.None;
+  return GameGenre.None;
 }
 
 bool _isAdult(List<Genre>? genres) {

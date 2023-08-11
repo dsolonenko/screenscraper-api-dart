@@ -1,579 +1,449 @@
 // Converted from https://gitlab.com/recalbox/recalbox/-/blob/master/projects/frontend/es-app/src/games/classifications/Genres.cpp
 
-// References:
-// https://www.idtech.com/blog/different-types-of-video-game-genres
-// https://en.wikipedia.org/wiki/List_of_video_game_genres
-
 // ignore_for_file: constant_identifier_names
 
 import 'dart:core';
 
-enum GameGenres {
-  None, // No genre
-  Action, // Generic Action games
-  ActionPlatformer, // - Action platform game
-  ActionPlatformShooter, // - Action platform shooter (Turrican, ...)
-  ActionFirstPersonShooter, // - First person shooter (007, ...)
-  ActionShootEmUp, // - Shoot'em up/all (
-  ActionShootWithGun, // - On-screen shooters (Operation wolf, Duck Hunt, ...)
-  ActionFighting, // - Fighting games (mortal kombat, street fighters, ...)
-  ActionBeatEmUp, // - Beat'em up/all (Renegade, Double Dragon, ...)
-  ActionStealth, // - Stealth combat (MGS, Dishonored, ...)
-  ActionBattleRoyale, // - Battle royale survivals (Fortnite, Apex legend, ...)
-  ActionRythm, // - Music/Rythm games (Dance Dance Revolution, ...)
-  Adventure, // Generic Adventure games
-  AdventureText, // - Old-school text adventure (Zork, ...)
-  AdventureGraphics, // - Mainly Point-and-clicks
-  AdventureVisualNovels, // - Dating & legal simulation (Ace Attornay, ...)
-  AdventureInteractiveMovie, // - Interactive movies (Tex Murphy, Fahrenheit, RE4, ...)
-  AdventureRealTime3D, // - 3D adventures (Shenmue, Heavy rain, ...)
-  AdventureSurvivalHorror, // - Survivals/Horror Survivals (Lost in blue, Resident evil, ...)
-  RPG, // Generic RPG (Role Playing Games)
-  RPGAction, // - Action RPG (Diablo, ...)
-  RPGMMO, // - Massive Multiplayer Online RPG (TESO, WoW, ...)
-  RPGDungeonCrawler, // - Dungeon Crawler (Dungeon Master, Eye of the beholder, ...)
-  RPGTactical, // - Tactical RPG (Ogres Battle, FF Tactics, ...)
-  RPGJapanese, // - Japaneese RPG, manga-like (Chrono Trigger, FF, ...)
-  RPGFirstPersonPartyBased, // - Team-as-one RPG (Ishar, Bard's tales, ...)
-  Simulation, // Generic simulation
-  SimulationBuildAndManagement, // - Construction & Management simulations (Sim-city, ...)
-  SimulationLife, // - Life simulation (Nintendogs, Tamagoshi, Sims, ...)
-  SimulationFishAndHunt, // - Fighing and hunting (Deer hunting, Sega bass fishing, ...)
-  SimulationVehicle, // - Car/Planes/Tank/... simulations (Flight Simulator, Sherman M4, ...)
-  SimulationSciFi, // - Space Opera (Elite, Homeworld)
-  Strategy, // Generic strategy games
-  Strategy4X, // - eXplore, eXpand, eXploit, eXterminate (Civilization, ...)
-  StrategyArtillery, // - multiplayer artillery games, turn by turn (Scortched Tanks, Worms, ...)
-  StrategyAutoBattler, // - Auto-battle tacticals (Dota undergrounds, Heartstone Battlegrounds, ...)
-  StrategyMOBA, // - Multiplayer Online Battle Arena (Dota 2, Smite, ...)
-  StrategyRTS, // - Real Time Strategy (Warcrafs, Dune, C&C, ...)
-  StrategyTBS, // - Turn based strategy (Might & Magic, Making History, ...)
-  StrategyTowerDefense, // - Tower defenses!
-  StrategyWargame, // - Military tactics
-  Sports, // Generic sport games
-  SportRacing, // - All racing games!
-  SportSimulation, // - All physical/simulation sports
-  SportCompetitive, // - High competitive factor (Ball Jack, ...)
-  SportFight, // - Fighting sports/violent sports (SpeedBall, WWE 2K Fight Nights, ...)
-  Pinball, // Pinball
-  Board, // Board games (chess, backgammon, othello, ...)
-  Casual, // Simple interaction games for casual gaming
-  DigitalCard, // Card Collection/games (Hearthstone, Magic the Gathering, ...)
-  PuzzleAndLogic, // Puzzle and logic games (Tetris, Sokoban, ...)
-  Party, // Multiplayer party games (Mario party, ...)
-  Trivia, // Answer/Quizz games (Family Feud, Are you smarter than a 5th grade, ...)
-  Casino, // Casino games
-  Compilation, // Multi games
-  DemoScene, // Amiga/ST/PC Demo from demo scene
-  Educative, // Educative games
-}
+enum GameGenre {
+  None(id: 0x0000, shortName: "none", longName: "None"), // No genre
+  Action(
+      id: 0x0100,
+      shortName: "action",
+      longName: "Action (All)"), // Generic Action games
+  ActionPlatformer(
+      id: 0x0101,
+      shortName: "actionplatformer",
+      longName: "Platform"), // - Action platform game
+  ActionPlatformShooter(
+      id: 0x0102,
+      shortName: "actionplatformshooter",
+      longName:
+          "Platform Shooter"), // - Action platform shooter (Turrican, ...)
+  ActionFirstPersonShooter(
+      id: 0x0103,
+      shortName: "actionfirstpersonshooter",
+      longName: "First Person Shooter"), // - First person shooter (007, ...)
+  ActionShootEmUp(
+      id: 0x0104,
+      shortName: "actionshootemup",
+      longName: "Shoot'em Up"), // - Shoot'em up/all (
+  ActionShootWithGun(
+      id: 0x0105,
+      shortName: "actionshootwithgun",
+      longName:
+          "Shoot with Gun"), // - On-screen shooters (Operation wolf, Duck Hunt, ...)
+  ActionFighting(
+      id: 0x0106,
+      shortName: "actionfighting",
+      longName:
+          "Fighting"), // - Fighting games (mortal kombat, street fighters, ...)
+  ActionBeatEmUp(
+      id: 0x0107,
+      shortName: "actionbeatemup",
+      longName:
+          "Beat'em All"), // - Beat'em up/all (Renegade, Double Dragon, ...)
+  ActionStealth(
+      id: 0x0108,
+      shortName: "actionstealth",
+      longName: "Infiltration"), // - Stealth combat (MGS, Dishonored, ...)
+  ActionBattleRoyale(
+      id: 0x0109,
+      shortName: "actionbattleroyale",
+      longName:
+          "Battle Royale"), // - Battle royale survivals (Fortnite, Apex legend, ...)
+  ActionRythm(
+      id: 0x010A,
+      shortName: "actionrythm",
+      longName:
+          "Rythm & Music"), // - Music/Rythm games (Dance Dance Revolution, ...)
+  Adventure(
+      id: 0x0200,
+      shortName: "adventure",
+      longName: "Adventure (All)"), // Generic Adventure games
+  AdventureText(
+      id: 0x0201,
+      shortName: "adventuretext",
+      longName: "Textual Adventure"), // - Old-school text adventure (Zork, ...)
+  AdventureGraphics(
+      id: 0x0202,
+      shortName: "adventuregraphics",
+      longName: "Graphical Adventure"), // - Mainly Point-and-clicks
+  AdventureVisualNovels(
+      id: 0x0203,
+      shortName: "adventurevisualnovels",
+      longName:
+          "Visual Novel"), // - Dating & legal simulation (Ace Attornay, ...)
+  AdventureInteractiveMovie(
+      id: 0x0204,
+      shortName: "adventureinteractivemovie",
+      longName:
+          "Interactive Movie"), // - Interactive movies (Tex Murphy, Fahrenheit, RE4, ...)
+  AdventureRealTime3D(
+      id: 0x0205,
+      shortName: "adventurerealtime3d",
+      longName:
+          "Real Time 3D Adventure"), // - 3D adventures (Shenmue, Heavy rain, ...)
+  AdventureSurvivalHorror(
+      id: 0x0206,
+      shortName: "adventuresurvivalhorror",
+      longName:
+          "Survival"), // - Survivals/Horror Survivals (Lost in blue, Resident evil, ...)
+  RPG(
+      id: 0x0300,
+      shortName: "rpg",
+      longName: "RPG (All)"), // Generic RPG (Role Playing Games)
+  RPGAction(
+      id: 0x0301,
+      shortName: "rpgaction",
+      longName: "Action RPG"), // - Action RPG (Diablo, ...)
+  RPGMMO(
+      id: 0x0302,
+      shortName: "rpgmmo",
+      longName: "MMORPG"), // - Massive Multiplayer Online RPG (TESO, WoW, ...)
+  RPGDungeonCrawler(
+      id: 0x0303,
+      shortName: "rpgdungeoncrawler",
+      longName:
+          "Dungeon Crawler"), // - Dungeon Crawler (Dungeon Master, Eye of the beholder, ...)
+  RPGTactical(
+      id: 0x0304,
+      shortName: "rpgtactical",
+      longName:
+          "Tactical RPG"), // - Tactical RPG (Ogres Battle, FF Tactics, ...)
+  RPGJapanese(
+      id: 0x0305,
+      shortName: "rpgjapanese",
+      longName:
+          "JRPG"), // - Japaneese RPG, manga-like (Chrono Trigger, FF, ...)
+  RPGFirstPersonPartyBased(
+      id: 0x0306,
+      shortName: "rpgfirstpersonpartybased",
+      longName:
+          "Party based RPG"), // - Team-as-one RPG (Ishar, Bard's tales, ...)
+  Simulation(
+      id: 0x0400,
+      shortName: "simulation",
+      longName: "Simulation (All)"), // Generic simulation
+  SimulationBuildAndManagement(
+      id: 0x0401,
+      shortName: "simulationbuildandmanagement",
+      longName:
+          "Build & Management"), // - Construction & Management simulations (Sim-city, ...)
+  SimulationLife(
+      id: 0x0402,
+      shortName: "simulationlife",
+      longName:
+          "Life Simulation"), // - Life simulation (Nintendogs, Tamagoshi, Sims, ...)
+  SimulationFishAndHunt(
+      id: 0x0403,
+      shortName: "simulationfishandhunt",
+      longName:
+          "Fishing & Hunting"), // - Fighing and hunting (Deer hunting, Sega bass fishing, ...)
+  SimulationVehicle(
+      id: 0x0404,
+      shortName: "simulationvehicle",
+      longName:
+          "Vehicle Simulation"), // - Car/Planes/Tank/... simulations (Flight Simulator, Sherman M4, ...)
+  SimulationSciFi(
+      id: 0x0405,
+      shortName: "simulationscifi",
+      longName:
+          "Science Fiction Simulation"), // - Space Opera (Elite, Homeworld)
+  Strategy(
+      id: 0x0500,
+      shortName: "strategy",
+      longName: "Strategy (All)"), // Generic strategy games
+  Strategy4X(
+      id: 0x0501,
+      shortName: "strategy4x",
+      longName:
+          "eXplore, eXpand, eXploit & eXterminate"), // - eXplore, eXpand, eXploit, eXterminate (Civilization, ...)
+  StrategyArtillery(
+      id: 0x0502,
+      shortName: "strategyartillery",
+      longName:
+          "Artillery"), // - multiplayer artillery games, turn by turn (Scortched Tanks, Worms, ...)
+  StrategyAutoBattler(
+      id: 0x0503,
+      shortName: "strategyautobattler",
+      longName:
+          "Auto-battler"), // - Auto-battle tacticals (Dota undergrounds, Heartstone Battlegrounds, ...)
+  StrategyMOBA(
+      id: 0x0504,
+      shortName: "strategymoba",
+      longName:
+          "Multiplayer Online Battle Arena"), // - Multiplayer Online Battle Arena (Dota 2, Smite, ...)
+  StrategyRTS(
+      id: 0x0505,
+      shortName: "strategyrts",
+      longName:
+          "Real Time Strategy"), // - Real Time Strategy (Warcrafs, Dune, C&C, ...)
+  StrategyTBS(
+      id: 0x0506,
+      shortName: "strategytbs",
+      longName:
+          "Turn Based Strategy"), // - Turn based strategy (Might & Magic, Making History, ...)
+  StrategyTowerDefense(
+      id: 0x0507,
+      shortName: "strategytowerdefense",
+      longName: "Tower Defense"), // - Tower defenses!
+  StrategyWargame(
+      id: 0x0508,
+      shortName: "strategywargame",
+      longName: "Wargame"), // - Military tactics
+  Sports(
+      id: 0x0600,
+      shortName: "sports",
+      longName: "Sports (All)"), // Generic sport games
+  SportRacing(
+      id: 0x0601,
+      shortName: "sportracing",
+      longName: "Racing"), // - All racing games!
+  SportSimulation(
+      id: 0x0602,
+      shortName: "sportsimulation",
+      longName: "Sport Simulation"), // - All physical/simulation sports
+  SportCompetitive(
+      id: 0x0603,
+      shortName: "sportcompetitive",
+      longName:
+          "Competition Sport"), // - High competitive factor (Ball Jack, ...)
+  SportFight(
+      id: 0x0604,
+      shortName: "sportfight",
+      longName:
+          "Fighting/Violent Sport"), // - Fighting sports/violent sports (SpeedBall, WWE 2K Fight Nights, ...)
+  Pinball(id: 0x0700, shortName: "pinball", longName: "Pinball"), // Pinball
+  Board(
+      id: 0x0800,
+      shortName: "board",
+      longName: "Board game"), // Board games (chess, backgammon, othello, ...)
+  Casual(
+      id: 0x0900,
+      shortName: "casual",
+      longName: "Casual game"), // Simple interaction games for casual gaming
+  DigitalCard(
+      id: 0x0A00,
+      shortName: "digitalcard",
+      longName:
+          "Digital Cards"), // Card Collection/games (Hearthstone, Magic the Gathering, ...)
+  PuzzleAndLogic(
+      id: 0x0B00,
+      shortName: "puzzleandlogic",
+      longName:
+          "Puzzle & Logic"), // Puzzle and logic games (Tetris, Sokoban, ...)
+  Party(
+      id: 0x0C00,
+      shortName: "party",
+      longName:
+          "Multiplayer Party Game"), // Multiplayer party games (Mario party, ...)
+  Trivia(
+      id: 0x0D00,
+      shortName: "trivia",
+      longName:
+          "Trivia"), // Answer/Quizz games (Family Feud, Are you smarter than a 5th grade, ...)
+  Casino(id: 0x0E00, shortName: "casino", longName: "Casino"), // Casino games
+  Compilation(
+      id: 0x0F00,
+      shortName: "compilation",
+      longName: "Multi Game Compilation"), // Multi games
+  DemoScene(
+      id: 0x1000,
+      shortName: "demoscene",
+      longName: "Demo from Demo Scene"), // Amiga/ST/PC Demo from demo scene
+  Educative(
+      id: 0x1100,
+      shortName: "educative",
+      longName: "Educative"); // Educative games
 
-const Map<GameGenres, int> gameGenreValues = {
-  GameGenres.None: 0x0000,
-  GameGenres.Action: 0x0100,
-  GameGenres.ActionPlatformer: 0x0101,
-  GameGenres.ActionPlatformShooter: 0x0102,
-  GameGenres.ActionFirstPersonShooter: 0x0103,
-  GameGenres.ActionShootEmUp: 0x0104,
-  GameGenres.ActionShootWithGun: 0x0105,
-  GameGenres.ActionFighting: 0x0106,
-  GameGenres.ActionBeatEmUp: 0x0107,
-  GameGenres.ActionStealth: 0x0108,
-  GameGenres.ActionBattleRoyale: 0x0109,
-  GameGenres.ActionRythm: 0x010A,
-  GameGenres.Adventure: 0x0200,
-  GameGenres.AdventureText: 0x0201,
-  GameGenres.AdventureGraphics: 0x0202,
-  GameGenres.AdventureVisualNovels: 0x0203,
-  GameGenres.AdventureInteractiveMovie: 0x0204,
-  GameGenres.AdventureRealTime3D: 0x0205,
-  GameGenres.AdventureSurvivalHorror: 0x0206,
-  GameGenres.RPG: 0x0300,
-  GameGenres.RPGAction: 0x0301,
-  GameGenres.RPGMMO: 0x0302,
-  GameGenres.RPGDungeonCrawler: 0x0303,
-  GameGenres.RPGTactical: 0x0304,
-  GameGenres.RPGJapanese: 0x0305,
-  GameGenres.RPGFirstPersonPartyBased: 0x0306,
-  GameGenres.Simulation: 0x0400,
-  GameGenres.SimulationBuildAndManagement: 0x0401,
-  GameGenres.SimulationLife: 0x0402,
-  GameGenres.SimulationFishAndHunt: 0x0403,
-  GameGenres.SimulationVehicle: 0x0404,
-  GameGenres.SimulationSciFi: 0x0405,
-  GameGenres.Strategy: 0x0500,
-  GameGenres.Strategy4X: 0x0501,
-  GameGenres.StrategyArtillery: 0x0502,
-  GameGenres.StrategyAutoBattler: 0x0503,
-  GameGenres.StrategyMOBA: 0x0504,
-  GameGenres.StrategyRTS: 0x0505,
-  GameGenres.StrategyTBS: 0x0506,
-  GameGenres.StrategyTowerDefense: 0x0507,
-  GameGenres.StrategyWargame: 0x0508,
-  GameGenres.Sports: 0x0600,
-  GameGenres.SportRacing: 0x0601,
-  GameGenres.SportSimulation: 0x0602,
-  GameGenres.SportCompetitive: 0x0603,
-  GameGenres.SportFight: 0x0604,
-  GameGenres.Pinball: 0x0700,
-  GameGenres.Board: 0x0800,
-  GameGenres.Casual: 0x0900,
-  GameGenres.DigitalCard: 0x0A00,
-  GameGenres.PuzzleAndLogic: 0x0B00,
-  GameGenres.Party: 0x0C00,
-  GameGenres.Trivia: 0x0D00,
-  GameGenres.Casino: 0x0E00,
-  GameGenres.Compilation: 0x0F00,
-  GameGenres.DemoScene: 0x1000,
-  GameGenres.Educative: 0x1100,
-};
+  final int id;
+  final String shortName;
+  final String longName;
 
-class Genres {
-  static bool isSubGenre(GameGenres genre) {
-    final value = gameGenreValues[genre] ?? 0;
+  const GameGenre({
+    required this.id,
+    required this.shortName,
+    required this.longName,
+  });
+
+  static bool isSubGenre(GameGenre genre) {
+    final value = genre.id;
     return value & 0xFF != 0;
   }
 
-  static bool topGenreMatching(GameGenres sub, GameGenres top) {
+  static bool topGenreMatching(GameGenre sub, GameGenre top) {
     return (sub.index >> 8) == (top.index >> 8);
   }
 
-  static GameGenres getTopGenre(GameGenres genre) {
-    final value = (gameGenreValues[genre] ?? 0) & 0xFF00;
-    for (final g in GameGenres.values) {
-      if (gameGenreValues[g] == value) {
+  static GameGenre getTopGenre(GameGenre genre) {
+    final value = genre.id & 0xFF00;
+    for (final g in GameGenre.values) {
+      if (g.id == value) {
         return g;
       }
     }
-    return GameGenres.None;
+    return GameGenre.None;
   }
 
-  String getResourcePath(GameGenres genre) {
-    const Map<GameGenres, String> sNames = {
-      GameGenres.None: '',
-      GameGenres.Action: 'assets/genre/action.svg',
-      GameGenres.ActionPlatformer: 'assets/genre/actionplatformer.svg',
-      GameGenres.ActionPlatformShooter: 'assets/genre/actionplatformshooter.svg',
-      GameGenres.ActionFirstPersonShooter: 'assets/genre/actionfirstpersonshooter.svg',
-      GameGenres.ActionShootEmUp: 'assets/genre/actionshootemup.svg',
-      GameGenres.ActionShootWithGun: 'assets/genre/actionshootwithgun.svg',
-      GameGenres.ActionFighting: 'assets/genre/actionfighting.svg',
-      GameGenres.ActionBeatEmUp: 'assets/genre/actionbeatemup.svg',
-      GameGenres.ActionStealth: 'assets/genre/actionstealth.svg',
-      GameGenres.ActionBattleRoyale: 'assets/genre/actionbattleroyale.svg',
-      GameGenres.ActionRythm: 'assets/genre/actionrythm.svg',
-      GameGenres.Adventure: 'assets/genre/adventure.svg',
-      GameGenres.AdventureText: 'assets/genre/adventuretext.svg',
-      GameGenres.AdventureGraphics: 'assets/genre/adventuregraphical.svg',
-      GameGenres.AdventureVisualNovels: 'assets/genre/adventurevisualnovel.svg',
-      GameGenres.AdventureInteractiveMovie: 'assets/genre/adventureinteractivemovie.svg',
-      GameGenres.AdventureRealTime3D: 'assets/genre/adventurerealtime3d.svg',
-      GameGenres.AdventureSurvivalHorror: 'assets/genre/adventuresurvivalhorror.svg',
-      GameGenres.RPG: 'assets/genre/rpg.svg',
-      GameGenres.RPGAction: 'assets/genre/rpgaction.svg',
-      GameGenres.RPGMMO: 'assets/genre/rpgmmo.svg',
-      GameGenres.RPGDungeonCrawler: 'assets/genre/rpgdungeoncrawler.svg',
-      GameGenres.RPGTactical: 'assets/genre/rpgtactical.svg',
-      GameGenres.RPGJapanese: 'assets/genre/rpgjapanese.svg',
-      GameGenres.RPGFirstPersonPartyBased: 'assets/genre/rpgfirstpersonpartybased.svg',
-      GameGenres.Simulation: 'assets/genre/simulation.svg',
-      GameGenres.SimulationBuildAndManagement: 'assets/genre/simulationbuildandmanagement.svg',
-      GameGenres.SimulationLife: 'assets/genre/simulationlife.svg',
-      GameGenres.SimulationFishAndHunt: 'assets/genre/simulationfishandhunt.svg',
-      GameGenres.SimulationVehicle: 'assets/genre/simulationvehicle.svg',
-      GameGenres.SimulationSciFi: 'assets/genre/simulationscifi.svg',
-      GameGenres.Strategy: 'assets/genre/strategy.svg',
-      GameGenres.Strategy4X: 'assets/genre/strategy4x.svg',
-      GameGenres.StrategyArtillery: 'assets/genre/strategyartillery.svg',
-      GameGenres.StrategyAutoBattler: 'assets/genre/strategyautobattler.svg',
-      GameGenres.StrategyMOBA: 'assets/genre/strategymoba.svg',
-      GameGenres.StrategyRTS: 'assets/genre/strategyrts.svg',
-      GameGenres.StrategyTBS: 'assets/genre/strategytbs.svg',
-      GameGenres.StrategyTowerDefense: 'assets/genre/strategytowerdefense.svg',
-      GameGenres.StrategyWargame: 'assets/genre/strategywargame.svg',
-      GameGenres.Sports: 'assets/genre/sports.svg',
-      GameGenres.SportRacing: 'assets/genre/sportracing.svg',
-      GameGenres.SportSimulation: 'assets/genre/sportsimulation.svg',
-      GameGenres.SportCompetitive: 'assets/genre/sportcompetitive.svg',
-      GameGenres.SportFight: 'assets/genre/sportfight.svg',
-      GameGenres.Pinball: 'assets/genre/flipper.svg',
-      GameGenres.Board: 'assets/genre/board.svg',
-      GameGenres.Casual: 'assets/genre/casual.svg',
-      GameGenres.DigitalCard: 'assets/genre/digitalcard.svg',
-      GameGenres.PuzzleAndLogic: 'assets/genre/puzzleandlogic.svg',
-      GameGenres.Party: 'assets/genre/party.svg',
-      GameGenres.Trivia: 'assets/genre/trivia.svg',
-      GameGenres.Casino: 'assets/genre/casino.svg',
-      GameGenres.Compilation: 'assets/genre/compilation.svg',
-      GameGenres.DemoScene: 'assets/genre/demoscene.svg',
-      GameGenres.Educative: 'assets/genre/educative.svg',
-    };
-
-    String found = sNames[genre] ?? '';
-
-    if (found.isEmpty) {
-      print('[Genres] Unknown GameGenre ${genre.index}');
-    }
-
-    return found;
-  }
-
-  static const Map<GameGenres, String> longNameMap = {
-    GameGenres.None: "None",
-    GameGenres.Action: "Action (All)",
-    GameGenres.ActionPlatformer: "Platform",
-    GameGenres.ActionPlatformShooter: "Platform Shooter",
-    GameGenres.ActionFirstPersonShooter: "First Person Shooter",
-    GameGenres.ActionShootEmUp: "Shoot'em Up",
-    GameGenres.ActionShootWithGun: "Shoot with Gun",
-    GameGenres.ActionFighting: "Fighting",
-    GameGenres.ActionBeatEmUp: "Beat'em All",
-    GameGenres.ActionStealth: "Infiltration",
-    GameGenres.ActionBattleRoyale: "Battle Royale",
-    GameGenres.ActionRythm: "Rythm & Music",
-    GameGenres.Adventure: "Adventure (All)",
-    GameGenres.AdventureText: "Textual Adventure",
-    GameGenres.AdventureGraphics: "Graphical Adventure",
-    GameGenres.AdventureVisualNovels: "Visual Novel",
-    GameGenres.AdventureInteractiveMovie: "Interactive Movie",
-    GameGenres.AdventureRealTime3D: "Real Time 3D Adventure",
-    GameGenres.AdventureSurvivalHorror: "Survival",
-    GameGenres.RPG: "RPG (All)",
-    GameGenres.RPGAction: "Action RPG",
-    GameGenres.RPGMMO: "MMORPG",
-    GameGenres.RPGDungeonCrawler: "Dungeon Crawler",
-    GameGenres.RPGTactical: "Tactical RPG",
-    GameGenres.RPGJapanese: "JRPG",
-    GameGenres.RPGFirstPersonPartyBased: "Party based RPG",
-    GameGenres.Simulation: "Simulation (All)",
-    GameGenres.SimulationBuildAndManagement: "Build & Management",
-    GameGenres.SimulationLife: "Life Simulation",
-    GameGenres.SimulationFishAndHunt: "Fishing & Hunting",
-    GameGenres.SimulationVehicle: "Vehicle Simulation",
-    GameGenres.SimulationSciFi: "Science Fiction Simulation",
-    GameGenres.Strategy: "Strategy (All)",
-    GameGenres.Strategy4X: "eXplore, eXpand, eXploit & eXterminate",
-    GameGenres.StrategyArtillery: "Artillery",
-    GameGenres.StrategyAutoBattler: "Auto-battler",
-    GameGenres.StrategyMOBA: "Multiplayer Online Battle Arena",
-    GameGenres.StrategyRTS: "Real Time Strategy",
-    GameGenres.StrategyTBS: "Turn Based Strategy",
-    GameGenres.StrategyTowerDefense: "Tower Defense",
-    GameGenres.StrategyWargame: "Wargame",
-    GameGenres.Sports: "Sports (All)",
-    GameGenres.SportRacing: "Racing",
-    GameGenres.SportSimulation: "Sport Simulation",
-    GameGenres.SportCompetitive: "Competition Sport",
-    GameGenres.SportFight: "Fighting/Violent Sport",
-    GameGenres.Pinball: "Pinball",
-    GameGenres.Board: "Board game",
-    GameGenres.Casual: "Casual game",
-    GameGenres.DigitalCard: "Digital Cards",
-    GameGenres.PuzzleAndLogic: "Puzzle & Logic",
-    GameGenres.Party: "Multiplayer Party Game",
-    GameGenres.Trivia: "Trivia",
-    GameGenres.Casino: "Casino",
-    GameGenres.Compilation: "Multi Game Compilation",
-    GameGenres.DemoScene: "Demo from Demo Scene",
-    GameGenres.Educative: "Educative",
-  };
-
-  static String getName(GameGenres? genre, {String ifNull = "Unknown"}) {
-    if (longNameMap.containsKey(genre)) {
-      return longNameMap[genre]!;
-    }
-    return ifNull;
-  }
-
-  static const Map<GameGenres, String> shortNameMap = {
-    GameGenres.Action: "action",
-    GameGenres.ActionPlatformer: "actionplatformer",
-    GameGenres.ActionPlatformShooter: "actionplatformshooter",
-    GameGenres.ActionFirstPersonShooter: "actionfirstpersonshooter",
-    GameGenres.ActionShootEmUp: "actionshootemup",
-    GameGenres.ActionShootWithGun: "actionshootwithgun",
-    GameGenres.ActionFighting: "actionfighting",
-    GameGenres.ActionBeatEmUp: "actionbeatemup",
-    GameGenres.ActionStealth: "actionstealth",
-    GameGenres.ActionBattleRoyale: "actionbattleroyale",
-    GameGenres.ActionRythm: "actionrythm",
-    GameGenres.Adventure: "adventure",
-    GameGenres.AdventureText: "adventuretext",
-    GameGenres.AdventureGraphics: "adventuregraphics",
-    GameGenres.AdventureVisualNovels: "adventurevisualnovels",
-    GameGenres.AdventureInteractiveMovie: "adventureinteractivemovie",
-    GameGenres.AdventureRealTime3D: "adventurerealtime3d",
-    GameGenres.AdventureSurvivalHorror: "adventuresurvivalhorror",
-    GameGenres.RPG: "rpg",
-    GameGenres.RPGAction: "rpgaction",
-    GameGenres.RPGMMO: "rpgmmo",
-    GameGenres.RPGDungeonCrawler: "rpgdungeoncrawler",
-    GameGenres.RPGTactical: "rpgtactical",
-    GameGenres.RPGJapanese: "rpgjapanese",
-    GameGenres.RPGFirstPersonPartyBased: "rpgfirstpersonpartybased",
-    GameGenres.Simulation: "simulation",
-    GameGenres.SimulationBuildAndManagement: "simulationbuildandmanagement",
-    GameGenres.SimulationLife: "simulationlife",
-    GameGenres.SimulationFishAndHunt: "simulationfishandhunt",
-    GameGenres.SimulationVehicle: "simulationvehicle",
-    GameGenres.SimulationSciFi: "simulationscifi",
-    GameGenres.Strategy: "strategy",
-    GameGenres.Strategy4X: "strategy4x",
-    GameGenres.StrategyArtillery: "strategyartillery",
-    GameGenres.StrategyAutoBattler: "strategyautobattler",
-    GameGenres.StrategyMOBA: "strategymoba",
-    GameGenres.StrategyRTS: "strategyrts",
-    GameGenres.StrategyTBS: "strategytbs",
-    GameGenres.StrategyTowerDefense: "strategytowerdefense",
-    GameGenres.StrategyWargame: "strategywargame",
-    GameGenres.Sports: "sports",
-    GameGenres.SportRacing: "sportracing",
-    GameGenres.SportSimulation: "sportsimulation",
-    GameGenres.SportCompetitive: "sportcompetitive",
-    GameGenres.SportFight: "sportfight",
-    GameGenres.Pinball: "pinball",
-    GameGenres.Board: "board",
-    GameGenres.Casual: "casual",
-    GameGenres.DigitalCard: "digitalcard",
-    GameGenres.PuzzleAndLogic: "puzzleandlogic",
-    GameGenres.Party: "party",
-    GameGenres.Trivia: "trivia",
-    GameGenres.Casino: "casino",
-    GameGenres.Compilation: "compilation",
-    GameGenres.DemoScene: "demoscene",
-    GameGenres.Educative: "educative",
-  };
-
-  static String getShortName(GameGenres genre) {
-    if (shortNameMap.containsKey(genre)) {
-      return shortNameMap[genre]!;
-    }
-    print('[Genres] Unknown GameGenre ${genre.index}');
-    return 'Unknown';
-  }
-
-  static List<GameGenres> get orderedList => [
-        GameGenres.Action,
-        GameGenres.ActionPlatformer,
-        GameGenres.ActionPlatformShooter,
-        GameGenres.ActionFirstPersonShooter,
-        GameGenres.ActionShootEmUp,
-        GameGenres.ActionShootWithGun,
-        GameGenres.ActionFighting,
-        GameGenres.ActionBeatEmUp,
-        GameGenres.ActionStealth,
-        GameGenres.ActionBattleRoyale,
-        GameGenres.ActionRythm,
-        GameGenres.Adventure,
-        GameGenres.AdventureText,
-        GameGenres.AdventureGraphics,
-        GameGenres.AdventureVisualNovels,
-        GameGenres.AdventureInteractiveMovie,
-        GameGenres.AdventureRealTime3D,
-        GameGenres.AdventureSurvivalHorror,
-        GameGenres.RPG,
-        GameGenres.RPGAction,
-        GameGenres.RPGMMO,
-        GameGenres.RPGDungeonCrawler,
-        GameGenres.RPGTactical,
-        GameGenres.RPGJapanese,
-        GameGenres.RPGFirstPersonPartyBased,
-        GameGenres.Simulation,
-        GameGenres.SimulationBuildAndManagement,
-        GameGenres.SimulationLife,
-        GameGenres.SimulationFishAndHunt,
-        GameGenres.SimulationVehicle,
-        GameGenres.SimulationSciFi,
-        GameGenres.Strategy,
-        GameGenres.Strategy4X,
-        GameGenres.StrategyArtillery,
-        GameGenres.StrategyAutoBattler,
-        GameGenres.StrategyMOBA,
-        GameGenres.StrategyRTS,
-        GameGenres.StrategyTBS,
-        GameGenres.StrategyTowerDefense,
-        GameGenres.StrategyWargame,
-        GameGenres.Sports,
-        GameGenres.SportRacing,
-        GameGenres.SportSimulation,
-        GameGenres.SportCompetitive,
-        GameGenres.SportFight,
-        GameGenres.Pinball,
-        GameGenres.Board,
-        GameGenres.Casual,
-        GameGenres.DigitalCard,
-        GameGenres.PuzzleAndLogic,
-        GameGenres.Party,
-        GameGenres.Trivia,
-        GameGenres.Casino,
-        GameGenres.Compilation,
-        GameGenres.DemoScene,
-        GameGenres.Educative,
-      ];
-
-  static GameGenres lookupFromName(String name) {
-    for (final item in Genres.shortNameMap.entries) {
-      if (name == item.value) {
-        return item.key;
+  static GameGenre lookupFromName(String name) {
+    for (final e in GameGenre.values) {
+      if (e.shortName == name) {
+        return e;
       }
     }
-    return GameGenres.None;
+    return GameGenre.None;
   }
 
-  static GameGenres? lookupFromId(int? id) {
+  static GameGenre? lookupFromId(int? id) {
     if (id == null) {
       return null;
     }
-    for (final item in GameGenres.values) {
-      if (gameGenreValues[item] == id) {
-        return item;
+    for (final e in GameGenre.values) {
+      if (e.id == id) {
+        return e;
       }
     }
-    return GameGenres.None;
-  }
-
-  static int? lookupId(GameGenres? genre) {
-    return gameGenreValues[genre];
+    return GameGenre.None;
   }
 }
 
 // Coverted from https://gitlab.com/recalbox/recalbox/-/blob/master/projects/frontend/es-app/src/scraping/scrapers/screenscraper/ScreenScraperApis.cpp
 
-final sScreenScraperSubGenresToGameGenres = <int, GameGenres>{
-  2909: GameGenres.ActionPlatformer,
-  7: GameGenres.ActionPlatformer,
-  2915: GameGenres.ActionPlatformer,
-  2897: GameGenres.ActionPlatformer,
-  2937: GameGenres.ActionPlatformShooter,
-  3026: GameGenres.ActionPlatformShooter,
-  2887: GameGenres.ActionPlatformShooter,
-  2896: GameGenres.ActionPlatformShooter,
-  3024: GameGenres.ActionFirstPersonShooter,
-  2988: GameGenres.ActionFirstPersonShooter,
-  79: GameGenres.ActionShootEmUp,
-  2955: GameGenres.ActionShootEmUp,
-  2870: GameGenres.ActionShootEmUp,
-  2851: GameGenres.ActionShootEmUp,
-  2876: GameGenres.ActionShootEmUp,
-  2900: GameGenres.ActionShootEmUp,
-  2889: GameGenres.ActionShootEmUp,
-  2945: GameGenres.ActionShootWithGun,
-  32: GameGenres.ActionShootWithGun,
-  14: GameGenres.ActionFighting,
-  2874: GameGenres.ActionFighting,
-  2914: GameGenres.ActionFighting,
-  2920: GameGenres.ActionFighting,
-  2885: GameGenres.ActionFighting,
-  2957: GameGenres.ActionFighting,
-  2922: GameGenres.ActionFighting,
-  1: GameGenres.ActionBeatEmUp,
-  425: GameGenres.ActionRythm,
-  2925: GameGenres.ActionRythm,
-  3237: GameGenres.AdventureGraphics,
-  20672: GameGenres.AdventureGraphics,
-  20678: GameGenres.AdventureRealTime3D,
-  20676: GameGenres.AdventureInteractiveMovie,
-  20674: GameGenres.AdventureVisualNovels,
-  20680: GameGenres.AdventureSurvivalHorror,
-  20670: GameGenres.AdventureText,
-  2648: GameGenres.SimulationFishAndHunt,
-  3192: GameGenres.SimulationFishAndHunt,
-  2895: GameGenres.SimulationFishAndHunt,
-  2893: GameGenres.SimulationVehicle,
-  2911: GameGenres.SimulationVehicle,
-  2953: GameGenres.SimulationVehicle,
-  2940: GameGenres.SimulationVehicle,
-  2910: GameGenres.SimulationVehicle,
-  2934: GameGenres.SimulationVehicle,
-  2938: GameGenres.SimulationVehicle,
-  2921: GameGenres.SimulationVehicle,
-  28: GameGenres.SportRacing,
-  2924: GameGenres.SportRacing,
-  2973: GameGenres.SportRacing,
-  2871: GameGenres.SportRacing,
-  2884: GameGenres.SportRacing,
-  2943: GameGenres.SportRacing,
-  2853: GameGenres.SportSimulation,
-  2852: GameGenres.SportSimulation,
-  3028: GameGenres.SportSimulation,
-  2901: GameGenres.SportSimulation,
-  2877: GameGenres.SportSimulation,
-  2970: GameGenres.SportSimulation,
-  2906: GameGenres.SportSimulation,
-  2847: GameGenres.SportSimulation,
-  2846: GameGenres.SportSimulation,
-  2913: GameGenres.SportSimulation,
-  2960: GameGenres.SportSimulation,
-  2933: GameGenres.SportSimulation,
-  2971: GameGenres.SportSimulation,
-  2878: GameGenres.SportSimulation,
-  2968: GameGenres.SportSimulation,
-  2966: GameGenres.SportSimulation,
-  2948: GameGenres.SportSimulation,
-  2875: GameGenres.SportSimulation,
-  2902: GameGenres.SportSimulation,
-  2867: GameGenres.SportSimulation,
-  2883: GameGenres.SportSimulation,
-  2650: GameGenres.SportSimulation,
-  2918: GameGenres.SportSimulation,
-  2929: GameGenres.SportFight,
-  2919: GameGenres.SportFight,
-  3034: GameGenres.SportFight,
-  1861: GameGenres.SportFight,
-  2947: GameGenres.SportFight,
+final sScreenScraperSubGenresToGameGenres = <int, GameGenre>{
+  2909: GameGenre.ActionPlatformer,
+  7: GameGenre.ActionPlatformer,
+  2915: GameGenre.ActionPlatformer,
+  2897: GameGenre.ActionPlatformer,
+  2937: GameGenre.ActionPlatformShooter,
+  3026: GameGenre.ActionPlatformShooter,
+  2887: GameGenre.ActionPlatformShooter,
+  2896: GameGenre.ActionPlatformShooter,
+  3024: GameGenre.ActionFirstPersonShooter,
+  2988: GameGenre.ActionFirstPersonShooter,
+  79: GameGenre.ActionShootEmUp,
+  2955: GameGenre.ActionShootEmUp,
+  2870: GameGenre.ActionShootEmUp,
+  2851: GameGenre.ActionShootEmUp,
+  2876: GameGenre.ActionShootEmUp,
+  2900: GameGenre.ActionShootEmUp,
+  2889: GameGenre.ActionShootEmUp,
+  2945: GameGenre.ActionShootWithGun,
+  32: GameGenre.ActionShootWithGun,
+  14: GameGenre.ActionFighting,
+  2874: GameGenre.ActionFighting,
+  2914: GameGenre.ActionFighting,
+  2920: GameGenre.ActionFighting,
+  2885: GameGenre.ActionFighting,
+  2957: GameGenre.ActionFighting,
+  2922: GameGenre.ActionFighting,
+  1: GameGenre.ActionBeatEmUp,
+  425: GameGenre.ActionRythm,
+  2925: GameGenre.ActionRythm,
+  3237: GameGenre.AdventureGraphics,
+  20672: GameGenre.AdventureGraphics,
+  20678: GameGenre.AdventureRealTime3D,
+  20676: GameGenre.AdventureInteractiveMovie,
+  20674: GameGenre.AdventureVisualNovels,
+  20680: GameGenre.AdventureSurvivalHorror,
+  20670: GameGenre.AdventureText,
+  2648: GameGenre.SimulationFishAndHunt,
+  3192: GameGenre.SimulationFishAndHunt,
+  2895: GameGenre.SimulationFishAndHunt,
+  2893: GameGenre.SimulationVehicle,
+  2911: GameGenre.SimulationVehicle,
+  2953: GameGenre.SimulationVehicle,
+  2940: GameGenre.SimulationVehicle,
+  2910: GameGenre.SimulationVehicle,
+  2934: GameGenre.SimulationVehicle,
+  2938: GameGenre.SimulationVehicle,
+  2921: GameGenre.SimulationVehicle,
+  28: GameGenre.SportRacing,
+  2924: GameGenre.SportRacing,
+  2973: GameGenre.SportRacing,
+  2871: GameGenre.SportRacing,
+  2884: GameGenre.SportRacing,
+  2943: GameGenre.SportRacing,
+  2853: GameGenre.SportSimulation,
+  2852: GameGenre.SportSimulation,
+  3028: GameGenre.SportSimulation,
+  2901: GameGenre.SportSimulation,
+  2877: GameGenre.SportSimulation,
+  2970: GameGenre.SportSimulation,
+  2906: GameGenre.SportSimulation,
+  2847: GameGenre.SportSimulation,
+  2846: GameGenre.SportSimulation,
+  2913: GameGenre.SportSimulation,
+  2960: GameGenre.SportSimulation,
+  2933: GameGenre.SportSimulation,
+  2971: GameGenre.SportSimulation,
+  2878: GameGenre.SportSimulation,
+  2968: GameGenre.SportSimulation,
+  2966: GameGenre.SportSimulation,
+  2948: GameGenre.SportSimulation,
+  2875: GameGenre.SportSimulation,
+  2902: GameGenre.SportSimulation,
+  2867: GameGenre.SportSimulation,
+  2883: GameGenre.SportSimulation,
+  2650: GameGenre.SportSimulation,
+  2918: GameGenre.SportSimulation,
+  2929: GameGenre.SportFight,
+  2919: GameGenre.SportFight,
+  3034: GameGenre.SportFight,
+  1861: GameGenre.SportFight,
+  2947: GameGenre.SportFight,
 };
 
-final sScreenScraperGenresToGameGenres = <int, GameGenres>{
-  2855: GameGenres.None,
-  2904: GameGenres.None,
-  2879: GameGenres.None,
-  10: GameGenres.Action,
-  2903: GameGenres.Action,
-  2928: GameGenres.Action,
-  2881: GameGenres.Action,
-  2646: GameGenres.Action,
-  3566: GameGenres.Action,
-  2917: GameGenres.Action,
-  13: GameGenres.Adventure,
-  8: GameGenres.RPG,
-  2890: GameGenres.Simulation,
-  40: GameGenres.Simulation,
-  27: GameGenres.Strategy,
-  685: GameGenres.Sports,
-  31: GameGenres.Pinball,
-  33: GameGenres.Board,
-  2647: GameGenres.Board,
-  2958: GameGenres.Board,
-  2882: GameGenres.Board,
-  2869: GameGenres.Board,
-  2949: GameGenres.Board,
-  2956: GameGenres.Board,
-  2961: GameGenres.Board,
-  171: GameGenres.Casual,
-  42: GameGenres.DigitalCard,
-  3511: GameGenres.PuzzleAndLogic,
-  26: GameGenres.PuzzleAndLogic,
-  2864: GameGenres.PuzzleAndLogic,
-  2891: GameGenres.PuzzleAndLogic,
-  2923: GameGenres.PuzzleAndLogic,
-  2912: GameGenres.PuzzleAndLogic,
-  2649: GameGenres.Trivia,
-  2954: GameGenres.Trivia,
-  2931: GameGenres.Trivia,
-  2951: GameGenres.Trivia,
-  2962: GameGenres.Trivia,
-  2969: GameGenres.Trivia,
-  2952: GameGenres.Trivia,
-  2894: GameGenres.Trivia,
-  2964: GameGenres.Trivia,
-  2967: GameGenres.Trivia,
-  320: GameGenres.Casino,
-  2872: GameGenres.Casino,
-  2950: GameGenres.Casino,
-  2932: GameGenres.Casino,
-  2860: GameGenres.Casino,
-  2944: GameGenres.Casino,
-  34: GameGenres.Compilation,
-  2974: GameGenres.DemoScene,
-  30: GameGenres.Educative,
+final sScreenScraperGenresToGameGenres = <int, GameGenre>{
+  2855: GameGenre.None,
+  2904: GameGenre.None,
+  2879: GameGenre.None,
+  10: GameGenre.Action,
+  2903: GameGenre.Action,
+  2928: GameGenre.Action,
+  2881: GameGenre.Action,
+  2646: GameGenre.Action,
+  3566: GameGenre.Action,
+  2917: GameGenre.Action,
+  13: GameGenre.Adventure,
+  8: GameGenre.RPG,
+  2890: GameGenre.Simulation,
+  40: GameGenre.Simulation,
+  27: GameGenre.Strategy,
+  685: GameGenre.Sports,
+  31: GameGenre.Pinball,
+  33: GameGenre.Board,
+  2647: GameGenre.Board,
+  2958: GameGenre.Board,
+  2882: GameGenre.Board,
+  2869: GameGenre.Board,
+  2949: GameGenre.Board,
+  2956: GameGenre.Board,
+  2961: GameGenre.Board,
+  171: GameGenre.Casual,
+  42: GameGenre.DigitalCard,
+  3511: GameGenre.PuzzleAndLogic,
+  26: GameGenre.PuzzleAndLogic,
+  2864: GameGenre.PuzzleAndLogic,
+  2891: GameGenre.PuzzleAndLogic,
+  2923: GameGenre.PuzzleAndLogic,
+  2912: GameGenre.PuzzleAndLogic,
+  2649: GameGenre.Trivia,
+  2954: GameGenre.Trivia,
+  2931: GameGenre.Trivia,
+  2951: GameGenre.Trivia,
+  2962: GameGenre.Trivia,
+  2969: GameGenre.Trivia,
+  2952: GameGenre.Trivia,
+  2894: GameGenre.Trivia,
+  2964: GameGenre.Trivia,
+  2967: GameGenre.Trivia,
+  320: GameGenre.Casino,
+  2872: GameGenre.Casino,
+  2950: GameGenre.Casino,
+  2932: GameGenre.Casino,
+  2860: GameGenre.Casino,
+  2944: GameGenre.Casino,
+  34: GameGenre.Compilation,
+  2974: GameGenre.DemoScene,
+  30: GameGenre.Educative,
 };

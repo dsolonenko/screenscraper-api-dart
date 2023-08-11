@@ -5,6 +5,37 @@ import 'package:screenscraper/src/screenscraper/game_info.dart';
 import 'package:screenscraper/src/screenscraper/infra_info.dart';
 import 'package:pretty_http_logger/pretty_http_logger.dart';
 
+/// ScreenScraper API response error
+class ScreenScraperException implements Exception {
+  final int code;
+  final String message;
+
+  ScreenScraperException({required this.code, required this.message});
+
+  @override
+  String toString() {
+    return "$code:$message";
+  }
+}
+
+/// Do not send any more requests today - daily quota exceeded
+class DoneForTheDayException extends ScreenScraperException {
+  DoneForTheDayException({required int code, required String message})
+      : super(code: code, message: message);
+}
+
+/// Critical error in the response, do not retry without investigating
+class DoNotRetryException extends ScreenScraperException {
+  DoNotRetryException({required int code, required String message})
+      : super(code: code, message: message);
+}
+
+/// Temporary error in the response, retry after a delay
+class WaitAndRetryException extends ScreenScraperException {
+  WaitAndRetryException({required int code, required String message})
+      : super(code: code, message: message);
+}
+
 /// Dart wrapper for ScreenScraper API V2
 class ScreenScraperAPIV2 {
   final String devId;
@@ -53,9 +84,52 @@ class ScreenScraperAPIV2 {
   Future<Response> _getApiResponse(String path,
       {Map<String, dynamic>? params}) async {
     final httpResponse = await _http.get(_buildUrl(path, params: params));
-    if (httpResponse.statusCode != 200) {
-      throw Exception(
-          "Error ${httpResponse.statusCode}: ${httpResponse.body}}");
+    switch (httpResponse.statusCode) {
+      case 200:
+        break;
+      case 401:
+        throw WaitAndRetryException(
+          code: 401,
+          message:
+              "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
+        );
+      case 403:
+        throw DoNotRetryException(
+          code: 403,
+          message:
+              "Login error: Check your developer credentials! incorrect developer credentials",
+        );
+      case 423:
+        throw DoneForTheDayException(
+          code: 423,
+          message: "API totally closed The Server has a serious problem",
+        );
+      case 426:
+        throw DoNotRetryException(
+          code: 426,
+          message:
+              "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
+        );
+      case 429:
+        throw WaitAndRetryException(
+          code: 429,
+          message: "Need to reduce request speed",
+        );
+      case 430:
+        throw DoneForTheDayException(
+          code: 430,
+          message:
+              "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
+        );
+      case 431:
+        throw DoneForTheDayException(
+          code: 431,
+          message:
+              "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
+        );
+      default:
+        throw ScreenScraperException(
+            code: httpResponse.statusCode, message: httpResponse.body);
     }
     final json = jsonDecode(httpResponse.body);
     return Response.fromJson(json);
