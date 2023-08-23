@@ -16,10 +16,10 @@ class GameInfo {
   final List<RegionText> noms;
   final String cloneof;
   final IdText systeme;
-  final IdText editeur;
-  final IdText developpeur;
-  final IdText joueurs;
-  final IdText note;
+  final IdText? editeur;
+  final IdText? developpeur;
+  final IdText? joueurs;
+  final IdText? note;
   @BoolStringConverter()
   final bool? topstaff;
   @BoolStringConverter()

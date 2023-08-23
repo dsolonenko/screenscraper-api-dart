@@ -15,10 +15,18 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
           .toList(),
       cloneof: json['cloneof'] as String,
       systeme: IdText.fromJson(json['systeme'] as Map<String, dynamic>),
-      editeur: IdText.fromJson(json['editeur'] as Map<String, dynamic>),
-      developpeur: IdText.fromJson(json['developpeur'] as Map<String, dynamic>),
-      joueurs: IdText.fromJson(json['joueurs'] as Map<String, dynamic>),
-      note: IdText.fromJson(json['note'] as Map<String, dynamic>),
+      editeur: json['editeur'] == null
+          ? null
+          : IdText.fromJson(json['editeur'] as Map<String, dynamic>),
+      developpeur: json['developpeur'] == null
+          ? null
+          : IdText.fromJson(json['developpeur'] as Map<String, dynamic>),
+      joueurs: json['joueurs'] == null
+          ? null
+          : IdText.fromJson(json['joueurs'] as Map<String, dynamic>),
+      note: json['note'] == null
+          ? null
+          : IdText.fromJson(json['note'] as Map<String, dynamic>),
       topstaff: _$JsonConverterFromJson<String, bool>(
           json['topstaff'], const BoolStringConverter().fromJson),
       rotation: _$JsonConverterFromJson<String, bool>(

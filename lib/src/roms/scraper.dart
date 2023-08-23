@@ -164,8 +164,9 @@ class RomScraper {
     ));
     _log.i(
         "Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
-    final rating =
-        game.note.text.isEmpty ? null : double.tryParse(game.note.text);
+    final rating = game.note == null || game.note!.text.isEmpty
+        ? null
+        : double.tryParse(game.note!.text);
     final releaseDate = _findRegionText(game.dates);
     final genres = game.genres
         ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
@@ -177,9 +178,9 @@ class RomScraper {
       systemName: game.systeme.text,
       name: _findRegionText(game.noms),
       description: _findLanguageText(game.synopsis),
-      developer: game.developpeur.text,
-      publisher: game.editeur.text,
-      players: game.joueurs.text,
+      developer: game.developpeur?.text ?? "",
+      publisher: game.editeur?.text ?? "",
+      players: game.joueurs?.text ?? "",
       rating: (rating ?? 0.0) / 20.0,
       genres: genres,
       normalizedGenre: _lookupNormalizedGenre(genres),
