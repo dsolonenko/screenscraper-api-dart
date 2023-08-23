@@ -34,6 +34,60 @@ class WaitAndRetryException extends ScreenScraperException {
   WaitAndRetryException({required int code, required String message}) : super(code: code, message: message);
 }
 
+void throwIfError(http.Response httpResponse) {
+  final error = checkForError(httpResponse);
+  if (error != null) {
+    throw error;
+  }
+}
+
+Exception? checkForError(http.Response httpResponse) {
+  switch (httpResponse.statusCode) {
+    case 200:
+      return null;
+    case 401:
+      return WaitAndRetryException(
+        code: 401,
+        message: "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
+      );
+    case 403:
+      return DoNotRetryException(
+        code: 403,
+        message: "Login error: Check your developer credentials! incorrect developer credentials",
+      );
+    case 423:
+      return DoneForTheDayException(
+        code: 423,
+        message: "API totally closed The Server has a serious problem",
+      );
+    case 426:
+      return DoNotRetryException(
+        code: 426,
+        message:
+            "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
+      );
+    case 429:
+      return WaitAndRetryException(
+        code: 429,
+        message: "Need to reduce request speed",
+      );
+    case 430:
+      return DoneForTheDayException(
+        code: 430,
+        message:
+            "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
+      );
+    case 431:
+      return DoneForTheDayException(
+        code: 431,
+        message:
+            "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
+      );
+    default:
+      return ScreenScraperException(code: httpResponse.statusCode, message: httpResponse.body);
+  }
+}
+
 /// Dart wrapper for ScreenScraper API V2
 class ScreenScraperAPIV2 {
   final String devId;
@@ -76,60 +130,6 @@ class ScreenScraperAPIV2 {
   Future<GameInfo> gameInfo(GameInfoRequest request) async {
     final apiResponse = await _getApiResponse("jeuInfos.php", params: request.toQueryParameters());
     return GameInfo.fromJson(apiResponse.response['jeu']);
-  }
-
-  static void throwIfError(http.Response httpResponse) {
-    final error = checkForError(httpResponse);
-    if (error != null) {
-      throw error;
-    }
-  }
-
-  static Exception? checkForError(http.Response httpResponse) {
-    switch (httpResponse.statusCode) {
-      case 200:
-        return null;
-      case 401:
-        return WaitAndRetryException(
-          code: 401,
-          message: "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
-        );
-      case 403:
-        return DoNotRetryException(
-          code: 403,
-          message: "Login error: Check your developer credentials! incorrect developer credentials",
-        );
-      case 423:
-        return DoneForTheDayException(
-          code: 423,
-          message: "API totally closed The Server has a serious problem",
-        );
-      case 426:
-        return DoNotRetryException(
-          code: 426,
-          message:
-              "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
-        );
-      case 429:
-        return WaitAndRetryException(
-          code: 429,
-          message: "Need to reduce request speed",
-        );
-      case 430:
-        return DoneForTheDayException(
-          code: 430,
-          message:
-              "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
-        );
-      case 431:
-        return DoneForTheDayException(
-          code: 431,
-          message:
-              "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
-        );
-      default:
-        return ScreenScraperException(code: httpResponse.statusCode, message: httpResponse.body);
-    }
   }
 
   Future<Response> _getApiResponse(String path, {Map<String, dynamic>? params}) async {
