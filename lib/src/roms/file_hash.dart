@@ -25,7 +25,7 @@ Future<FileHash?> calculateFileHash(File file) async {
   if (!file.existsSync()) return null;
   try {
     final stream = file.openRead();
-    final bufferedStream = bufferChunkedStream(stream, bufferSize: 128 * 1024);
+    final bufferedStream = bufferChunkedStream(stream, bufferSize: 128 * 1024 * 1024);
     // ignore: deprecated_member_use
     final iterator = ChunkedStreamIterator(bufferedStream);
     try {
