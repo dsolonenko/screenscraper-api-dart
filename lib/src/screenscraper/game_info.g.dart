@@ -10,10 +10,10 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       id: const IntStringConverter().fromJson(json['id'] as String),
       romid: const IntStringConverter().fromJson(json['romid'] as String),
       notgame: const BoolStringConverter().fromJson(json['notgame'] as String),
-      noms: (json['noms'] as List<dynamic>)
-          .map((e) => RegionText.fromJson(e as Map<String, dynamic>))
+      noms: (json['noms'] as List<dynamic>?)
+          ?.map((e) => RegionText.fromJson(e as Map<String, dynamic>))
           .toList(),
-      cloneof: json['cloneof'] as String,
+      cloneof: json['cloneof'] as String?,
       systeme: IdText.fromJson(json['systeme'] as Map<String, dynamic>),
       editeur: json['editeur'] == null
           ? null
@@ -31,14 +31,14 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
           json['topstaff'], const BoolStringConverter().fromJson),
       rotation: _$JsonConverterFromJson<String, bool>(
           json['rotation'], const BoolStringConverter().fromJson),
-      synopsis: (json['synopsis'] as List<dynamic>)
-          .map((e) => LangText.fromJson(e as Map<String, dynamic>))
+      synopsis: (json['synopsis'] as List<dynamic>?)
+          ?.map((e) => LangText.fromJson(e as Map<String, dynamic>))
           .toList(),
       classifications: (json['classifications'] as List<dynamic>?)
           ?.map((e) => TypeText.fromJson(e as Map<String, dynamic>))
           .toList(),
-      dates: (json['dates'] as List<dynamic>)
-          .map((e) => RegionText.fromJson(e as Map<String, dynamic>))
+      dates: (json['dates'] as List<dynamic>?)
+          ?.map((e) => RegionText.fromJson(e as Map<String, dynamic>))
           .toList(),
       genres: (json['genres'] as List<dynamic>?)
           ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
@@ -52,8 +52,8 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       actions: (json['actions'] as List<dynamic>?)
           ?.map((e) => GameAction.fromJson(e as Map<String, dynamic>))
           .toList(),
-      medias: (json['medias'] as List<dynamic>)
-          .map((e) => GameMedia.fromJson(e as Map<String, dynamic>))
+      medias: (json['medias'] as List<dynamic>?)
+          ?.map((e) => GameMedia.fromJson(e as Map<String, dynamic>))
           .toList(),
       roms: (json['roms'] as List<dynamic>?)
           ?.map((e) => GameRom.fromJson(e as Map<String, dynamic>))

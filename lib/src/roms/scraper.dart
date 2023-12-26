@@ -145,8 +145,7 @@ class RomScraper {
   /// Scrape a rom file and return a [Game] object with the matching game details
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
   /// Use [ScraperOverrides] to override the default language and region priority
-  Future<Game> scrapeRom(
-      {required int systemId, required String romPath}) async {
+  Future<Game> scrapeRom({required int systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
@@ -162,15 +161,10 @@ class RomScraper {
       sha1: hash.sha1,
       sizeBytes: hash.sizeBytes,
     ));
-    _log.i(
-        "Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
-    final rating = game.note == null || game.note!.text.isEmpty
-        ? null
-        : double.tryParse(game.note!.text);
+    _log.i("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    final rating = game.note == null || game.note!.text.isEmpty ? null : double.tryParse(game.note!.text);
     final releaseDate = _findRegionText(game.dates);
-    final genres = game.genres
-        ?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms)))
-        .toList();
+    final genres = game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList();
     return Game(
       gameId: game.id,
       romId: game.romid,
@@ -206,9 +200,9 @@ class RomScraper {
   }
 }
 
-MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
-  final media = medias.firstWhereOrNull(
-      (element) => element.parent == "jeu" && element.type == type);
+MediaLink? _findMediaLink(List<GameMedia>? medias, String type) {
+  if (medias == null || medias.isEmpty) return null;
+  final media = medias.firstWhereOrNull((element) => element.parent == "jeu" && element.type == type);
   if (media == null) return null;
   return MediaLink(
     url: media.url,
@@ -217,8 +211,8 @@ MediaLink? _findMediaLink(List<GameMedia> medias, String type) {
   );
 }
 
-String _findRegionText(List<RegionText> text) {
-  if (text.isEmpty) return "";
+String _findRegionText(List<RegionText>? text) {
+  if (text == null || text.isEmpty) return "";
   return text
       .firstWhere(
         (element) => ScraperOverrides.regionPriority.contains(element.region),
@@ -227,8 +221,8 @@ String _findRegionText(List<RegionText> text) {
       .text;
 }
 
-String _findLanguageText(List<LangText> text) {
-  if (text.isEmpty) return "";
+String _findLanguageText(List<LangText>? text) {
+  if (text == null || text.isEmpty) return "";
   return text
       .firstWhere(
         (element) => ScraperOverrides.languagePriority.contains(element.langue),
