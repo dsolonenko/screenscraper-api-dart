@@ -17,14 +17,12 @@ class ScreenScraperException implements Exception {
       case 401:
         return WaitAndRetryException(
           code: 401,
-          message:
-              "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
+          message: "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
         );
       case 403:
         return DoNotRetryException(
           code: 403,
-          message:
-              "Login error: Check your developer credentials! incorrect developer credentials",
+          message: "Login error: Check your developer credentials! incorrect developer credentials",
         );
       case 423:
         return DoneForTheDayException(
@@ -67,20 +65,17 @@ class ScreenScraperException implements Exception {
 
 /// Do not send any more requests today - daily quota exceeded
 class DoneForTheDayException extends ScreenScraperException {
-  DoneForTheDayException({required int code, required String message})
-      : super(code: code, message: message);
+  DoneForTheDayException({required int code, required String message}) : super(code: code, message: message);
 }
 
 /// Critical error in the response, do not retry without investigating
 class DoNotRetryException extends ScreenScraperException {
-  DoNotRetryException({required int code, required String message})
-      : super(code: code, message: message);
+  DoNotRetryException({required int code, required String message}) : super(code: code, message: message);
 }
 
 /// Temporary error in the response, retry after a delay
 class WaitAndRetryException extends ScreenScraperException {
-  WaitAndRetryException({required int code, required String message})
-      : super(code: code, message: message);
+  WaitAndRetryException({required int code, required String message}) : super(code: code, message: message);
 }
 
 /// Dart wrapper for ScreenScraper API V2
@@ -91,12 +86,7 @@ class ScreenScraperAPIV2 {
   final String userName;
   final String userPassword;
 
-  final HttpClientWithMiddleware _http = HttpClientWithMiddleware.build(
-    requestTimeout: Duration(seconds: 30),
-    middlewares: [
-      HttpLogger(logLevel: LogLevel.NONE), // BASIC leaks passwords into logs
-    ],
-  );
+  final HttpClientWithMiddleware _http;
 
   ScreenScraperAPIV2({
     required this.devId,
@@ -104,7 +94,13 @@ class ScreenScraperAPIV2 {
     required this.softwareName,
     required this.userName,
     required this.userPassword,
-  });
+    LogLevel logLevel = LogLevel.BODY,
+  }) : _http = HttpClientWithMiddleware.build(
+          requestTimeout: Duration(seconds: 30),
+          middlewares: [
+            HttpLogger(logLevel: logLevel), // BASIC leaks passwords into logs
+          ],
+        );
 
   /// Use leecher credentials, for testing purposes
   factory ScreenScraperAPIV2.asTestUser() => ScreenScraperAPIV2(
@@ -123,17 +119,14 @@ class ScreenScraperAPIV2 {
 
   /// jeuInfos.php: Information on a game / Media of a game
   Future<GameInfo> gameInfo(GameInfoRequest request) async {
-    final apiResponse = await _getApiResponse("jeuInfos.php",
-        params: request.toQueryParameters());
+    final apiResponse = await _getApiResponse("jeuInfos.php", params: request.toQueryParameters());
     return GameInfo.fromJson(apiResponse.response['jeu']);
   }
 
-  Future<Response> _getApiResponse(String path,
-      {Map<String, dynamic>? params}) async {
+  Future<Response> _getApiResponse(String path, {Map<String, dynamic>? params}) async {
     final httpResponse = await _http.get(_buildUrl(path, params: params));
     if (httpResponse.statusCode != 200) {
-      throw ScreenScraperException.fromHttpResponse(
-          httpResponse.statusCode, httpResponse.body);
+      throw ScreenScraperException.fromHttpResponse(httpResponse.statusCode, httpResponse.body);
     }
     final json = jsonDecode(httpResponse.body);
     return Response.fromJson(json);
@@ -148,8 +141,7 @@ class ScreenScraperAPIV2 {
       'sspassword': userPassword,
       'output': 'json',
     };
-    return Uri.https(
-        'www.screenscraper.fr', "api2/$path", {...required, ...params ?? {}});
+    return Uri.https('www.screenscraper.fr', "api2/$path", {...required, ...params ?? {}});
   }
 
   void close() {
