@@ -134,12 +134,14 @@ class RomScraper {
     required String softwareName,
     required String userName,
     required String userPassword,
+    bool httpLogging = false,
   }) : _api = ScreenScraperAPIV2(
           devId: devId,
           devPassword: devPassword,
           softwareName: softwareName,
           userName: userName,
           userPassword: userPassword,
+          httpLog: httpLogging,
         );
 
   /// Scrape a rom file and return a [Game] object with the matching game details
