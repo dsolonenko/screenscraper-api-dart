@@ -14,6 +14,11 @@ class ScreenScraperException implements Exception {
 
   factory ScreenScraperException.fromHttpResponse(int statusCode, String body) {
     switch (statusCode) {
+      case 400:
+        return DoNotRetryException(
+          code: 400,
+          message: "Game not found",
+        );
       case 401:
         return WaitAndRetryException(
           code: 401,
@@ -94,11 +99,11 @@ class ScreenScraperAPIV2 {
     required this.softwareName,
     required this.userName,
     required this.userPassword,
-    LogLevel logLevel = LogLevel.BODY,
+    bool httpLog = false,
   }) : _http = HttpClientWithMiddleware.build(
           requestTimeout: Duration(seconds: 30),
           middlewares: [
-            HttpLogger(logLevel: logLevel), // BASIC leaks passwords into logs
+            HttpLogger(logLevel: httpLog ? LogLevel.BODY : LogLevel.NONE), // BASIC leaks passwords into logs
           ],
         );
 
