@@ -29,6 +29,11 @@ class ScreenScraperException implements Exception {
           code: 403,
           message: "Login error: Check your developer credentials! incorrect developer credentials",
         );
+      case 404:
+        return DoNotRetryException(
+          code: 404,
+          message: "Game not found",
+        );
       case 423:
         return DoneForTheDayException(
           code: 423,
