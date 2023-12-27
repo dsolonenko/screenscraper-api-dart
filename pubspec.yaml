@@ -1,6 +1,6 @@
 name: screenscraper
 description: Emulation scraper that uses ScreenScraper API V2 to match ROMs to games and fetch details. 
-version: 0.1.13
+version: 0.1.14
 repository: https://github.com/dsolonenko/screenscraper-api-dart
 
 environment:
@@ -9,12 +9,11 @@ environment:
 dependencies:
   crypto: ^3.0.3
   json_annotation: ^4.8.1
-  pretty_http_logger: ^1.0.1
+  pretty_http_logger: ^1.0.2
   chunked_stream: ^1.4.2
   convert: ^3.1.1
   crclib: ^3.0.0
   collection: ^1.17.1
-  logger: ^2.0.1
 
 dev_dependencies:
   lints: ^2.0.0

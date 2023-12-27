@@ -161,7 +161,6 @@ class ScreenScraperAPIV2 {
   Future<Response> _getApiResponse(String path, {Map<String, dynamic>? params}) async {
     final httpResponse = await _http.get(_buildUrl(path, params: params));
     if (httpResponse.statusCode != 200) {
-      print("API error: ${httpResponse.statusCode} ${httpResponse.body}");
       throw ScreenScraperException.fromHttpResponse(httpResponse.statusCode, httpResponse.body);
     }
     final json = jsonDecode(httpResponse.body);

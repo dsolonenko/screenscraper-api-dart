@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:logger/logger.dart';
 import 'package:screenscraper/src/screenscraper/apiv2.dart';
 import 'package:screenscraper/src/screenscraper/common.dart';
 import 'package:screenscraper/src/screenscraper/game_info.dart';
@@ -126,7 +125,6 @@ class Genre {
 
 class RomScraper {
   final ScreenScraperAPIV2 _api;
-  final Logger _log = Logger();
 
   RomScraper({
     required String devId,
@@ -153,7 +151,7 @@ class RomScraper {
     if (hash == null) {
       throw Exception("Unable to calculate hash for $romPath");
     }
-    _log.i(
+    print(
         "Scrapping systemId=$systemId rom=${file.uri.pathSegments.last} crc=${hash.crc} md5=${hash.md5} sha1=${hash.sha1} size=${hash.sizeBytes}");
     final game = await _api.gameInfo(GameInfoRequest.romByHash(
       systemeid: systemId,
@@ -163,7 +161,7 @@ class RomScraper {
       sha1: hash.sha1,
       sizeBytes: hash.sizeBytes,
     ));
-    _log.i("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
+    print("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
     final rating = game.note == null || game.note!.text.isEmpty ? null : double.tryParse(game.note!.text);
     final releaseDate = _findRegionText(game.dates);
     final genres = game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList();
