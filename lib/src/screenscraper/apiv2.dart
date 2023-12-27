@@ -122,20 +122,21 @@ class ScreenScraperAPIV2 {
       );
 
   /// ssinfraInfos.php: Information about the ScreenScraper framework
-  Future<Servers> infraInfo() async {
-    final apiResponse = await _getApiResponse("ssinfraInfos.php");
-    return Servers.fromJson(apiResponse.response['serveurs']);
+  Future<Servers> infraInfo() {
+    return _getApiResponse("ssinfraInfos.php")
+        .then((apiResponse) => Servers.fromJson(apiResponse.response['serveurs']));
   }
 
   /// jeuInfos.php: Information on a game / Media of a game
-  Future<GameInfo> gameInfo(GameInfoRequest request) async {
-    final apiResponse = await _getApiResponse("jeuInfos.php", params: request.toQueryParameters());
-    return GameInfo.fromJson(apiResponse.response['jeu']);
+  Future<GameInfo> gameInfo(GameInfoRequest request) {
+    return _getApiResponse("jeuInfos.php", params: request.toQueryParameters())
+        .then((apiResponse) => GameInfo.fromJson(apiResponse.response['jeu']));
   }
 
   Future<Response> _getApiResponse(String path, {Map<String, dynamic>? params}) async {
     final httpResponse = await _http.get(_buildUrl(path, params: params));
     if (httpResponse.statusCode != 200) {
+      print("API error: ${httpResponse.statusCode} ${httpResponse.body}");
       throw ScreenScraperException.fromHttpResponse(httpResponse.statusCode, httpResponse.body);
     }
     final json = jsonDecode(httpResponse.body);
