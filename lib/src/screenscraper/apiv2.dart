@@ -96,8 +96,10 @@ class HttpLogger extends MiddlewareContract {
 
   @override
   void interceptResponse(ResponseData data) {
-    print("Response: ${data.method} ${data.statusCode}");
-    print("Body: ${data.body}");
+    print("Response: ${data.statusCode}");
+    if (data.statusCode != 200) {
+      print("Error: ${data.body}");
+    }
   }
 
   @override
