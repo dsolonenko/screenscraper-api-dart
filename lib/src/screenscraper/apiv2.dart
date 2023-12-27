@@ -88,6 +88,33 @@ class WaitAndRetryException extends ScreenScraperException {
   WaitAndRetryException({required int code, required String message}) : super(code: code, message: message);
 }
 
+class HttpLogger extends MiddlewareContract {
+  @override
+  void interceptRequest(RequestData data) {
+    print("Request: ${data.method} ${sanitizeUrl(data.url.toString())}");
+  }
+
+  @override
+  void interceptResponse(ResponseData data) {
+    print("Response: ${data.method} ${data.statusCode}");
+    print("Body: ${data.body}");
+  }
+
+  @override
+  void interceptError(error) {
+    print("Error: $error");
+  }
+
+  String sanitizeUrl(String url) {
+    final keys = ['devid', 'devpassword', 'softname', 'ssid', 'sspassword'];
+    for (var key in keys) {
+      final regex = RegExp(r'(?<=' + key + r'=)[^&]+');
+      url = url.replaceAll(regex, '***');
+    }
+    return url;
+  }
+}
+
 /// Dart wrapper for ScreenScraper API V2
 class ScreenScraperAPIV2 {
   final String devId;
@@ -107,9 +134,7 @@ class ScreenScraperAPIV2 {
     bool httpLog = false,
   }) : _http = HttpClientWithMiddleware.build(
           requestTimeout: Duration(seconds: 30),
-          middlewares: [
-            HttpLogger(logLevel: httpLog ? LogLevel.BODY : LogLevel.NONE), // BASIC leaks passwords into logs
-          ],
+          middlewares: [HttpLogger()],
         );
 
   /// Use leecher credentials, for testing purposes
