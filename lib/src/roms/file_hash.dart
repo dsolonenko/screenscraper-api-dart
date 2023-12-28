@@ -66,7 +66,7 @@ Future<FileHash?> calculateFileHash(File file) async {
 
       final md5hash = md5out.events.single.toString().toUpperCase();
       final sha1hash = sha1out.events.single.toString().toUpperCase();
-      final crc32hash = crcout.events.single.toRadixString(16).toUpperCase();
+      final crc32hash = crcout.events.single.toRadixString(16).toUpperCase().padLeft(8, '0');
 
       return FileHash(
         crc: crc32hash,
