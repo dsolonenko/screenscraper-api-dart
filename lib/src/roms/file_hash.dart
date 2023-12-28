@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:archive/archive_io.dart' as zip;
 import 'package:chunked_stream/chunked_stream.dart';
 import 'package:crclib/catalog.dart';
 import 'package:crclib/crclib.dart';
@@ -23,8 +24,22 @@ class FileHash {
 
 Future<FileHash?> calculateFileHash(File file) async {
   if (!file.existsSync()) return null;
+  final sw = Stopwatch()..start();
   try {
-    final stream = file.openRead();
+    int fileSize = 0;
+    Stream<List<int>>? stream;
+    if (file.path.endsWith('.zip')) {
+      final zipStream = zip.InputFileStream(file.path);
+      final archive = zip.ZipDecoder().decodeBuffer(zipStream);
+      if (archive.numberOfFiles() == 1) {
+        stream = Stream.value(archive.fileData(0));
+        fileSize = archive.fileSize(0);
+      }
+    }
+    if (stream == null) {
+      stream = file.openRead();
+      fileSize = file.lengthSync();
+    }
     final bufferedStream = bufferChunkedStream(stream, bufferSize: 128 * 1024 * 1024);
     // ignore: deprecated_member_use
     final iterator = ChunkedStreamIterator(bufferedStream);
@@ -57,12 +72,16 @@ Future<FileHash?> calculateFileHash(File file) async {
         crc: crc32hash,
         md5: md5hash,
         sha1: sha1hash,
-        sizeBytes: file.lengthSync(),
+        sizeBytes: fileSize,
       );
     } finally {
       await iterator.cancel();
     }
   } catch (exception) {
+    print(exception);
     return null;
+  } finally {
+    sw.stop();
+    print('calculateFileHash: ${sw.elapsed}');
   }
 }
