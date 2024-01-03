@@ -190,56 +190,69 @@ class GameInfoRequest {
   final String? crc;
   final String? md5;
   final String? sha1;
-  final int systemeid;
-  final String romtype;
-  final String romnom;
-  final int? romtaille;
-  final int? serialnum;
-  final int? gameid;
+  final int systemId;
+  final String romType;
+  final String romName;
+  final int? romSizeBytes;
+  final int? serialNum;
+  final int? gameId;
 
   GameInfoRequest({
-    required this.systemeid,
-    required this.romtype,
-    required this.romnom,
+    required this.systemId,
+    required this.romType,
+    required this.romName,
     this.crc,
     this.md5,
     this.sha1,
-    this.romtaille,
-    this.serialnum,
-    this.gameid,
+    this.romSizeBytes,
+    this.serialNum,
+    this.gameId,
   });
 
   factory GameInfoRequest.romByHash({
-    required int systemeid,
-    required String romnom,
+    required int systemId,
+    required String romName,
     String? crc,
     String? md5,
     String? sha1,
-    required int sizeBytes,
+    required int romSizeBytes,
   }) {
     if (crc == null && md5 == null && sha1 == null) {
       throw ArgumentError("At least one of crc|md5|sha1 is required");
     }
     return GameInfoRequest(
-      systemeid: systemeid,
-      romtype: "rom",
-      romnom: romnom,
-      romtaille: sizeBytes,
+      systemId: systemId,
+      romType: "rom",
+      romName: romName,
+      romSizeBytes: romSizeBytes,
       crc: crc,
       md5: md5,
       sha1: sha1,
     );
   }
 
+  factory GameInfoRequest.gameById({
+    required int systemId,
+    required int gameId,
+  }) {
+    return GameInfoRequest(
+      systemId: systemId,
+      romType: "rom",
+      romName: "",
+      romSizeBytes: 0,
+      gameId: gameId,
+    );
+  }
+
   Map<String, dynamic> toQueryParameters() => {
-        'systemeid': systemeid.toString(),
-        'romtype': romtype,
-        'romnom': Uri.encodeQueryComponent(romnom, encoding: ascii),
+        'systemeid': systemId.toString(),
+        'romtype': romType,
+        'romnom': Uri.encodeQueryComponent(romName, encoding: ascii),
         if (crc != null) 'crc': crc,
         if (md5 != null) 'md5': md5,
         if (sha1 != null) 'sha1': sha1,
-        if (romtaille != null) 'romtaille': romtaille.toString(),
-        if (serialnum != null) 'serialnum': serialnum.toString(),
-        if (gameid != null) 'gameid': gameid.toString(),
+        if (romSizeBytes != null) 'romtaille': romSizeBytes.toString(),
+        if (serialNum != null) 'serialnum': serialNum.toString(),
+        if (gameId != null) 'gameid': gameId.toString(),
       };
 }

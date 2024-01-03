@@ -18,7 +18,7 @@ class Game {
   final int gameId;
 
   /// ScreenScraper's id for the rom
-  final int romId;
+  final int? romId;
 
   /// ScreenScraper's id for the system
   final int systemId;
@@ -154,12 +154,12 @@ class RomScraper {
     print(
         "Scrapping systemId=$systemId rom=${file.uri.pathSegments.last} crc=${hash.crc} md5=${hash.md5} sha1=${hash.sha1} size=${hash.sizeBytes}");
     final game = await _api.gameInfo(GameInfoRequest.romByHash(
-      systemeid: systemId,
-      romnom: file.uri.pathSegments.last,
+      systemId: systemId,
+      romName: file.uri.pathSegments.last,
       crc: hash.crc,
       md5: hash.md5,
       sha1: hash.sha1,
-      sizeBytes: hash.sizeBytes,
+      romSizeBytes: hash.sizeBytes,
     ));
     print("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
     final rating = game.note == null || game.note!.text.isEmpty ? null : double.tryParse(game.note!.text);

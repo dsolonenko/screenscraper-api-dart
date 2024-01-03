@@ -21,15 +21,24 @@ void main() {
       expect(servers.isClosedForLeecher, isFalse);
     });
 
-    test('Game Info', () async {
+    test('Game Info By Hash', () async {
       final game = await api.gameInfo(GameInfoRequest.romByHash(
-        systemeid: 1,
-        romnom: "Sonic The Hedgehog 2 (World).zip",
+        systemId: 1,
+        romName: "Sonic The Hedgehog 2 (World).zip",
         crc: "50ABC90A",
-        sizeBytes: 0,
+        romSizeBytes: 0,
       ));
       expect(game.id, equals(3));
       expect(game.romid, equals(12100));
+    });
+
+    test('Game Info By Id', () async {
+      final game = await api.gameInfo(GameInfoRequest.gameById(
+        systemId: 3,
+        gameId: 1304,
+      ));
+      expect(game.id, equals(1304));
+      expect(game.noms!.first.text, equals("Bubble Bobble"));
     });
 
     test('File hash', () async {

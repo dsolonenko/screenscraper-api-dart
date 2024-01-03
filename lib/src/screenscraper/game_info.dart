@@ -9,8 +9,8 @@ part 'game_info.g.dart';
 class GameInfo {
   @IntStringConverter()
   final int id;
-  @IntStringConverter()
-  final int romid;
+  @IntMaybeEmptyStringConverter()
+  final int? romid;
   @BoolStringConverter()
   final bool notgame;
   final List<RegionText>? noms;

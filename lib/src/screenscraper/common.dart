@@ -21,8 +21,7 @@ class RegionText {
 
   RegionText({required this.region, required this.text});
 
-  factory RegionText.fromJson(Map<String, dynamic> json) =>
-      _$RegionTextFromJson(json);
+  factory RegionText.fromJson(Map<String, dynamic> json) => _$RegionTextFromJson(json);
   Map<String, dynamic> toJson() => _$RegionTextToJson(this);
 }
 
@@ -33,8 +32,7 @@ class LangText {
 
   LangText({required this.langue, required this.text});
 
-  factory LangText.fromJson(Map<String, dynamic> json) =>
-      _$LangTextFromJson(json);
+  factory LangText.fromJson(Map<String, dynamic> json) => _$LangTextFromJson(json);
   Map<String, dynamic> toJson() => _$LangTextToJson(this);
 }
 
@@ -45,8 +43,7 @@ class TypeText {
 
   TypeText({required this.type, required this.text});
 
-  factory TypeText.fromJson(Map<String, dynamic> json) =>
-      _$TypeTextFromJson(json);
+  factory TypeText.fromJson(Map<String, dynamic> json) => _$TypeTextFromJson(json);
   Map<String, dynamic> toJson() => _$TypeTextToJson(this);
 }
 
@@ -57,8 +54,7 @@ class Response {
 
   Response({required this.header, required this.response});
 
-  factory Response.fromJson(Map<String, dynamic> json) =>
-      _$ResponseFromJson(json);
+  factory Response.fromJson(Map<String, dynamic> json) => _$ResponseFromJson(json);
   Map<String, dynamic> toJson() => _$ResponseToJson(this);
 }
 
@@ -123,4 +119,14 @@ class IntStringConverter implements JsonConverter<int, String> {
 
   @override
   String toJson(int object) => object.toString();
+}
+
+class IntMaybeEmptyStringConverter implements JsonConverter<int?, String> {
+  const IntMaybeEmptyStringConverter();
+
+  @override
+  int? fromJson(String json) => json == "" ? null : int.parse(json);
+
+  @override
+  String toJson(int? object) => object == null ? "" : object.toString();
 }
