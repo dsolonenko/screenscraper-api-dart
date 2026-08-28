@@ -12,60 +12,51 @@ class ScreenScraperException implements Exception {
 
   ScreenScraperException({required this.code, required this.message});
 
-  factory ScreenScraperException.fromHttpResponse(int statusCode, String body) {
-    switch (statusCode) {
-      case 400:
-        return DoNotRetryException(
-          code: 400,
-          message: "Game not found",
-        );
-      case 401:
-        return WaitAndRetryException(
-          code: 401,
-          message: "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
-        );
-      case 403:
-        return DoNotRetryException(
-          code: 403,
-          message: "Login error: Check your developer credentials! incorrect developer credentials",
-        );
-      case 404:
-        return DoNotRetryException(
-          code: 404,
-          message: "Game not found",
-        );
-      case 423:
-        return DoneForTheDayException(
-          code: 423,
-          message: "API totally closed The Server has a serious problem",
-        );
-      case 426:
-        return DoNotRetryException(
-          code: 426,
-          message:
-              "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
-        );
-      case 429:
-        return WaitAndRetryException(
-          code: 429,
-          message: "Need to reduce request speed",
-        );
-      case 430:
-        return DoneForTheDayException(
-          code: 430,
-          message:
-              "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
-        );
-      case 431:
-        return DoneForTheDayException(
-          code: 431,
-          message:
-              "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
-        );
-      default:
-        return ScreenScraperException(code: statusCode, message: body);
-    }
-  }
+  factory ScreenScraperException.fromHttpResponse(int statusCode, String body) =>
+      switch (statusCode) {
+        400 => DoNotRetryException(
+            code: 400,
+            message: "Game not found",
+          ),
+        401 => WaitAndRetryException(
+            code: 401,
+            message:
+                "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
+          ),
+        403 => DoNotRetryException(
+            code: 403,
+            message:
+                "Login error: Check your developer credentials! incorrect developer credentials",
+          ),
+        404 => DoNotRetryException(
+            code: 404,
+            message: "Game not found",
+          ),
+        423 => DoneForTheDayException(
+            code: 423,
+            message: "API totally closed The Server has a serious problem",
+          ),
+        426 => DoNotRetryException(
+            code: 426,
+            message:
+                "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
+          ),
+        429 => WaitAndRetryException(
+            code: 429,
+            message: "Need to reduce request speed",
+          ),
+        430 => DoneForTheDayException(
+            code: 430,
+            message:
+                "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
+          ),
+        431 => DoneForTheDayException(
+            code: 431,
+            message:
+                "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
+          ),
+        _ => ScreenScraperException(code: statusCode, message: body),
+      };
 
   @override
   String toString() {
@@ -75,17 +66,17 @@ class ScreenScraperException implements Exception {
 
 /// Do not send any more requests today - daily quota exceeded
 class DoneForTheDayException extends ScreenScraperException {
-  DoneForTheDayException({required int code, required String message}) : super(code: code, message: message);
+  DoneForTheDayException({required super.code, required super.message});
 }
 
 /// Critical error in the response, do not retry without investigating
 class DoNotRetryException extends ScreenScraperException {
-  DoNotRetryException({required int code, required String message}) : super(code: code, message: message);
+  DoNotRetryException({required super.code, required super.message});
 }
 
 /// Temporary error in the response, retry after a delay
 class WaitAndRetryException extends ScreenScraperException {
-  WaitAndRetryException({required int code, required String message}) : super(code: code, message: message);
+  WaitAndRetryException({required super.code, required super.message});
 }
 
 class HttpLogger extends MiddlewareContract {

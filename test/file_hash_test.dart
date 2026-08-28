@@ -1,32 +1,63 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:archive/archive.dart';
 import 'package:screenscraper/src/roms/file_hash.dart';
 import 'package:test/test.dart';
 
 void main() {
+  late Directory tempDir;
+
+  setUp(() {
+    tempDir = Directory.systemTemp.createTempSync('file_hash_test_');
+  });
+
+  tearDown(() {
+    if (tempDir.existsSync()) {
+      tempDir.deleteSync(recursive: true);
+    }
+  });
+
+  test('Non-existent file returns null', () async {
+    final hash = await calculateFileHash(File('${tempDir.path}/non_existent.bin'));
+    expect(hash, isNull);
+  });
+
   test('Plain File Hash Test', () async {
-    final filePath = 'Metal Slug - 1st Mission (W).ngc';
-    final hash = await calculateFileHash(File(filePath));
-    expect(hash!.crc, '4FF91807');
-    expect(hash.md5, '4D3EFEF436C67D4F4E031951B97D64C8');
-    expect(hash.sha1, '3540BB6EFBBC4F37992D2A871B8D83B4FCA0E76E');
-    expect(hash.sizeBytes, 2097152);
+    final file = File('${tempDir.path}/test.bin');
+    final bytes = Uint8List.fromList([1, 2, 3, 4, 5]);
+    file.writeAsBytesSync(bytes);
+
+    final hash = await calculateFileHash(file);
+    expect(hash, isNotNull);
+    expect(hash!.sizeBytes, 5);
+    expect(hash.crc, '470B99F4');
+    expect(hash.md5, '7CFDD07889B3295D6A550914AB35E068');
+    expect(hash.sha1, '11966AB9C099F8FABEFAC54C08D5BE2BD8C903AF');
   });
 
-  test('Zip File Hash Test', () async {
-    final filePath = 'Metal Slug - 1st Mission (W).zip';
-    final hash = await calculateFileHash(File(filePath));
-    expect(hash!.crc, '4FF91807');
-    expect(hash.md5, '4D3EFEF436C67D4F4E031951B97D64C8');
-    expect(hash.sha1, '3540BB6EFBBC4F37992D2A871B8D83B4FCA0E76E');
-    expect(hash.sizeBytes, 2097152);
+  test('Zip File Hash Test (unzips and hashes internal single file)', () async {
+    final zipFile = File('${tempDir.path}/test.zip');
+    final innerData = Uint8List.fromList([1, 2, 3, 4, 5]);
+    final archive = Archive();
+    archive.addFile(ArchiveFile('rom.bin', innerData.length, innerData));
+    final encoded = ZipEncoder().encode(archive);
+    zipFile.writeAsBytesSync(encoded);
+
+    final hash = await calculateFileHash(zipFile);
+    expect(hash, isNotNull);
+    expect(hash!.sizeBytes, 5);
+    expect(hash.crc, '470B99F4');
+    expect(hash.md5, '7CFDD07889B3295D6A550914AB35E068');
+    expect(hash.sha1, '11966AB9C099F8FABEFAC54C08D5BE2BD8C903AF');
   });
 
-  test('Should pad CRC32', () async {
-    final filePath = 'Mr. Do! by Ivan Mackintosh (PD).zip';
-    final hash = await calculateFileHash(File(filePath));
-    expect(hash!.crc, '0098C7B5');
-    expect(hash.md5, '2EE3331DD1E34020BBAFDD91DF0CE1BB');
-    expect(hash.sha1, '3E0EA487D3647936413A42570D0A1A6565CC6EC9');
-    expect(hash.sizeBytes, 16152);
+  test('CRC32 padding (8 hex digits)', () async {
+    final file = File('${tempDir.path}/zero.bin');
+    file.writeAsBytesSync(Uint8List.fromList([]));
+
+    final hash = await calculateFileHash(file);
+    expect(hash, isNotNull);
+    expect(hash!.crc, '00000000');
+    expect(hash.crc.length, 8);
   });
 }

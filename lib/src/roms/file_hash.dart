@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:archive/archive_io.dart' as zip;
-import 'package:chunked_stream/chunked_stream.dart';
+import 'package:async/async.dart';
 import 'package:crclib/catalog.dart';
 import 'package:crclib/crclib.dart';
 import 'package:crypto/crypto.dart';
@@ -30,19 +30,22 @@ Future<FileHash?> calculateFileHash(File file) async {
     Stream<List<int>>? stream;
     if (file.path.endsWith('.zip')) {
       final zipStream = zip.InputFileStream(file.path);
-      final archive = zip.ZipDecoder().decodeBuffer(zipStream);
-      if (archive.numberOfFiles() == 1) {
-        stream = Stream.value(archive.fileData(0));
-        fileSize = archive.fileSize(0);
+      try {
+        final archive = zip.ZipDecoder().decodeStream(zipStream);
+        if (archive.numberOfFiles() == 1) {
+          final data = archive.fileData(0);
+          stream = Stream.value(data);
+          fileSize = archive.fileSize(0);
+        }
+      } finally {
+        await zipStream.close();
       }
     }
     if (stream == null) {
       stream = file.openRead();
       fileSize = file.lengthSync();
     }
-    final bufferedStream = bufferChunkedStream(stream, bufferSize: 128 * 1024 * 1024);
-    // ignore: deprecated_member_use
-    final iterator = ChunkedStreamIterator(bufferedStream);
+    final reader = ChunkedStreamReader(stream);
     try {
       final md5out = AccumulatorSink<Digest>();
       final md5in = md5.startChunkedConversion(md5out);
@@ -52,7 +55,7 @@ Future<FileHash?> calculateFileHash(File file) async {
       final crcin = Crc32().startChunkedConversion(crcout);
 
       while (true) {
-        final chunk = await iterator.read(32 * 1024);
+        final chunk = await reader.readChunk(32 * 1024);
         if (chunk.isEmpty) {
           break;
         }
@@ -75,7 +78,7 @@ Future<FileHash?> calculateFileHash(File file) async {
         sizeBytes: fileSize,
       );
     } finally {
-      await iterator.cancel();
+      await reader.cancel();
     }
   } catch (exception) {
     print(exception);

@@ -101,31 +101,41 @@ class Header {
   Map<String, dynamic> toJson() => _$HeaderToJson(this);
 }
 
-class BoolStringConverter implements JsonConverter<bool, String> {
+class BoolStringConverter implements JsonConverter<bool, dynamic> {
   const BoolStringConverter();
 
   @override
-  bool fromJson(String json) => json == "true";
+  bool fromJson(dynamic json) =>
+      json == true || json == "true" || json == "1" || json == 1;
 
   @override
   String toJson(bool object) => object.toString();
 }
 
-class IntStringConverter implements JsonConverter<int, String> {
+class IntStringConverter implements JsonConverter<int, dynamic> {
   const IntStringConverter();
 
   @override
-  int fromJson(String json) => int.parse(json);
+  int fromJson(dynamic json) {
+    if (json is int) return json;
+    if (json is String) return int.tryParse(json) ?? 0;
+    return 0;
+  }
 
   @override
   String toJson(int object) => object.toString();
 }
 
-class IntMaybeEmptyStringConverter implements JsonConverter<int?, String> {
+class IntMaybeEmptyStringConverter implements JsonConverter<int?, dynamic> {
   const IntMaybeEmptyStringConverter();
 
   @override
-  int? fromJson(String json) => json == "" ? null : int.parse(json);
+  int? fromJson(dynamic json) {
+    if (json == null || json == "") return null;
+    if (json is int) return json;
+    if (json is String) return int.tryParse(json);
+    return null;
+  }
 
   @override
   String toJson(int? object) => object == null ? "" : object.toString();

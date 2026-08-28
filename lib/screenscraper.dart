@@ -1,4 +1,4 @@
-library screenscraper;
+library;
 
 export 'src/roms/scraper.dart';
 export 'src/roms/genres.dart';
