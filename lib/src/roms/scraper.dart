@@ -81,17 +81,28 @@ class Game {
     required this.isAdult,
   });
 
-  factory Game.fromGameInfo(GameInfo game) {
-    final rating = game.note == null || game.note!.text.isEmpty ? null : double.tryParse(game.note!.text);
-    final releaseDate = _findRegionText(game.dates);
-    final genres = game.genres?.map((e) => Genre(id: e.id, name: _findLanguageText(e.noms))).toList();
+  factory Game.fromGameInfo(
+    GameInfo game, {
+    List<String>? languagePriority,
+    List<String>? regionPriority,
+  }) {
+    final rating = game.note == null || (game.note!.text?.isEmpty ?? true)
+        ? null
+        : double.tryParse(game.note!.text!);
+    final releaseDate = _findRegionText(game.dates, regionPriority: regionPriority);
+    final genres = game.genres
+        ?.map((e) => Genre(
+              id: e.id,
+              name: _findLanguageText(e.noms, languagePriority: languagePriority),
+            ))
+        .toList();
     return Game(
       gameId: game.id,
       romId: game.romid,
-      systemId: game.systeme.id!,
-      systemName: game.systeme.text,
-      name: _findRegionText(game.noms),
-      description: _findLanguageText(game.synopsis),
+      systemId: game.systeme.id ?? 0,
+      systemName: game.systeme.text ?? "",
+      name: _findRegionText(game.noms, regionPriority: regionPriority),
+      description: _findLanguageText(game.synopsis, languagePriority: languagePriority),
       developer: game.developpeur?.text ?? "",
       publisher: game.editeur?.text ?? "",
       players: game.joueurs?.text ?? "",
@@ -158,6 +169,8 @@ class Genre {
 
 class RomScraper {
   final ScreenScraperAPIV2 _api;
+  final List<String> languagePriority;
+  final List<String> regionPriority;
 
   RomScraper({
     required String devId,
@@ -165,27 +178,30 @@ class RomScraper {
     required String softwareName,
     required String userName,
     required String userPassword,
+    String apiHost = 'api.screenscraper.fr',
+    List<String>? languagePriority,
+    List<String>? regionPriority,
     bool httpLogging = false,
-  }) : _api = ScreenScraperAPIV2(
+  })  : languagePriority = languagePriority ?? ScraperOverrides.languagePriority,
+        regionPriority = regionPriority ?? ScraperOverrides.regionPriority,
+        _api = ScreenScraperAPIV2(
           devId: devId,
           devPassword: devPassword,
           softwareName: softwareName,
           userName: userName,
           userPassword: userPassword,
+          apiHost: apiHost,
           httpLog: httpLogging,
         );
 
   /// Scrape a rom file and return a [Game] object with the matching game details
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
-  /// Use [ScraperOverrides] to override the default language and region priority
   Future<Game> scrapeRom({required int systemId, required String romPath}) async {
     final file = File(romPath);
     final hash = await calculateFileHash(file);
     if (hash == null) {
       throw Exception("Unable to calculate hash for $romPath");
     }
-    print(
-        "Scrapping systemId=$systemId rom=${file.uri.pathSegments.last} crc=${hash.crc} md5=${hash.md5} sha1=${hash.sha1} size=${hash.sizeBytes}");
     final game = await _api.gameInfo(GameInfoRequest.romByHash(
       systemId: systemId,
       romName: file.uri.pathSegments.last,
@@ -194,21 +210,26 @@ class RomScraper {
       sha1: hash.sha1,
       romSizeBytes: hash.sizeBytes,
     ));
-    print("Game ID for systemId=$systemId rom=${file.uri.pathSegments.last} is ${game.id}");
-    return Game.fromGameInfo(game);
+    return Game.fromGameInfo(
+      game,
+      languagePriority: languagePriority,
+      regionPriority: regionPriority,
+    );
   }
 
   /// Scrape a game by id and return a [Game] object
   /// [systemId] is the ScreenScraper's id of the system
   /// [gameId] is the ScreenScraper's id of the game
-  /// Use [ScraperOverrides] to override the default language and region priority
   Future<Game> scrapeGame({required int systemId, required int gameId}) async {
-    print("Scrapping systemId=$systemId gameId=$gameId");
     final game = await _api.gameInfo(GameInfoRequest.gameById(
       systemId: systemId,
       gameId: gameId,
     ));
-    return Game.fromGameInfo(game);
+    return Game.fromGameInfo(
+      game,
+      languagePriority: languagePriority,
+      regionPriority: regionPriority,
+    );
   }
 
   /// Close the scraper to dispose the connection
@@ -228,24 +249,22 @@ MediaLink? _findMediaLink(List<GameMedia>? medias, String type) {
   );
 }
 
-String _findRegionText(List<RegionText>? text) {
+String _findRegionText(List<RegionText>? text, {List<String>? regionPriority}) {
   if (text == null || text.isEmpty) return "";
-  return text
-      .firstWhere(
-        (element) => ScraperOverrides.regionPriority.contains(element.region),
-        orElse: () => text.first,
-      )
-      .text;
+  final priorities = regionPriority ?? ScraperOverrides.regionPriority;
+  final item = text.firstWhereOrNull(
+    (element) => priorities.contains(element.region),
+  ) ?? text.first;
+  return item.text ?? "";
 }
 
-String _findLanguageText(List<LangText>? text) {
+String _findLanguageText(List<LangText>? text, {List<String>? languagePriority}) {
   if (text == null || text.isEmpty) return "";
-  return text
-      .firstWhere(
-        (element) => ScraperOverrides.languagePriority.contains(element.langue),
-        orElse: () => text.first,
-      )
-      .text;
+  final priorities = languagePriority ?? ScraperOverrides.languagePriority;
+  final item = text.firstWhereOrNull(
+    (element) => priorities.contains(element.langue),
+  ) ?? text.first;
+  return item.text ?? "";
 }
 
 GameGenre _lookupNormalizedGenre(List<Genre>? genres) {

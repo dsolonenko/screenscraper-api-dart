@@ -6,9 +6,9 @@ part 'common.g.dart';
 class IdText {
   @IntStringConverter()
   final int? id;
-  final String text;
+  final String? text;
 
-  IdText({required this.id, required this.text});
+  IdText({this.id, this.text});
 
   factory IdText.fromJson(Map<String, dynamic> json) => _$IdTextFromJson(json);
   Map<String, dynamic> toJson() => _$IdTextToJson(this);
@@ -16,10 +16,10 @@ class IdText {
 
 @JsonSerializable()
 class RegionText {
-  final String region;
-  final String text;
+  final String? region;
+  final String? text;
 
-  RegionText({required this.region, required this.text});
+  RegionText({this.region, this.text});
 
   factory RegionText.fromJson(Map<String, dynamic> json) => _$RegionTextFromJson(json);
   Map<String, dynamic> toJson() => _$RegionTextToJson(this);
@@ -27,10 +27,10 @@ class RegionText {
 
 @JsonSerializable()
 class LangText {
-  final String langue;
-  final String text;
+  final String? langue;
+  final String? text;
 
-  LangText({required this.langue, required this.text});
+  LangText({this.langue, this.text});
 
   factory LangText.fromJson(Map<String, dynamic> json) => _$LangTextFromJson(json);
   Map<String, dynamic> toJson() => _$LangTextToJson(this);
@@ -38,10 +38,10 @@ class LangText {
 
 @JsonSerializable()
 class TypeText {
-  final String type;
-  final String text;
+  final String? type;
+  final String? text;
 
-  TypeText({required this.type, required this.text});
+  TypeText({this.type, this.text});
 
   factory TypeText.fromJson(Map<String, dynamic> json) => _$TypeTextFromJson(json);
   Map<String, dynamic> toJson() => _$TypeTextToJson(this);
@@ -62,17 +62,17 @@ class Response {
 class Data {
   @IntStringConverter()
   final int id;
-  final String nomcourt;
-  final String principale;
-  final String parentid;
-  final List<LangText> noms;
+  final String? nomcourt;
+  final String? principale;
+  final String? parentid;
+  final List<LangText>? noms;
 
   Data({
     required this.id,
-    required this.nomcourt,
-    required this.principale,
-    required this.parentid,
-    required this.noms,
+    this.nomcourt,
+    this.principale,
+    this.parentid,
+    this.noms,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
@@ -82,19 +82,19 @@ class Data {
 @JsonSerializable()
 class Header {
   @JsonKey(name: 'APIversion')
-  final String apiVersion;
-  final String dateTime;
-  final String commandRequested;
+  final String? apiVersion;
+  final String? dateTime;
+  final String? commandRequested;
   @BoolStringConverter()
-  final bool success;
-  final String error;
+  final bool? success;
+  final String? error;
 
   Header({
-    required this.apiVersion,
-    required this.dateTime,
-    required this.commandRequested,
-    required this.success,
-    required this.error,
+    this.apiVersion,
+    this.dateTime,
+    this.commandRequested,
+    this.success,
+    this.error,
   });
 
   factory Header.fromJson(Map<String, dynamic> json) => _$HeaderFromJson(json);

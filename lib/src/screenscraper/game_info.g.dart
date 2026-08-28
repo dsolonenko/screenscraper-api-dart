@@ -98,9 +98,9 @@ Json? _$JsonConverterToJson<Json, Value>(
 ) => value == null ? null : toJson(value);
 
 GameAction _$GameActionFromJson(Map<String, dynamic> json) => GameAction(
-  id: json['id'] as String,
-  controle: (json['controle'] as List<dynamic>)
-      .map((e) => LangText.fromJson(e as Map<String, dynamic>))
+  id: json['id'] as String?,
+  controle: (json['controle'] as List<dynamic>?)
+      ?.map((e) => LangText.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
@@ -112,9 +112,9 @@ GameMedia _$GameMediaFromJson(Map<String, dynamic> json) => GameMedia(
   parent: json['parent'] as String,
   url: json['url'] as String,
   region: json['region'] as String?,
-  crc: json['crc'] as String,
-  md5: json['md5'] as String,
-  sha1: json['sha1'] as String,
+  crc: json['crc'] as String?,
+  md5: json['md5'] as String?,
+  sha1: json['sha1'] as String?,
   size: const IntStringConverter().fromJson(json['size']),
   format: json['format'] as String,
 );
@@ -135,9 +135,9 @@ Map<String, dynamic> _$GameMediaToJson(GameMedia instance) => <String, dynamic>{
 };
 
 GameRom _$GameRomFromJson(Map<String, dynamic> json) => GameRom(
-  id: json['id'] as String,
+  id: json['id'] as String?,
   romsize: const IntStringConverter().fromJson(json['romsize']),
-  romfilename: json['romfilename'] as String,
+  romfilename: json['romfilename'] as String?,
   romnumsupport: json['romnumsupport'] as String?,
   romtotalsupport: json['romtotalsupport'] as String?,
   romcloneof: json['romcloneof'] as String?,
@@ -161,7 +161,10 @@ GameRom _$GameRomFromJson(Map<String, dynamic> json) => GameRom(
 
 Map<String, dynamic> _$GameRomToJson(GameRom instance) => <String, dynamic>{
   'id': instance.id,
-  'romsize': const IntStringConverter().toJson(instance.romsize),
+  'romsize': _$JsonConverterToJson<dynamic, int>(
+    instance.romsize,
+    const IntStringConverter().toJson,
+  ),
   'romfilename': instance.romfilename,
   'romnumsupport': instance.romnumsupport,
   'romtotalsupport': instance.romtotalsupport,
@@ -169,14 +172,41 @@ Map<String, dynamic> _$GameRomToJson(GameRom instance) => <String, dynamic>{
   'romcrc': instance.romcrc,
   'rommd5': instance.rommd5,
   'romsha1': instance.romsha1,
-  'beta': const BoolStringConverter().toJson(instance.beta),
-  'demo': const BoolStringConverter().toJson(instance.demo),
-  'proto': const BoolStringConverter().toJson(instance.proto),
-  'trad': const BoolStringConverter().toJson(instance.trad),
-  'hack': const BoolStringConverter().toJson(instance.hack),
-  'unl': const BoolStringConverter().toJson(instance.unl),
-  'alt': const BoolStringConverter().toJson(instance.alt),
-  'best': const BoolStringConverter().toJson(instance.best),
-  'netplay': const BoolStringConverter().toJson(instance.netplay),
+  'beta': _$JsonConverterToJson<dynamic, bool>(
+    instance.beta,
+    const BoolStringConverter().toJson,
+  ),
+  'demo': _$JsonConverterToJson<dynamic, bool>(
+    instance.demo,
+    const BoolStringConverter().toJson,
+  ),
+  'proto': _$JsonConverterToJson<dynamic, bool>(
+    instance.proto,
+    const BoolStringConverter().toJson,
+  ),
+  'trad': _$JsonConverterToJson<dynamic, bool>(
+    instance.trad,
+    const BoolStringConverter().toJson,
+  ),
+  'hack': _$JsonConverterToJson<dynamic, bool>(
+    instance.hack,
+    const BoolStringConverter().toJson,
+  ),
+  'unl': _$JsonConverterToJson<dynamic, bool>(
+    instance.unl,
+    const BoolStringConverter().toJson,
+  ),
+  'alt': _$JsonConverterToJson<dynamic, bool>(
+    instance.alt,
+    const BoolStringConverter().toJson,
+  ),
+  'best': _$JsonConverterToJson<dynamic, bool>(
+    instance.best,
+    const BoolStringConverter().toJson,
+  ),
+  'netplay': _$JsonConverterToJson<dynamic, bool>(
+    instance.netplay,
+    const BoolStringConverter().toJson,
+  ),
   'regions': instance.regions,
 };

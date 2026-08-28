@@ -115,6 +115,7 @@ class ScreenScraperAPIV2 {
   final String softwareName;
   final String userName;
   final String userPassword;
+  final String apiHost;
 
   final HttpClientWithMiddleware _http;
 
@@ -124,19 +125,23 @@ class ScreenScraperAPIV2 {
     required this.softwareName,
     required this.userName,
     required this.userPassword,
+    this.apiHost = 'api.screenscraper.fr',
     bool httpLog = false,
   }) : _http = HttpClientWithMiddleware.build(
-          requestTimeout: Duration(seconds: 30),
-          middlewares: [HttpLogger()],
+          requestTimeout: const Duration(seconds: 30),
+          middlewares: [if (httpLog) HttpLogger()],
         );
 
   /// Use leecher credentials, for testing purposes
-  factory ScreenScraperAPIV2.asTestUser() => ScreenScraperAPIV2(
+  factory ScreenScraperAPIV2.asTestUser({String apiHost = 'api.screenscraper.fr', bool httpLog = false}) =>
+      ScreenScraperAPIV2(
         devId: "xxx",
         devPassword: "yyy",
         softwareName: "zzz",
         userName: "test",
         userPassword: "test",
+        apiHost: apiHost,
+        httpLog: httpLog,
       );
 
   /// ssinfraInfos.php: Information about the ScreenScraper framework
@@ -169,7 +174,7 @@ class ScreenScraperAPIV2 {
       'sspassword': userPassword,
       'output': 'json',
     };
-    return Uri.https('www.screenscraper.fr', "api2/$path", {...required, ...params ?? {}});
+    return Uri.https(apiHost, "api2/$path", {...required, ...params ?? {}});
   }
 
   void close() {
@@ -238,7 +243,7 @@ class GameInfoRequest {
   Map<String, dynamic> toQueryParameters() => {
         'systemeid': systemId.toString(),
         'romtype': romType,
-        'romnom': Uri.encodeQueryComponent(romName, encoding: ascii),
+        'romnom': romName,
         if (crc != null) 'crc': crc,
         if (md5 != null) 'md5': md5,
         if (sha1 != null) 'sha1': sha1,

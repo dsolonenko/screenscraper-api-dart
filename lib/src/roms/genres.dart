@@ -272,7 +272,7 @@ enum GameGenre {
   }
 
   static bool topGenreMatching(GameGenre sub, GameGenre top) {
-    return (sub.index >> 8) == (top.index >> 8);
+    return (sub.id >> 8) == (top.id >> 8);
   }
 
   static GameGenre getTopGenre(GameGenre genre) {

@@ -14,6 +14,8 @@ class Servers {
   @IntStringConverter()
   final int cpu3;
   @IntStringConverter()
+  final int? cpu4;
+  @IntStringConverter()
   final int threadsmin;
   @IntStringConverter()
   final int nbscrapeurs;
@@ -39,6 +41,7 @@ class Servers {
     required this.cpu1,
     required this.cpu2,
     required this.cpu3,
+    this.cpu4,
     required this.threadsmin,
     required this.nbscrapeurs,
     required this.apiacces,

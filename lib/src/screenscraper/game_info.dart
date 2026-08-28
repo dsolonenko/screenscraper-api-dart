@@ -66,12 +66,12 @@ class GameInfo {
 
 @JsonSerializable()
 class GameAction {
-  final String id;
-  final List<LangText> controle;
+  final String? id;
+  final List<LangText>? controle;
 
   GameAction({
-    required this.id,
-    required this.controle,
+    this.id,
+    this.controle,
   });
 
   factory GameAction.fromJson(Map<String, dynamic> json) => _$GameActionFromJson(json);
@@ -84,9 +84,9 @@ class GameMedia {
   final String parent;
   final String url;
   final String? region;
-  final String crc;
-  final String md5;
-  final String sha1;
+  final String? crc;
+  final String? md5;
+  final String? sha1;
   @IntStringConverter()
   final int? size;
   final String format;
@@ -95,11 +95,11 @@ class GameMedia {
     required this.type,
     required this.parent,
     required this.url,
-    required this.region,
-    required this.crc,
-    required this.md5,
-    required this.sha1,
-    required this.size,
+    this.region,
+    this.crc,
+    this.md5,
+    this.sha1,
+    this.size,
     required this.format,
   });
 
@@ -109,10 +109,10 @@ class GameMedia {
 
 @JsonSerializable()
 class GameRom {
-  final String id;
+  final String? id;
   @IntStringConverter()
-  final int romsize;
-  final String romfilename;
+  final int? romsize;
+  final String? romfilename;
   final String? romnumsupport;
   final String? romtotalsupport;
   final String? romcloneof;
@@ -120,45 +120,45 @@ class GameRom {
   final String? rommd5;
   final String? romsha1;
   @BoolStringConverter()
-  final bool beta;
+  final bool? beta;
   @BoolStringConverter()
-  final bool demo;
+  final bool? demo;
   @BoolStringConverter()
-  final bool proto;
+  final bool? proto;
   @BoolStringConverter()
-  final bool trad;
+  final bool? trad;
   @BoolStringConverter()
-  final bool hack;
+  final bool? hack;
   @BoolStringConverter()
-  final bool unl;
+  final bool? unl;
   @BoolStringConverter()
-  final bool alt;
+  final bool? alt;
   @BoolStringConverter()
-  final bool best;
+  final bool? best;
   @BoolStringConverter()
-  final bool netplay;
+  final bool? netplay;
   final Map<String, List<String>>? regions;
 
   GameRom({
-    required this.id,
-    required this.romsize,
-    required this.romfilename,
-    required this.romnumsupport,
-    required this.romtotalsupport,
-    required this.romcloneof,
-    required this.romcrc,
-    required this.rommd5,
-    required this.romsha1,
-    required this.beta,
-    required this.demo,
-    required this.proto,
-    required this.trad,
-    required this.hack,
-    required this.unl,
-    required this.alt,
-    required this.best,
-    required this.netplay,
-    required this.regions,
+    this.id,
+    this.romsize,
+    this.romfilename,
+    this.romnumsupport,
+    this.romtotalsupport,
+    this.romcloneof,
+    this.romcrc,
+    this.rommd5,
+    this.romsha1,
+    this.beta,
+    this.demo,
+    this.proto,
+    this.trad,
+    this.hack,
+    this.unl,
+    this.alt,
+    this.best,
+    this.netplay,
+    this.regions,
   });
 
   factory GameRom.fromJson(Map<String, dynamic> json) => _$GameRomFromJson(json);

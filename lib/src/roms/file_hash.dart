@@ -24,7 +24,6 @@ class FileHash {
 
 Future<FileHash?> calculateFileHash(File file) async {
   if (!file.existsSync()) return null;
-  final sw = Stopwatch()..start();
   try {
     int fileSize = 0;
     Stream<List<int>>? stream;
@@ -32,10 +31,14 @@ Future<FileHash?> calculateFileHash(File file) async {
       final zipStream = zip.InputFileStream(file.path);
       try {
         final archive = zip.ZipDecoder().decodeStream(zipStream);
-        if (archive.numberOfFiles() == 1) {
-          final data = archive.fileData(0);
-          stream = Stream.value(data);
-          fileSize = archive.fileSize(0);
+        final fileEntries = archive.files.where((f) => f.isFile).toList();
+        if (fileEntries.length == 1) {
+          final entry = fileEntries.first;
+          final dynamic content = entry.content;
+          if (content is List<int>) {
+            stream = Stream.value(content);
+            fileSize = entry.size;
+          }
         }
       } finally {
         await zipStream.close();
@@ -80,11 +83,7 @@ Future<FileHash?> calculateFileHash(File file) async {
     } finally {
       await reader.cancel();
     }
-  } catch (exception) {
-    print(exception);
+  } catch (_) {
     return null;
-  } finally {
-    sw.stop();
-    print('calculateFileHash: ${sw.elapsed}');
   }
 }
