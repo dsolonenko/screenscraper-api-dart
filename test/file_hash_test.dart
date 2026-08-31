@@ -60,4 +60,16 @@ void main() {
     expect(hash!.crc, '00000000');
     expect(hash.crc.length, 8);
   });
+
+  test('Files exceeding maxSizeBytes are skipped', () async {
+    final file = File('${tempDir.path}/large.bin');
+    file.writeAsBytesSync(Uint8List(1000));
+
+    final skipped = await calculateFileHash(file, maxSizeBytes: 500);
+    expect(skipped, isNull);
+
+    final hashed = await calculateFileHash(file, maxSizeBytes: 2000);
+    expect(hashed, isNotNull);
+    expect(hashed!.sizeBytes, 1000);
+  });
 }

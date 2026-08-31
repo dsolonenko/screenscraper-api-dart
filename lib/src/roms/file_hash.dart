@@ -22,8 +22,9 @@ class FileHash {
   });
 }
 
-Future<FileHash?> calculateFileHash(File file) async {
+Future<FileHash?> calculateFileHash(File file, {int? maxSizeBytes}) async {
   if (!file.existsSync()) return null;
+  if (maxSizeBytes != null && file.lengthSync() > maxSizeBytes) return null;
   try {
     int fileSize = 0;
     Stream<List<int>>? stream;

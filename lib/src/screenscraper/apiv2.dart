@@ -205,6 +205,27 @@ class GameInfoRequest {
     this.gameId,
   });
 
+  factory GameInfoRequest.rom({
+    required int systemId,
+    required String romName,
+    String? crc,
+    String? md5,
+    String? sha1,
+    int? romSizeBytes,
+    int? serialNum,
+  }) {
+    return GameInfoRequest(
+      systemId: systemId,
+      romType: "rom",
+      romName: romName,
+      romSizeBytes: romSizeBytes,
+      crc: crc,
+      md5: md5,
+      sha1: sha1,
+      serialNum: serialNum,
+    );
+  }
+
   factory GameInfoRequest.romByHash({
     required int systemId,
     required String romName,
@@ -213,12 +234,8 @@ class GameInfoRequest {
     String? sha1,
     required int romSizeBytes,
   }) {
-    if (crc == null && md5 == null && sha1 == null) {
-      throw ArgumentError("At least one of crc|md5|sha1 is required");
-    }
-    return GameInfoRequest(
+    return GameInfoRequest.rom(
       systemId: systemId,
-      romType: "rom",
       romName: romName,
       romSizeBytes: romSizeBytes,
       crc: crc,

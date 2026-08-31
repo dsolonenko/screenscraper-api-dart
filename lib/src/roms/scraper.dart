@@ -172,12 +172,20 @@ class RomScraper {
   final List<String> languagePriority;
   final List<String> regionPriority;
 
+  /// Default max file size (in bytes) to calculate whole-file hashes for.
+  /// Files larger than this (e.g. optical disc images like PS1/PS2/GameCube/Wii)
+  /// will skip full hashing and scrape by filename and size directly.
+  static const int defaultMaxHashSizeBytes = 128 * 1024 * 1024; // 128 MB
+
+  final int maxHashSizeBytes;
+
   RomScraper({
     required String devId,
     required String devPassword,
     required String softwareName,
     required String userName,
     required String userPassword,
+    this.maxHashSizeBytes = defaultMaxHashSizeBytes,
     String apiHost = 'api.screenscraper.fr',
     List<String>? languagePriority,
     List<String>? regionPriority,
@@ -196,19 +204,31 @@ class RomScraper {
 
   /// Scrape a rom file and return a [Game] object with the matching game details
   /// [systemId] is the ScreenScraper's id of the system the rom belongs to
-  Future<Game> scrapeRom({required int systemId, required String romPath}) async {
+  Future<Game> scrapeRom({
+    required int systemId,
+    required String romPath,
+    int? maxHashSizeBytes,
+  }) async {
     final file = File(romPath);
-    final hash = await calculateFileHash(file);
-    if (hash == null) {
-      throw Exception("Unable to calculate hash for $romPath");
+    if (!file.existsSync()) {
+      throw Exception("Unable to find file: $romPath");
     }
-    final game = await _api.gameInfo(GameInfoRequest.romByHash(
+
+    final fileSize = file.lengthSync();
+    final maxHash = maxHashSizeBytes ?? this.maxHashSizeBytes;
+
+    FileHash? hash;
+    if (fileSize <= maxHash) {
+      hash = await calculateFileHash(file);
+    }
+
+    final game = await _api.gameInfo(GameInfoRequest.rom(
       systemId: systemId,
       romName: file.uri.pathSegments.last,
-      crc: hash.crc,
-      md5: hash.md5,
-      sha1: hash.sha1,
-      romSizeBytes: hash.sizeBytes,
+      crc: hash?.crc,
+      md5: hash?.md5,
+      sha1: hash?.sha1,
+      romSizeBytes: hash?.sizeBytes ?? fileSize,
     ));
     return Game.fromGameInfo(
       game,
