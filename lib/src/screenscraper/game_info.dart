@@ -60,7 +60,8 @@ class GameInfo {
     required this.rom,
   });
 
-  factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
+  factory GameInfo.fromJson(Map<String, dynamic> json) =>
+      _$GameInfoFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoToJson(this);
 }
 
@@ -69,12 +70,10 @@ class GameAction {
   final String? id;
   final List<LangText>? controle;
 
-  GameAction({
-    this.id,
-    this.controle,
-  });
+  GameAction({this.id, this.controle});
 
-  factory GameAction.fromJson(Map<String, dynamic> json) => _$GameActionFromJson(json);
+  factory GameAction.fromJson(Map<String, dynamic> json) =>
+      _$GameActionFromJson(json);
   Map<String, dynamic> toJson() => _$GameActionToJson(this);
 }
 
@@ -103,7 +102,8 @@ class GameMedia {
     required this.format,
   });
 
-  factory GameMedia.fromJson(Map<String, dynamic> json) => _$GameMediaFromJson(json);
+  factory GameMedia.fromJson(Map<String, dynamic> json) =>
+      _$GameMediaFromJson(json);
   Map<String, dynamic> toJson() => _$GameMediaToJson(this);
 }
 
@@ -161,6 +161,7 @@ class GameRom {
     this.regions,
   });
 
-  factory GameRom.fromJson(Map<String, dynamic> json) => _$GameRomFromJson(json);
+  factory GameRom.fromJson(Map<String, dynamic> json) =>
+      _$GameRomFromJson(json);
   Map<String, dynamic> toJson() => _$GameRomToJson(this);
 }

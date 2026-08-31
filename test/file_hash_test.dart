@@ -18,7 +18,9 @@ void main() {
   });
 
   test('Non-existent file returns null', () async {
-    final hash = await calculateFileHash(File('${tempDir.path}/non_existent.bin'));
+    final hash = await calculateFileHash(
+      File('${tempDir.path}/non_existent.bin'),
+    );
     expect(hash, isNull);
   });
 

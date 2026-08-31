@@ -22,22 +22,21 @@ void main() {
     });
 
     test('Game Info By Hash', () async {
-      final game = await api.gameInfo(GameInfoRequest.romByHash(
-        systemId: 1,
-        romName: "Sonic The Hedgehog 2 (World).zip",
-        crc: "50ABC90A",
-        romSizeBytes: 0,
-      ));
+      final game = await api.gameInfo(
+        GameInfoRequest.romByHash(
+          systemId: 1,
+          romName: "Sonic The Hedgehog 2 (World).zip",
+          crc: "50ABC90A",
+          romSizeBytes: 0,
+        ),
+      );
       expect(game.id, equals(3));
       expect(game.romid, isNotNull);
     });
 
     test('Game Info By Id requires valid credentials', () async {
       expect(
-        () => api.gameInfo(GameInfoRequest.gameById(
-          systemId: 3,
-          gameId: 1304,
-        )),
+        () => api.gameInfo(GameInfoRequest.gameById(systemId: 3, gameId: 1304)),
         throwsA(isA<ScreenScraperException>()),
       );
     });

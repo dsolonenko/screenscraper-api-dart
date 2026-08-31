@@ -12,51 +12,47 @@ class ScreenScraperException implements Exception {
 
   ScreenScraperException({required this.code, required this.message});
 
-  factory ScreenScraperException.fromHttpResponse(int statusCode, String body) =>
-      switch (statusCode) {
-        400 => DoNotRetryException(
-            code: 400,
-            message: "Game not found",
-          ),
-        401 => WaitAndRetryException(
-            code: 401,
-            message:
-                "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
-          ),
-        403 => DoNotRetryException(
-            code: 403,
-            message:
-                "Login error: Check your developer credentials! incorrect developer credentials",
-          ),
-        404 => DoNotRetryException(
-            code: 404,
-            message: "Game not found",
-          ),
-        423 => DoneForTheDayException(
-            code: 423,
-            message: "API totally closed The Server has a serious problem",
-          ),
-        426 => DoNotRetryException(
-            code: 426,
-            message:
-                "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
-          ),
-        429 => WaitAndRetryException(
-            code: 429,
-            message: "Need to reduce request speed",
-          ),
-        430 => DoneForTheDayException(
-            code: 430,
-            message:
-                "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
-          ),
-        431 => DoneForTheDayException(
-            code: 431,
-            message:
-                "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
-          ),
-        _ => ScreenScraperException(code: statusCode, message: body),
-      };
+  factory ScreenScraperException.fromHttpResponse(
+    int statusCode,
+    String body,
+  ) => switch (statusCode) {
+    400 => DoNotRetryException(code: 400, message: "Game not found"),
+    401 => WaitAndRetryException(
+      code: 401,
+      message:
+          "API closed for non-members or inactive members The Server is saturated (CPU usage>60%)",
+    ),
+    403 => DoNotRetryException(
+      code: 403,
+      message:
+          "Login error: Check your developer credentials! incorrect developer credentials",
+    ),
+    404 => DoNotRetryException(code: 404, message: "Game not found"),
+    423 => DoneForTheDayException(
+      code: 423,
+      message: "API totally closed The Server has a serious problem",
+    ),
+    426 => DoNotRetryException(
+      code: 426,
+      message:
+          "The scraping software used has been blacklisted (non-compliant / obsolete version) The software version must be changed",
+    ),
+    429 => WaitAndRetryException(
+      code: 429,
+      message: "Need to reduce request speed",
+    ),
+    430 => DoneForTheDayException(
+      code: 430,
+      message:
+          "Your scrape quota is exceeded for today! The member has scraped more than x (see F.A.Q) roms during the day",
+    ),
+    431 => DoneForTheDayException(
+      code: 431,
+      message:
+          "Sort through your rom files and come back tomorrow! The member has scraped more than x (see F.A.Q) roms not recognized by ScreenScraper",
+    ),
+    _ => ScreenScraperException(code: statusCode, message: body),
+  };
 
   @override
   String toString() {
@@ -128,38 +124,49 @@ class ScreenScraperAPIV2 {
     this.apiHost = 'api.screenscraper.fr',
     bool httpLog = false,
   }) : _http = HttpClientWithMiddleware.build(
-          requestTimeout: const Duration(seconds: 30),
-          middlewares: [if (httpLog) HttpLogger()],
-        );
+         requestTimeout: const Duration(seconds: 30),
+         middlewares: [if (httpLog) HttpLogger()],
+       );
 
   /// Use leecher credentials, for testing purposes
-  factory ScreenScraperAPIV2.asTestUser({String apiHost = 'api.screenscraper.fr', bool httpLog = false}) =>
-      ScreenScraperAPIV2(
-        devId: "xxx",
-        devPassword: "yyy",
-        softwareName: "zzz",
-        userName: "test",
-        userPassword: "test",
-        apiHost: apiHost,
-        httpLog: httpLog,
-      );
+  factory ScreenScraperAPIV2.asTestUser({
+    String apiHost = 'api.screenscraper.fr',
+    bool httpLog = false,
+  }) => ScreenScraperAPIV2(
+    devId: "xxx",
+    devPassword: "yyy",
+    softwareName: "zzz",
+    userName: "test",
+    userPassword: "test",
+    apiHost: apiHost,
+    httpLog: httpLog,
+  );
 
   /// ssinfraInfos.php: Information about the ScreenScraper framework
   Future<Servers> infraInfo() {
-    return _getApiResponse("ssinfraInfos.php")
-        .then((apiResponse) => Servers.fromJson(apiResponse.response['serveurs']));
+    return _getApiResponse(
+      "ssinfraInfos.php",
+    ).then((apiResponse) => Servers.fromJson(apiResponse.response['serveurs']));
   }
 
   /// jeuInfos.php: Information on a game / Media of a game
   Future<GameInfo> gameInfo(GameInfoRequest request) {
-    return _getApiResponse("jeuInfos.php", params: request.toQueryParameters())
-        .then((apiResponse) => GameInfo.fromJson(apiResponse.response['jeu']));
+    return _getApiResponse(
+      "jeuInfos.php",
+      params: request.toQueryParameters(),
+    ).then((apiResponse) => GameInfo.fromJson(apiResponse.response['jeu']));
   }
 
-  Future<Response> _getApiResponse(String path, {Map<String, dynamic>? params}) async {
+  Future<Response> _getApiResponse(
+    String path, {
+    Map<String, dynamic>? params,
+  }) async {
     final httpResponse = await _http.get(_buildUrl(path, params: params));
     if (httpResponse.statusCode != 200) {
-      throw ScreenScraperException.fromHttpResponse(httpResponse.statusCode, httpResponse.body);
+      throw ScreenScraperException.fromHttpResponse(
+        httpResponse.statusCode,
+        httpResponse.body,
+      );
     }
     final json = jsonDecode(httpResponse.body);
     return Response.fromJson(json);
@@ -258,14 +265,14 @@ class GameInfoRequest {
   }
 
   Map<String, dynamic> toQueryParameters() => {
-        'systemeid': systemId.toString(),
-        'romtype': romType,
-        'romnom': romName,
-        if (crc != null) 'crc': crc,
-        if (md5 != null) 'md5': md5,
-        if (sha1 != null) 'sha1': sha1,
-        if (romSizeBytes != null) 'romtaille': romSizeBytes.toString(),
-        if (serialNum != null) 'serialnum': serialNum.toString(),
-        if (gameId != null) 'gameid': gameId.toString(),
-      };
+    'systemeid': systemId.toString(),
+    'romtype': romType,
+    'romnom': romName,
+    if (crc != null) 'crc': crc,
+    if (md5 != null) 'md5': md5,
+    if (sha1 != null) 'sha1': sha1,
+    if (romSizeBytes != null) 'romtaille': romSizeBytes.toString(),
+    if (serialNum != null) 'serialnum': serialNum.toString(),
+    if (gameId != null) 'gameid': gameId.toString(),
+  };
 }

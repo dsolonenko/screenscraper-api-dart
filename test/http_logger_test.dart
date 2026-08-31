@@ -13,19 +13,25 @@ void main() {
       expect(logger.sanitizeUrl(url), equals(expectedUrl));
     });
 
-    test('GameInfoRequest handles Unicode ROM names without crashing or double encoding', () {
-      final request = GameInfoRequest.romByHash(
-        systemId: 12,
-        romName: 'Pokémon - Version Émeraude (France).gba',
-        crc: '12345678',
-        romSizeBytes: 16777216,
-      );
+    test(
+      'GameInfoRequest handles Unicode ROM names without crashing or double encoding',
+      () {
+        final request = GameInfoRequest.romByHash(
+          systemId: 12,
+          romName: 'Pokémon - Version Émeraude (France).gba',
+          crc: '12345678',
+          romSizeBytes: 16777216,
+        );
 
-      final params = request.toQueryParameters();
-      expect(params['romnom'], equals('Pokémon - Version Émeraude (France).gba'));
-      expect(params['systemeid'], equals('12'));
-      expect(params['crc'], equals('12345678'));
-      expect(params['romtaille'], equals('16777216'));
-    });
+        final params = request.toQueryParameters();
+        expect(
+          params['romnom'],
+          equals('Pokémon - Version Émeraude (France).gba'),
+        );
+        expect(params['systemeid'], equals('12'));
+        expect(params['crc'], equals('12345678'));
+        expect(params['romtaille'], equals('16777216'));
+      },
+    );
   });
 }

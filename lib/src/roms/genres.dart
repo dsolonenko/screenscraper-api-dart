@@ -7,254 +7,277 @@ import 'dart:core';
 enum GameGenre {
   None(id: 0x0000, shortName: "none", longName: "None"), // No genre
   Action(
-      id: 0x0100,
-      shortName: "action",
-      longName: "Action (All)"), // Generic Action games
+    id: 0x0100,
+    shortName: "action",
+    longName: "Action (All)",
+  ), // Generic Action games
   ActionPlatformer(
-      id: 0x0101,
-      shortName: "actionplatformer",
-      longName: "Platform"), // - Action platform game
+    id: 0x0101,
+    shortName: "actionplatformer",
+    longName: "Platform",
+  ), // - Action platform game
   ActionPlatformShooter(
-      id: 0x0102,
-      shortName: "actionplatformshooter",
-      longName:
-          "Platform Shooter"), // - Action platform shooter (Turrican, ...)
+    id: 0x0102,
+    shortName: "actionplatformshooter",
+    longName: "Platform Shooter",
+  ), // - Action platform shooter (Turrican, ...)
   ActionFirstPersonShooter(
-      id: 0x0103,
-      shortName: "actionfirstpersonshooter",
-      longName: "First Person Shooter"), // - First person shooter (007, ...)
+    id: 0x0103,
+    shortName: "actionfirstpersonshooter",
+    longName: "First Person Shooter",
+  ), // - First person shooter (007, ...)
   ActionShootEmUp(
-      id: 0x0104,
-      shortName: "actionshootemup",
-      longName: "Shoot'em Up"), // - Shoot'em up/all (
+    id: 0x0104,
+    shortName: "actionshootemup",
+    longName: "Shoot'em Up",
+  ), // - Shoot'em up/all (
   ActionShootWithGun(
-      id: 0x0105,
-      shortName: "actionshootwithgun",
-      longName:
-          "Shoot with Gun"), // - On-screen shooters (Operation wolf, Duck Hunt, ...)
+    id: 0x0105,
+    shortName: "actionshootwithgun",
+    longName: "Shoot with Gun",
+  ), // - On-screen shooters (Operation wolf, Duck Hunt, ...)
   ActionFighting(
-      id: 0x0106,
-      shortName: "actionfighting",
-      longName:
-          "Fighting"), // - Fighting games (mortal kombat, street fighters, ...)
+    id: 0x0106,
+    shortName: "actionfighting",
+    longName: "Fighting",
+  ), // - Fighting games (mortal kombat, street fighters, ...)
   ActionBeatEmUp(
-      id: 0x0107,
-      shortName: "actionbeatemup",
-      longName:
-          "Beat'em All"), // - Beat'em up/all (Renegade, Double Dragon, ...)
+    id: 0x0107,
+    shortName: "actionbeatemup",
+    longName: "Beat'em All",
+  ), // - Beat'em up/all (Renegade, Double Dragon, ...)
   ActionStealth(
-      id: 0x0108,
-      shortName: "actionstealth",
-      longName: "Infiltration"), // - Stealth combat (MGS, Dishonored, ...)
+    id: 0x0108,
+    shortName: "actionstealth",
+    longName: "Infiltration",
+  ), // - Stealth combat (MGS, Dishonored, ...)
   ActionBattleRoyale(
-      id: 0x0109,
-      shortName: "actionbattleroyale",
-      longName:
-          "Battle Royale"), // - Battle royale survivals (Fortnite, Apex legend, ...)
+    id: 0x0109,
+    shortName: "actionbattleroyale",
+    longName: "Battle Royale",
+  ), // - Battle royale survivals (Fortnite, Apex legend, ...)
   ActionRythm(
-      id: 0x010A,
-      shortName: "actionrythm",
-      longName:
-          "Rythm & Music"), // - Music/Rythm games (Dance Dance Revolution, ...)
+    id: 0x010A,
+    shortName: "actionrythm",
+    longName: "Rythm & Music",
+  ), // - Music/Rythm games (Dance Dance Revolution, ...)
   Adventure(
-      id: 0x0200,
-      shortName: "adventure",
-      longName: "Adventure (All)"), // Generic Adventure games
+    id: 0x0200,
+    shortName: "adventure",
+    longName: "Adventure (All)",
+  ), // Generic Adventure games
   AdventureText(
-      id: 0x0201,
-      shortName: "adventuretext",
-      longName: "Textual Adventure"), // - Old-school text adventure (Zork, ...)
+    id: 0x0201,
+    shortName: "adventuretext",
+    longName: "Textual Adventure",
+  ), // - Old-school text adventure (Zork, ...)
   AdventureGraphics(
-      id: 0x0202,
-      shortName: "adventuregraphics",
-      longName: "Graphical Adventure"), // - Mainly Point-and-clicks
+    id: 0x0202,
+    shortName: "adventuregraphics",
+    longName: "Graphical Adventure",
+  ), // - Mainly Point-and-clicks
   AdventureVisualNovels(
-      id: 0x0203,
-      shortName: "adventurevisualnovels",
-      longName:
-          "Visual Novel"), // - Dating & legal simulation (Ace Attornay, ...)
+    id: 0x0203,
+    shortName: "adventurevisualnovels",
+    longName: "Visual Novel",
+  ), // - Dating & legal simulation (Ace Attornay, ...)
   AdventureInteractiveMovie(
-      id: 0x0204,
-      shortName: "adventureinteractivemovie",
-      longName:
-          "Interactive Movie"), // - Interactive movies (Tex Murphy, Fahrenheit, RE4, ...)
+    id: 0x0204,
+    shortName: "adventureinteractivemovie",
+    longName: "Interactive Movie",
+  ), // - Interactive movies (Tex Murphy, Fahrenheit, RE4, ...)
   AdventureRealTime3D(
-      id: 0x0205,
-      shortName: "adventurerealtime3d",
-      longName:
-          "Real Time 3D Adventure"), // - 3D adventures (Shenmue, Heavy rain, ...)
+    id: 0x0205,
+    shortName: "adventurerealtime3d",
+    longName: "Real Time 3D Adventure",
+  ), // - 3D adventures (Shenmue, Heavy rain, ...)
   AdventureSurvivalHorror(
-      id: 0x0206,
-      shortName: "adventuresurvivalhorror",
-      longName:
-          "Survival"), // - Survivals/Horror Survivals (Lost in blue, Resident evil, ...)
+    id: 0x0206,
+    shortName: "adventuresurvivalhorror",
+    longName: "Survival",
+  ), // - Survivals/Horror Survivals (Lost in blue, Resident evil, ...)
   RPG(
-      id: 0x0300,
-      shortName: "rpg",
-      longName: "RPG (All)"), // Generic RPG (Role Playing Games)
+    id: 0x0300,
+    shortName: "rpg",
+    longName: "RPG (All)",
+  ), // Generic RPG (Role Playing Games)
   RPGAction(
-      id: 0x0301,
-      shortName: "rpgaction",
-      longName: "Action RPG"), // - Action RPG (Diablo, ...)
+    id: 0x0301,
+    shortName: "rpgaction",
+    longName: "Action RPG",
+  ), // - Action RPG (Diablo, ...)
   RPGMMO(
-      id: 0x0302,
-      shortName: "rpgmmo",
-      longName: "MMORPG"), // - Massive Multiplayer Online RPG (TESO, WoW, ...)
+    id: 0x0302,
+    shortName: "rpgmmo",
+    longName: "MMORPG",
+  ), // - Massive Multiplayer Online RPG (TESO, WoW, ...)
   RPGDungeonCrawler(
-      id: 0x0303,
-      shortName: "rpgdungeoncrawler",
-      longName:
-          "Dungeon Crawler"), // - Dungeon Crawler (Dungeon Master, Eye of the beholder, ...)
+    id: 0x0303,
+    shortName: "rpgdungeoncrawler",
+    longName: "Dungeon Crawler",
+  ), // - Dungeon Crawler (Dungeon Master, Eye of the beholder, ...)
   RPGTactical(
-      id: 0x0304,
-      shortName: "rpgtactical",
-      longName:
-          "Tactical RPG"), // - Tactical RPG (Ogres Battle, FF Tactics, ...)
+    id: 0x0304,
+    shortName: "rpgtactical",
+    longName: "Tactical RPG",
+  ), // - Tactical RPG (Ogres Battle, FF Tactics, ...)
   RPGJapanese(
-      id: 0x0305,
-      shortName: "rpgjapanese",
-      longName:
-          "JRPG"), // - Japaneese RPG, manga-like (Chrono Trigger, FF, ...)
+    id: 0x0305,
+    shortName: "rpgjapanese",
+    longName: "JRPG",
+  ), // - Japaneese RPG, manga-like (Chrono Trigger, FF, ...)
   RPGFirstPersonPartyBased(
-      id: 0x0306,
-      shortName: "rpgfirstpersonpartybased",
-      longName:
-          "Party based RPG"), // - Team-as-one RPG (Ishar, Bard's tales, ...)
+    id: 0x0306,
+    shortName: "rpgfirstpersonpartybased",
+    longName: "Party based RPG",
+  ), // - Team-as-one RPG (Ishar, Bard's tales, ...)
   Simulation(
-      id: 0x0400,
-      shortName: "simulation",
-      longName: "Simulation (All)"), // Generic simulation
+    id: 0x0400,
+    shortName: "simulation",
+    longName: "Simulation (All)",
+  ), // Generic simulation
   SimulationBuildAndManagement(
-      id: 0x0401,
-      shortName: "simulationbuildandmanagement",
-      longName:
-          "Build & Management"), // - Construction & Management simulations (Sim-city, ...)
+    id: 0x0401,
+    shortName: "simulationbuildandmanagement",
+    longName: "Build & Management",
+  ), // - Construction & Management simulations (Sim-city, ...)
   SimulationLife(
-      id: 0x0402,
-      shortName: "simulationlife",
-      longName:
-          "Life Simulation"), // - Life simulation (Nintendogs, Tamagoshi, Sims, ...)
+    id: 0x0402,
+    shortName: "simulationlife",
+    longName: "Life Simulation",
+  ), // - Life simulation (Nintendogs, Tamagoshi, Sims, ...)
   SimulationFishAndHunt(
-      id: 0x0403,
-      shortName: "simulationfishandhunt",
-      longName:
-          "Fishing & Hunting"), // - Fighing and hunting (Deer hunting, Sega bass fishing, ...)
+    id: 0x0403,
+    shortName: "simulationfishandhunt",
+    longName: "Fishing & Hunting",
+  ), // - Fighing and hunting (Deer hunting, Sega bass fishing, ...)
   SimulationVehicle(
-      id: 0x0404,
-      shortName: "simulationvehicle",
-      longName:
-          "Vehicle Simulation"), // - Car/Planes/Tank/... simulations (Flight Simulator, Sherman M4, ...)
+    id: 0x0404,
+    shortName: "simulationvehicle",
+    longName: "Vehicle Simulation",
+  ), // - Car/Planes/Tank/... simulations (Flight Simulator, Sherman M4, ...)
   SimulationSciFi(
-      id: 0x0405,
-      shortName: "simulationscifi",
-      longName:
-          "Science Fiction Simulation"), // - Space Opera (Elite, Homeworld)
+    id: 0x0405,
+    shortName: "simulationscifi",
+    longName: "Science Fiction Simulation",
+  ), // - Space Opera (Elite, Homeworld)
   Strategy(
-      id: 0x0500,
-      shortName: "strategy",
-      longName: "Strategy (All)"), // Generic strategy games
+    id: 0x0500,
+    shortName: "strategy",
+    longName: "Strategy (All)",
+  ), // Generic strategy games
   Strategy4X(
-      id: 0x0501,
-      shortName: "strategy4x",
-      longName:
-          "eXplore, eXpand, eXploit & eXterminate"), // - eXplore, eXpand, eXploit, eXterminate (Civilization, ...)
+    id: 0x0501,
+    shortName: "strategy4x",
+    longName: "eXplore, eXpand, eXploit & eXterminate",
+  ), // - eXplore, eXpand, eXploit, eXterminate (Civilization, ...)
   StrategyArtillery(
-      id: 0x0502,
-      shortName: "strategyartillery",
-      longName:
-          "Artillery"), // - multiplayer artillery games, turn by turn (Scortched Tanks, Worms, ...)
+    id: 0x0502,
+    shortName: "strategyartillery",
+    longName: "Artillery",
+  ), // - multiplayer artillery games, turn by turn (Scortched Tanks, Worms, ...)
   StrategyAutoBattler(
-      id: 0x0503,
-      shortName: "strategyautobattler",
-      longName:
-          "Auto-battler"), // - Auto-battle tacticals (Dota undergrounds, Heartstone Battlegrounds, ...)
+    id: 0x0503,
+    shortName: "strategyautobattler",
+    longName: "Auto-battler",
+  ), // - Auto-battle tacticals (Dota undergrounds, Heartstone Battlegrounds, ...)
   StrategyMOBA(
-      id: 0x0504,
-      shortName: "strategymoba",
-      longName:
-          "Multiplayer Online Battle Arena"), // - Multiplayer Online Battle Arena (Dota 2, Smite, ...)
+    id: 0x0504,
+    shortName: "strategymoba",
+    longName: "Multiplayer Online Battle Arena",
+  ), // - Multiplayer Online Battle Arena (Dota 2, Smite, ...)
   StrategyRTS(
-      id: 0x0505,
-      shortName: "strategyrts",
-      longName:
-          "Real Time Strategy"), // - Real Time Strategy (Warcrafs, Dune, C&C, ...)
+    id: 0x0505,
+    shortName: "strategyrts",
+    longName: "Real Time Strategy",
+  ), // - Real Time Strategy (Warcrafs, Dune, C&C, ...)
   StrategyTBS(
-      id: 0x0506,
-      shortName: "strategytbs",
-      longName:
-          "Turn Based Strategy"), // - Turn based strategy (Might & Magic, Making History, ...)
+    id: 0x0506,
+    shortName: "strategytbs",
+    longName: "Turn Based Strategy",
+  ), // - Turn based strategy (Might & Magic, Making History, ...)
   StrategyTowerDefense(
-      id: 0x0507,
-      shortName: "strategytowerdefense",
-      longName: "Tower Defense"), // - Tower defenses!
+    id: 0x0507,
+    shortName: "strategytowerdefense",
+    longName: "Tower Defense",
+  ), // - Tower defenses!
   StrategyWargame(
-      id: 0x0508,
-      shortName: "strategywargame",
-      longName: "Wargame"), // - Military tactics
+    id: 0x0508,
+    shortName: "strategywargame",
+    longName: "Wargame",
+  ), // - Military tactics
   Sports(
-      id: 0x0600,
-      shortName: "sports",
-      longName: "Sports (All)"), // Generic sport games
+    id: 0x0600,
+    shortName: "sports",
+    longName: "Sports (All)",
+  ), // Generic sport games
   SportRacing(
-      id: 0x0601,
-      shortName: "sportracing",
-      longName: "Racing"), // - All racing games!
+    id: 0x0601,
+    shortName: "sportracing",
+    longName: "Racing",
+  ), // - All racing games!
   SportSimulation(
-      id: 0x0602,
-      shortName: "sportsimulation",
-      longName: "Sport Simulation"), // - All physical/simulation sports
+    id: 0x0602,
+    shortName: "sportsimulation",
+    longName: "Sport Simulation",
+  ), // - All physical/simulation sports
   SportCompetitive(
-      id: 0x0603,
-      shortName: "sportcompetitive",
-      longName:
-          "Competition Sport"), // - High competitive factor (Ball Jack, ...)
+    id: 0x0603,
+    shortName: "sportcompetitive",
+    longName: "Competition Sport",
+  ), // - High competitive factor (Ball Jack, ...)
   SportFight(
-      id: 0x0604,
-      shortName: "sportfight",
-      longName:
-          "Fighting/Violent Sport"), // - Fighting sports/violent sports (SpeedBall, WWE 2K Fight Nights, ...)
+    id: 0x0604,
+    shortName: "sportfight",
+    longName: "Fighting/Violent Sport",
+  ), // - Fighting sports/violent sports (SpeedBall, WWE 2K Fight Nights, ...)
   Pinball(id: 0x0700, shortName: "pinball", longName: "Pinball"), // Pinball
   Board(
-      id: 0x0800,
-      shortName: "board",
-      longName: "Board game"), // Board games (chess, backgammon, othello, ...)
+    id: 0x0800,
+    shortName: "board",
+    longName: "Board game",
+  ), // Board games (chess, backgammon, othello, ...)
   Casual(
-      id: 0x0900,
-      shortName: "casual",
-      longName: "Casual game"), // Simple interaction games for casual gaming
+    id: 0x0900,
+    shortName: "casual",
+    longName: "Casual game",
+  ), // Simple interaction games for casual gaming
   DigitalCard(
-      id: 0x0A00,
-      shortName: "digitalcard",
-      longName:
-          "Digital Cards"), // Card Collection/games (Hearthstone, Magic the Gathering, ...)
+    id: 0x0A00,
+    shortName: "digitalcard",
+    longName: "Digital Cards",
+  ), // Card Collection/games (Hearthstone, Magic the Gathering, ...)
   PuzzleAndLogic(
-      id: 0x0B00,
-      shortName: "puzzleandlogic",
-      longName:
-          "Puzzle & Logic"), // Puzzle and logic games (Tetris, Sokoban, ...)
+    id: 0x0B00,
+    shortName: "puzzleandlogic",
+    longName: "Puzzle & Logic",
+  ), // Puzzle and logic games (Tetris, Sokoban, ...)
   Party(
-      id: 0x0C00,
-      shortName: "party",
-      longName:
-          "Multiplayer Party Game"), // Multiplayer party games (Mario party, ...)
+    id: 0x0C00,
+    shortName: "party",
+    longName: "Multiplayer Party Game",
+  ), // Multiplayer party games (Mario party, ...)
   Trivia(
-      id: 0x0D00,
-      shortName: "trivia",
-      longName:
-          "Trivia"), // Answer/Quizz games (Family Feud, Are you smarter than a 5th grade, ...)
+    id: 0x0D00,
+    shortName: "trivia",
+    longName: "Trivia",
+  ), // Answer/Quizz games (Family Feud, Are you smarter than a 5th grade, ...)
   Casino(id: 0x0E00, shortName: "casino", longName: "Casino"), // Casino games
   Compilation(
-      id: 0x0F00,
-      shortName: "compilation",
-      longName: "Multi Game Compilation"), // Multi games
+    id: 0x0F00,
+    shortName: "compilation",
+    longName: "Multi Game Compilation",
+  ), // Multi games
   DemoScene(
-      id: 0x1000,
-      shortName: "demoscene",
-      longName: "Demo from Demo Scene"), // Amiga/ST/PC Demo from demo scene
+    id: 0x1000,
+    shortName: "demoscene",
+    longName: "Demo from Demo Scene",
+  ), // Amiga/ST/PC Demo from demo scene
   Educative(
-      id: 0x1100,
-      shortName: "educative",
-      longName: "Educative"); // Educative games
+    id: 0x1100,
+    shortName: "educative",
+    longName: "Educative",
+  ); // Educative games
 
   final int id;
   final String shortName;
