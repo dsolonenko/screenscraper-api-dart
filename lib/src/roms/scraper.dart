@@ -9,7 +9,7 @@ import 'package:screenscraper/src/roms/genres.dart';
 
 abstract class ScraperOverrides {
   static List<String> languagePriority = ["en"];
-  static List<String> regionPriority = ["wor", "us", "eu", "jp"];
+  static List<String> regionPriority = ["us", "wor", "eu", "jp"];
 }
 
 /// Game details scraped from ScreenScraper
@@ -119,14 +119,46 @@ class Game {
       normalizedGenre: _lookupNormalizedGenre(genres),
       releaseYear: releaseDate.length >= 4 ? releaseDate.substring(0, 4) : "",
       media: Media(
-        screenshot: _findMediaLink(game.medias, "ss"),
-        titleScreenshot: _findMediaLink(game.medias, "sstitle"),
-        fanArt: _findMediaLink(game.medias, "fanart"),
-        box2d: _findMediaLink(game.medias, "box-2D"),
-        box3d: _findMediaLink(game.medias, "box-3D"),
-        wheel: _findMediaLink(game.medias, "wheel"),
-        video: _findMediaLink(game.medias, "video"),
-        videoNormalized: _findMediaLink(game.medias, "video-normalized"),
+        screenshot: _findMediaLink(
+          game.medias,
+          "ss",
+          regionPriority: regionPriority,
+        ),
+        titleScreenshot: _findMediaLink(
+          game.medias,
+          "sstitle",
+          regionPriority: regionPriority,
+        ),
+        fanArt: _findMediaLink(
+          game.medias,
+          "fanart",
+          regionPriority: regionPriority,
+        ),
+        box2d: _findMediaLink(
+          game.medias,
+          "box-2D",
+          regionPriority: regionPriority,
+        ),
+        box3d: _findMediaLink(
+          game.medias,
+          "box-3D",
+          regionPriority: regionPriority,
+        ),
+        wheel: _findMediaLink(
+          game.medias,
+          "wheel",
+          regionPriority: regionPriority,
+        ),
+        video: _findMediaLink(
+          game.medias,
+          "video",
+          regionPriority: regionPriority,
+        ),
+        videoNormalized: _findMediaLink(
+          game.medias,
+          "video-normalized",
+          regionPriority: regionPriority,
+        ),
       ),
       isAdult: _isAdult(genres),
       isTopStaff: game.topstaff ?? false,
@@ -263,22 +295,60 @@ class RomScraper {
   }
 }
 
-MediaLink? _findMediaLink(List<GameMedia>? medias, String type) {
+MediaLink? _findMediaLink(
+  List<GameMedia>? medias,
+  String type, {
+  List<String>? regionPriority,
+}) {
   if (medias == null || medias.isEmpty) return null;
-  final media = medias.firstWhereOrNull(
-    (element) => element.parent == "jeu" && element.type == type,
+  final matching = medias
+      .where((element) => element.parent == "jeu" && element.type == type)
+      .toList();
+
+  // If no direct matching type and type is "wheel", check "wheel-hd"
+  if (matching.isEmpty && type == "wheel") {
+    matching.addAll(
+      medias.where(
+        (element) => element.parent == "jeu" && element.type == "wheel-hd",
+      ),
+    );
+  }
+
+  if (matching.isEmpty) return null;
+
+  final priorities = regionPriority ?? ScraperOverrides.regionPriority;
+  for (final region in priorities) {
+    final found = matching.firstWhereOrNull(
+      (element) => element.region?.toLowerCase() == region.toLowerCase(),
+    );
+    if (found != null) {
+      return MediaLink(url: found.url, format: found.format, size: found.size);
+    }
+  }
+
+  final fallback = matching.firstWhereOrNull(
+        (element) => element.region == null || element.region!.isEmpty,
+      ) ??
+      matching.first;
+  return MediaLink(
+    url: fallback.url,
+    format: fallback.format,
+    size: fallback.size,
   );
-  if (media == null) return null;
-  return MediaLink(url: media.url, format: media.format, size: media.size);
 }
 
 String _findRegionText(List<RegionText>? text, {List<String>? regionPriority}) {
   if (text == null || text.isEmpty) return "";
   final priorities = regionPriority ?? ScraperOverrides.regionPriority;
-  final item =
-      text.firstWhereOrNull((element) => priorities.contains(element.region)) ??
-      text.first;
-  return item.text ?? "";
+  for (final region in priorities) {
+    final found = text.firstWhereOrNull(
+      (element) => element.region?.toLowerCase() == region.toLowerCase(),
+    );
+    if (found != null && (found.text?.isNotEmpty ?? false)) {
+      return found.text!;
+    }
+  }
+  return text.first.text ?? "";
 }
 
 String _findLanguageText(
@@ -287,10 +357,15 @@ String _findLanguageText(
 }) {
   if (text == null || text.isEmpty) return "";
   final priorities = languagePriority ?? ScraperOverrides.languagePriority;
-  final item =
-      text.firstWhereOrNull((element) => priorities.contains(element.langue)) ??
-      text.first;
-  return item.text ?? "";
+  for (final lang in priorities) {
+    final found = text.firstWhereOrNull(
+      (element) => element.langue?.toLowerCase() == lang.toLowerCase(),
+    );
+    if (found != null && (found.text?.isNotEmpty ?? false)) {
+      return found.text!;
+    }
+  }
+  return text.first.text ?? "";
 }
 
 GameGenre _lookupNormalizedGenre(List<Genre>? genres) {
